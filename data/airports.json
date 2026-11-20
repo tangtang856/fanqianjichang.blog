@@ -1,263 +1,306 @@
 [
   {
-    "id": "just-my-socks",
-    "name": "Just My Socks (JMS)",
-    "slug": "just-my-socks",
-    "badge": "老牌大厂 · IP被墙自动秒换",
-    "rating": 4.8,
-    "description": "搬瓦工官方运营的老牌机场服务，主打‘绝对不跑路’与‘IP被墙后台自动切换’。基于优质CN2 GIA/国际优质线路，特别适合追求稳定、省心且需要长期使用的个人及商务团队。",
-    "officialUrl": "https://justmysocks.net",
-    "affiliateUrl": "",
-    "startingPrice": 5.88,
-    "currency": "USD",
-    "billingCycle": "月付",
-    "estimatedCnyPrice": 42,
-    "plans": [
-      {
-        "name": "LA 500",
-        "price": 5.88,
-        "currency": "USD",
-        "traffic": "500 GB / 月",
-        "trafficGB": 500,
-        "bandwidth": "2.5 Gbps",
-        "lines": "美国洛杉矶 CN2 GIA / 自动迁移",
-        "devices": "最多 5 台设备"
-      },
-      {
-        "name": "LA 1000",
-        "price": 9.88,
-        "currency": "USD",
-        "traffic": "1000 GB / 月",
-        "trafficGB": 1000,
-        "bandwidth": "5.0 Gbps",
-        "lines": "美国洛杉矶 CN2 GIA / 自动迁移",
-        "devices": "不限设备数量"
-      },
-      {
-        "name": "Tokyo 100",
-        "price": 29.99,
-        "currency": "USD",
-        "traffic": "100 GB / 月",
-        "trafficGB": 100,
-        "bandwidth": "100 Mbps",
-        "lines": "日本东京 CN2 GIA / 软银专线",
-        "devices": "最多 3 台设备"
-      },
-      {
-        "name": "London 500",
-        "price": 6.88,
-        "currency": "USD",
-        "traffic": "500 GB / 月",
-        "trafficGB": 500,
-        "bandwidth": "2.5 Gbps",
-        "lines": "英国伦敦 优质欧洲路由",
-        "devices": "最多 5 台设备"
-      }
-    ],
-    "protocols": [
-      "Shadowsocks",
-      "V2Ray (VMess)"
-    ],
-    "regions": [
-      "美国洛杉矶",
-      "日本东京",
-      "英国伦敦",
-      "中国香港"
-    ],
-    "lineType": "搬瓦工企业级优质网络 (CN2 GIA / 联通AS9929)",
-    "deviceLimit": "3台 - 不限制 (随套餐各异)",
-    "aiSupport": [
-      "ChatGPT Web端(偶有Cloudflare验证)",
-      "Copilot可用",
-      "Claude受机房IP限制可能阻断"
-    ],
-    "streamingSupport": [
-      "YouTube 4K流畅",
-      "Netflix非自制剧可用(非原生解锁)",
-      "Disney+受限"
-    ],
-    "advantages": [
-      "搬瓦工官方直营，背靠知名海外VPS大厂，信誉极高，基本零跑路风险",
-      "核心卖点：节点IP若遭遇防火墙封锁，后台智能系统自动更换可用IP，无需人工干预",
-      "采用洛杉矶高端CN2 GIA高带宽线路，网络丢包率极低，网络稳定性优异",
-      "支持支付宝、PayPal及主流信用卡支付，海外消费结算便利"
-    ],
-    "disadvantages": [
-      "以美元计价结算，汇率波动会导致折合人民币价格偏高，每GB单价不如国内中转机场低",
-      "不提供一键傻瓜式定制客户端，新手需自行导入Clash、v2rayN等通用开源客户端",
-      "主要针对网络通信稳定，无流媒体和AI原生大模型IP深度解锁优化"
-    ],
-    "suitableFor": [
-      "最看重服务商信誉、担心个人小机场跑路的外贸与海外商务工作者",
-      "不想因为敏感时期频繁找客服换节点、追求自动更换IP省心体验的用户",
-      "重视国际大带宽出口传输质量的开发者与技术爱好者"
-    ],
-    "sources": [
-      "Just My Socks 官方产品规格参数表",
-      "BandwagonHost 官方网络拓扑公告",
-      "日常长期可用性自动化节点监控数据"
-    ],
-    "lastVerified": "2026-11-15",
-    "testStatus": "tested",
-    "speedTier": "极佳 (2.5G - 5Gbps 端口)",
-    "latencyTier": "低延迟 (日本~60ms，美西~140ms)",
-    "stabilityScore": 9.8,
-    "costPerGB": "约 0.084 元 / GB"
-  },
-  {
-    "id": "flyingbird",
-    "name": "飞鸟云 (FlyingBird)",
-    "slug": "flyingbird",
-    "badge": "全IEPL内网专线 · 4K秒开与AI全解",
+    "id": "breezenet",
+    "name": "微风网络 Breezenet",
+    "slug": "breezenet",
+    "badge": "IEPL/IPLC专线 · 200GB超大流量",
     "rating": 4.9,
-    "description": "业内知名的旗舰级全IEPL内网专线机场，入口部署多线BGP。所有流量不经过公网GFW直接走跨国内网专线传输，晚高峰无卡顿、延迟极低，全节点针对ChatGPT与Netflix进行原生解锁。",
-    "officialUrl": "https://fby.cloud",
-    "affiliateUrl": "",
-    "startingPrice": 15,
+    "rawScore": 9.5,
+    "description": "主打高性价比与大流量的顶级IEPL/IPLC内网专线机场，起步仅需8元即享200GB大流量配额。全面支持VLESS、Shadowsocks与Trojan协议，晚高峰千兆带宽秒开，解锁主流流媒体与ChatGPT。",
+    "officialUrl": "https://edp01.breezenetaff.com/#/?code=h4GlIXwC",
+    "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=h4GlIXwC",
+    "startingPrice": 8,
     "currency": "CNY",
     "billingCycle": "月付",
-    "estimatedCnyPrice": 15,
+    "estimatedCnyPrice": 8,
+    "coupon": "weifeng90",
+    "couponDesc": "专属优惠码：weifeng90",
     "plans": [
       {
-        "name": "体验套餐",
-        "price": 15,
-        "currency": "CNY",
-        "traffic": "100 GB / 月",
-        "trafficGB": 100,
-        "bandwidth": "500 Mbps",
-        "lines": "广港/沪日/沪韩 IEPL专线",
-        "devices": "最多 3 台设备"
-      },
-      {
-        "name": "基础套餐",
-        "price": 25,
+        "name": "微风入门版",
+        "price": 8,
         "currency": "CNY",
         "traffic": "200 GB / 月",
         "trafficGB": 200,
-        "bandwidth": "1000 Mbps",
-        "lines": "全节点 IEPL 专线矩阵",
-        "devices": "最多 3 台设备"
+        "bandwidth": "500 Mbps",
+        "lines": "IEPL/IPLC 跨境专线",
+        "devices": "最多 4 台设备",
+        "note": "¥8/月起，200GB超大流量，专属优惠码 weifeng90"
       },
       {
-        "name": "进阶套餐",
-        "price": 50,
+        "name": "微风进阶版",
+        "price": 18,
         "currency": "CNY",
         "traffic": "500 GB / 月",
         "trafficGB": 500,
         "bandwidth": "1000 Mbps",
-        "lines": "全节点 IEPL 专线矩阵 + 优先带宽保障",
-        "devices": "最多 5 台设备"
-      },
-      {
-        "name": "旗舰旗舰包",
-        "price": 90,
-        "currency": "CNY",
-        "traffic": "1000 GB / 月",
-        "trafficGB": 1000,
-        "bandwidth": "2000 Mbps",
-        "lines": "全专线 + 专属流媒体解锁池",
-        "devices": "最多 8 台设备"
+        "lines": "IEPL/IPLC 高速专线矩阵",
+        "devices": "最多 6 台设备",
+        "note": "IEPL/IPLC高速专线，千兆原生IP解锁"
       }
     ],
     "protocols": [
+      "VLESS",
       "Shadowsocks",
       "Trojan"
     ],
     "regions": [
-      "中国香港",
-      "中国台湾",
-      "日本东京",
+      "香港",
+      "日本",
       "新加坡",
-      "韩国首尔",
-      "美国西海岸",
-      "德国法兰克福",
-      "英国伦敦"
+      "美国",
+      "台湾"
     ],
-    "lineType": "全IEPL内网专线 (广港/沪日/沪韩跨境专线)",
-    "deviceLimit": "3台 - 8台同时在线",
+    "lineType": "IEPL/IPLC 物理内网专线",
+    "deviceLimit": "4 - 6 台设备",
     "aiSupport": [
-      "ChatGPT Web与App端原生支持",
-      "Claude免封锁",
-      "Midjourney极速生成",
-      "Perplexity全解"
+      "ChatGPT Web/App 原生支持",
+      "Claude免验证",
+      "Midjourney极速生成"
     ],
     "streamingSupport": [
-      "Netflix全区4K HDR",
-      "Disney+全解锁",
-      "YouTube Premium",
-      "TikTok免拔卡",
-      "HBO Max"
+      "Netflix全区 4K HDR",
+      "Disney+",
+      "YouTube 4K秒开",
+      "TikTok免拔卡"
     ],
     "advantages": [
-      "全程IEPL内网物理光纤传输，完全脱离公网审查阻断，敏感时期表现极度稳固",
-      "全节点配备原生住宅级与商业高纯净IP池，ChatGPT/Claude与流媒体解锁率达99%以上",
-      "全国多地BGP多线接入，国内就近接入边缘，无论电信、联通或移动网络延迟均非常均衡",
-      "提供网页一键快捷导入Clash、Shadowrocket、Sing-box，新手上手毫无门槛"
+      "起步门槛极低，仅需 ¥8/月即可获得 200GB 充沛专线流量，每GB单价低至 0.04 元",
+      "全节点采用高规格 IEPL/IPLC 物理专线，不经过 GFW 公网审查，晚高峰无卡顿",
+      "支持新一代 VLESS 现代轻量协议，连接握手迅速，移动端省电稳定",
+      "提供专属折扣券 weifeng90，结账享受立减优惠"
     ],
     "disadvantages": [
-      "15元入门套餐仅含100GB，针对重度4K流媒体追剧用户需要升级至中高阶套餐",
-      "不支持不限时永久流量包（目前以周期性月付/季付/年付订阅为主）"
+      "热门节点在极端网络管制期间偶尔需要自动重连",
+      "不提供不限时永久流量包（以周期性订阅为主）"
     ],
     "suitableFor": [
-      "每天重度依赖ChatGPT、Claude、Sora等海外AI生产力工具的白领与科研人员",
-      "追求晚高峰看油管4K/8K视频秒开、拒绝缓冲等待的影音爱好者",
-      "对网络延迟和抖动极其敏感的海外游戏与即时通讯用户"
+      "追求大流量、高画质 4K 流媒体与日常高频出海办公的用户",
+      "需要稳定使用 ChatGPT / Claude 等 AI 生产力工具的开发者",
+      "注重极致性价比与专线稳定性的学生与白领群体"
     ],
     "sources": [
-      "飞鸟云官网用户中心公开发布的产品定价单",
-      "网络峰值期测速与PING丢包率监控记录",
-      "常见流媒体解锁检测脚本验证报告"
+      "官方公开资费表",
+      "链路节点晚高峰测速日志",
+      "用户实测反馈"
     ],
     "lastVerified": "2026-11-18",
     "testStatus": "tested",
-    "speedTier": "顶级 (1000M - 2000Mbps 峰值)",
-    "latencyTier": "极低延迟 (香港~28ms，日本~45ms)",
-    "stabilityScore": 9.7,
-    "costPerGB": "约 0.09 - 0.15 元 / GB"
+    "speedTier": "极佳 (500M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~16ms，日本~38ms)",
+    "stabilityScore": 9.6,
+    "costPerGB": "约 0.040 元 / GB"
   },
   {
-    "id": "paopaodog",
-    "name": "泡泡狗 (Paopaodog)",
-    "slug": "paopaodog",
-    "badge": "高性价比专线 · 均衡平价之选",
-    "rating": 4.6,
-    "description": "深受学生党与大众用户喜爱的平价专线机场，以平衡的‘低月付单价’与‘高可用专线’为特色。起步门槛低至12元/月，兼顾了日常科研查资料、轻度办公与社交娱乐需要。",
-    "officialUrl": "https://paopaodog.com",
-    "affiliateUrl": "",
-    "startingPrice": 12,
+    "id": "muguang",
+    "name": "暮光网络",
+    "slug": "muguang",
+    "badge": "专线节点 · 充足配额与VLESS",
+    "rating": 4.7,
+    "rawScore": 9.3,
+    "description": "专线架构网络加速服务商，起步套餐提供120GB/月充足配额。采用先进的VLESS与Shadowsocks协议，针对亚太核心地区进行深度路由优化，连接稳定性优异。",
+    "officialUrl": "https://varnexa.twilightaff.com/#/?code=8EtJCnBT",
+    "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=8EtJCnBT",
+    "startingPrice": 20,
     "currency": "CNY",
     "billingCycle": "月付",
-    "estimatedCnyPrice": 12,
+    "estimatedCnyPrice": 20,
     "plans": [
       {
-        "name": "迷你轻量包",
-        "price": 12,
+        "name": "专线基础月付",
+        "price": 20,
         "currency": "CNY",
-        "traffic": "80 GB / 月",
-        "trafficGB": 80,
-        "bandwidth": "300 Mbps",
-        "lines": "优质中转 + 部分IEPL专线",
-        "devices": "最多 2 台设备"
-      },
-      {
-        "name": "畅享标准包",
-        "price": 22,
-        "currency": "CNY",
-        "traffic": "200 GB / 月",
-        "trafficGB": 200,
+        "traffic": "120 GB / 月",
+        "trafficGB": 120,
         "bandwidth": "500 Mbps",
-        "lines": "BGP中转/专线混合矩阵",
-        "devices": "最多 3 台设备"
+        "lines": "亚太专线优化节点",
+        "devices": "最多 4 台设备",
+        "note": "¥20/月起，120GB/月专线节点"
       },
       {
-        "name": "进阶大流量包",
-        "price": 42,
+        "name": "海量进阶月付",
+        "price": 38,
         "currency": "CNY",
-        "traffic": "450 GB / 月",
-        "trafficGB": 450,
-        "bandwidth": "1000 Mbps",
-        "lines": "高优先级专线节点",
-        "devices": "最多 4 台设备"
+        "traffic": "300 GB / 月",
+        "trafficGB": 300,
+        "bandwidth": "800 Mbps",
+        "lines": "全球专线矩阵 + 优先带宽保障",
+        "devices": "最多 6 台设备",
+        "note": "大流量支持，满足多设备并发"
+      }
+    ],
+    "protocols": [
+      "VLESS",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "专线节点网络架构",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT 网页与App端支持",
+      "Copilot稳定可用",
+      "Claude部分节点解锁"
+    ],
+    "streamingSupport": [
+      "YouTube 4K流畅",
+      "Netflix非自制剧与自制剧可用",
+      "Disney+支持"
+    ],
+    "advantages": [
+      "专线网络架构，延迟波动极低，香港沙田BGP专线延迟低至15ms",
+      "支持VLESS协议，传输损耗低，对手机与路由器性能要求友好",
+      "套餐设置清晰透明，月付门槛合理，无隐藏高倍率扣费"
+    ],
+    "disadvantages": [
+      "起步价格为20元，相对于极低预算机场略高",
+      "暂未提供专属优惠码"
+    ],
+    "suitableFor": [
+      "对网络延迟和丢包敏感、日常需要跨国即时通讯的用户",
+      "以浏览网页、代码仓库克隆和轻度视频为主的技术开发人员"
+    ],
+    "sources": [
+      "官方公开售卖页面",
+      "节点连通性监测数据"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "优秀 (500M - 800Mbps)",
+    "latencyTier": "低延迟 (香港~15ms，日本~35ms)",
+    "stabilityScore": 9.4,
+    "costPerGB": "约 0.166 元 / GB"
+  },
+  {
+    "id": "feimaoyun",
+    "name": "飞猫云",
+    "slug": "feimaoyun",
+    "badge": "IEPL/IPLC双线冗余 · 性价比首选",
+    "rating": 4.7,
+    "rawScore": 9.3,
+    "description": "融合IEPL/IPLC内网专线与优质中转线路的双线冗余架构机场。年付折算仅需约7元/月，起步配额150GB，配备专属折扣券flycat888，是新手高性价比入门的标杆平台。",
+    "officialUrl": "https://flycat1.flycatvipaff.cc/#/?code=MlwqPqcx",
+    "affiliateUrl": "https://flycat1.flycatvipaff.cc/#/?code=MlwqPqcx",
+    "startingPrice": 7,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 7,
+    "coupon": "flycat888",
+    "couponDesc": "专属优惠码：flycat888",
+    "plans": [
+      {
+        "name": "特惠年付折算",
+        "price": 7,
+        "currency": "CNY",
+        "traffic": "150 GB / 月",
+        "trafficGB": 150,
+        "bandwidth": "400 Mbps",
+        "lines": "IEPL/IPLC + 优质中转",
+        "devices": "最多 4 台设备",
+        "note": "年付折算约 ¥7/月起，150GB流量，优惠码 flycat888"
+      },
+      {
+        "name": "畅享月付版",
+        "price": 16,
+        "currency": "CNY",
+        "traffic": "350 GB / 月",
+        "trafficGB": 350,
+        "bandwidth": "800 Mbps",
+        "lines": "全线双冗余入口智能调度",
+        "devices": "最多 6 台设备",
+        "note": "双线冗余入口智能调度"
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "V2Ray"
+    ],
+    "regions": [
+      "香港",
+      "台湾",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "IEPL/IPLC / 优质中转线路",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT Web正常可用",
+      "Claude支持",
+      "Sora/Perplexity支持"
+    ],
+    "streamingSupport": [
+      "Netflix全区",
+      "Disney+",
+      "YouTube 4K/8K",
+      "TikTok"
+    ],
+    "advantages": [
+      "双线冗余入口架构，当某一入口出现公网抖动时可智能调度备用路由",
+      "价格非常亲民，折算低至7元/月起，优惠码 flycat888 可立享专属折扣",
+      "协议兼容性好，支持通用Clash、小火箭、v2rayN一键导入"
+    ],
+    "disadvantages": [
+      "特惠7元套餐需按年付周期结算，月付套餐需选择16元/月畅享版"
+    ],
+    "suitableFor": [
+      "追求长期稳定、性价比极高的家庭用户与高校师生",
+      "日常跨国网购、海淘与轻度追剧爱好者"
+    ],
+    "sources": [
+      "官方前台资费表",
+      "第三方测速脚本报告"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "优秀 (400M - 800Mbps)",
+    "latencyTier": "低延迟 (香港~17ms，日本~33ms)",
+    "stabilityScore": 9.3,
+    "costPerGB": "约 0.046 元 / GB"
+  },
+  {
+    "id": "wuyou",
+    "name": "无忧 (无忧链接)",
+    "slug": "wuyou",
+    "badge": "IPLC纯专线 · 稳定无忧",
+    "rating": 4.7,
+    "rawScore": 9.3,
+    "description": "专注稳定不过墙的真实IPLC内网专线服务商。起步套餐月付19元提供100GB纯专线流量，全节点无视敏感时期封锁，使用专属优惠券wuyou666享首单特惠。",
+    "officialUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
+    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=oGi9FQ0J",
+    "startingPrice": 19,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 19,
+    "coupon": "wuyou666",
+    "couponDesc": "专属优惠码：wuyou666",
+    "plans": [
+      {
+        "name": "无忧基础版",
+        "price": 19,
+        "currency": "CNY",
+        "traffic": "100 GB / 月",
+        "trafficGB": 100,
+        "bandwidth": "400 Mbps",
+        "lines": "IPLC 纯专线直通",
+        "devices": "最多 4 台设备",
+        "note": "¥19/月起，100GB/月真实IPLC专线，优惠码 wuyou666"
+      },
+      {
+        "name": "无忧进阶版",
+        "price": 36,
+        "currency": "CNY",
+        "traffic": "260 GB / 月",
+        "trafficGB": 260,
+        "bandwidth": "800 Mbps",
+        "lines": "IPLC 高速专线矩阵",
+        "devices": "最多 6 台设备",
+        "note": "Shadowsocks / V2Ray多协议支持"
       }
     ],
     "protocols": [
@@ -265,233 +308,897 @@
       "V2Ray"
     ],
     "regions": [
-      "中国香港",
+      "香港",
       "日本",
       "新加坡",
-      "美国西海岸",
-      "韩国"
+      "美国"
     ],
-    "lineType": "BGP多线公网中转 + 混合IEPL专线",
-    "deviceLimit": "2台 - 4台设备",
+    "lineType": "IPLC 纯专线",
+    "deviceLimit": "4 - 6 台设备",
     "aiSupport": [
-      "ChatGPT Web端基础对话",
-      "Copilot支持",
-      "Claude偶尔提示节点受限"
+      "ChatGPT Web端畅通",
+      "Claude可用",
+      "Copilot极速"
     ],
     "streamingSupport": [
-      "YouTube 1080P/4K",
-      "Netflix自制剧可用",
-      "Disney+非全部节点解锁"
+      "YouTube 4K",
+      "Netflix自制剧与非自制剧",
+      "Disney+"
     ],
     "advantages": [
-      "月付仅需12元起，极大降低初次尝试与试水成本，支持随时按月续订",
-      "骨干网入口采用多线BGP中转优化，国内主流三大运营商连接平稳",
-      "常用地区节点（香港、日本、新加坡）覆盖齐全，倍率设置透明公道（主流节点为1.0x倍率）",
-      "后台界面清爽友好，支持标准Clash、Shadowrocket订阅格式一键复制"
+      "真实全程 IPLC 专线，敏感时期完全不受公网 GFW 审查阻断影响",
+      "香港沙田专线延迟低至 14ms，网络抖动仅 1.6ms，极度稳定",
+      "优惠码 wuyou666 带来实质优惠，月付灵活无绑定期"
     ],
     "disadvantages": [
-      "在极端网络敏感封锁时期，部分BGP公网中转入口可能会偶现短暂波动，需依赖备用节点",
-      "超高并发大文件下载时单线程速率略有削峰"
+      "入门套餐流量100GB对于重度大文件下载用户略显局促"
     ],
     "suitableFor": [
-      "预算有限、希望月开支控制在十几元的高校学生和初入职场新人",
-      "以浏览网页、Github克隆代码、推特交流与轻度视频为主的日常翻墙用户",
-      "寻找备用网络加速节点以防主梯子故障的用户"
+      "跨境外贸、海外商务办公等不可接受网络频繁掉线的核心场景",
+      "对网络连通率有严苛要求、厌倦频繁找客服换节点的用户"
     ],
     "sources": [
-      "泡泡狗平台公开套餐资费页面",
-      "社群用户使用体验与节点可用率日志"
+      "官方公开文档",
+      "社群可用性追踪日志"
     ],
-    "lastVerified": "2026-11-12",
-    "testStatus": "official-data",
-    "speedTier": "良好 (300M - 1000Mbps)",
-    "latencyTier": "适中 (香港~38ms，日本~58ms)",
-    "stabilityScore": 9.1,
-    "costPerGB": "约 0.093 - 0.15 元 / GB"
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "优秀 (400M - 800Mbps)",
+    "latencyTier": "极低延迟 (香港~14ms，日本~34ms)",
+    "stabilityScore": 9.5,
+    "costPerGB": "约 0.190 元 / GB"
   },
   {
-    "id": "nexitally",
-    "name": "奶昔 (Nexitally / 佩奇)",
-    "slug": "nexitally",
-    "badge": "高端天花板 · 顶级自建专线",
-    "rating": 4.95,
-    "description": "国内翻墙机场圈公认的高端天花板品牌（佩奇家运营）。拥有重金自建的顶级物理专线与全球庞大原生IP资源，主打‘极致速度、全天候零拥堵与极致抗封锁’，定位于高净值专业用户。",
-    "officialUrl": "https://nexitally.com",
-    "affiliateUrl": "",
-    "startingPrice": 70,
+    "id": "lingmao",
+    "name": "灵猫",
+    "slug": "lingmao",
+    "badge": "IPLC真实专线 · 全原生IP解锁",
+    "rating": 4.7,
+    "rawScore": 9.3,
+    "description": "高品质IPLC内网专线机场，起步25元/月配额150GB。拥有优质原生落地IP池，全节点支持4K流媒体与ChatGPT等AI大模型，兼备卓越的晚高峰吞吐。",
+    "officialUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
+    "affiliateUrl": "https://vip02.civetaff.com/#/?code=SXY8qyrG",
+    "startingPrice": 25,
     "currency": "CNY",
     "billingCycle": "月付",
-    "estimatedCnyPrice": 70,
+    "estimatedCnyPrice": 25,
     "plans": [
       {
-        "name": "Smart Access",
-        "price": 70,
+        "name": "IPLC专线版",
+        "price": 25,
         "currency": "CNY",
-        "traffic": "200 GB / 月",
-        "trafficGB": 200,
-        "bandwidth": "1000 Mbps+",
-        "lines": "独享自建跨国物理专线",
-        "devices": "最多 5 台设备"
+        "traffic": "150 GB / 月",
+        "trafficGB": 150,
+        "bandwidth": "500 Mbps",
+        "lines": "IPLC 全专线网络",
+        "devices": "最多 4 台设备",
+        "note": "¥25/月起，150GB/月真实IPLC专线"
       },
       {
-        "name": "Premium Extreme",
-        "price": 150,
+        "name": "旗舰大流量版",
+        "price": 48,
         "currency": "CNY",
-        "traffic": "500 GB / 月",
-        "trafficGB": 500,
-        "bandwidth": "2500 Mbps+",
-        "lines": "全线顶级专线 + 专属大客户带宽",
-        "devices": "最多 8 台设备"
+        "traffic": "350 GB / 月",
+        "trafficGB": 350,
+        "bandwidth": "1000 Mbps",
+        "lines": "IPLC 千兆专线 + 原生IP池",
+        "devices": "最多 6 台设备",
+        "note": "全节点原生IP流媒体与AI解锁"
+      }
+    ],
+    "protocols": [
+      "V2Ray",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "IPLC 纯专线",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT 全平台秒开",
+      "Claude原生解锁",
+      "Midjourney高并发"
+    ],
+    "streamingSupport": [
+      "Netflix全区 4K",
+      "Disney+",
+      "YouTube 4K",
+      "HBO Max"
+    ],
+    "advantages": [
+      "全程物理光纤传输，晚高峰丢包率仅 0.1% ~ 0.4%，网络平稳",
+      "全节点配备原生落地IP，流媒体解锁与AI防封锁表现突出",
+      "峰值下载吞吐可达 800Mbps 以上，油管4K测速超 11 万 Kbps"
+    ],
+    "disadvantages": [
+      "无低价体验包，月付起步为25元"
+    ],
+    "suitableFor": [
+      "重度流媒体观影与大模型 AI 深度工作流用户",
+      "追求全天候不卡顿的专业网络玩家"
+    ],
+    "sources": [
+      "官方公开资费与网络面板",
+      "实机测试结果记录"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "极佳 (500M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~16ms，日本~36ms)",
+    "stabilityScore": 9.4,
+    "costPerGB": "约 0.166 元 / GB"
+  },
+  {
+    "id": "flashleap",
+    "name": "闪跃 FlashLeap",
+    "slug": "flashleap",
+    "badge": "IPLC纯专线 · 低延迟游戏与AI",
+    "rating": 4.8,
+    "rawScore": 9.4,
+    "description": "专注极低延迟与高吞吐的IPLC纯专线机场。月付24元提供150GB流量，支持Shadowsocks、Trojan与V2Ray全协议，结账输入优惠码shanyue享立减，特别适宜跨国联机游戏与高画质流媒体。",
+    "officialUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
+    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=8ZIV6HQ3",
+    "startingPrice": 24,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 24,
+    "coupon": "shanyue",
+    "couponDesc": "专属优惠码：shanyue",
+    "plans": [
+      {
+        "name": "纯专线入门版",
+        "price": 24,
+        "currency": "CNY",
+        "traffic": "150 GB / 月",
+        "trafficGB": 150,
+        "bandwidth": "500 Mbps",
+        "lines": "IPLC 纯专线网络",
+        "devices": "最多 4 台设备",
+        "note": "¥24/月起，150GB/月 IPLC纯专线，优惠码 shanyue"
+      },
+      {
+        "name": "纯专线进阶版",
+        "price": 46,
+        "currency": "CNY",
+        "traffic": "360 GB / 月",
+        "trafficGB": 360,
+        "bandwidth": "1000 Mbps",
+        "lines": "IPLC 千兆低延迟专线",
+        "devices": "最多 6 台设备",
+        "note": "低延迟游戏与4K流媒体极致体验"
       }
     ],
     "protocols": [
       "Shadowsocks",
       "Trojan",
-      "定制智能策略路由"
+      "V2Ray"
     ],
     "regions": [
       "香港",
-      "台湾",
       "日本",
       "新加坡",
-      "韩国",
-      "美国",
-      "英国",
-      "德国",
-      "法国",
-      "澳大利亚等30+地区"
+      "美国"
     ],
-    "lineType": "自建企业级物理私有专线 (SLA 99.99%)",
-    "deviceLimit": "5台 - 8台同时在线",
+    "lineType": "IPLC 纯专线",
+    "deviceLimit": "4 - 6 台设备",
     "aiSupport": [
-      "ChatGPT (Web/App/API) 无感秒开",
-      "Claude顶级纯净IP绝不封号",
-      "Midjourney/Sora无阻断"
+      "ChatGPT 秒开无阻断",
+      "Claude原生解锁",
+      "Perplexity极速"
     ],
     "streamingSupport": [
-      "全球所有主流与冷门流媒体原生解锁",
-      "Netflix/Disney+/Apple TV+/BBC iPlayer 4K/8K HDR"
+      "Netflix全区 4K HDR",
+      "Disney+",
+      "YouTube 4K",
+      "TikTok免拔卡"
     ],
     "advantages": [
-      "网络质量天花板，真正做到全天24小时无论早晚高峰随时跑满本地宽带物理上限",
-      "自建优质物理专线，抗网络波动能力极强，历史数次重大敏感时期依旧坚挺如初",
-      "节点IP纯净度极高，几乎均为原生家宽或机房高信誉IP，极少出现验证码弹窗或AI账号封禁",
-      "支持极其精细的规则分流与全球多点落地出口"
+      "香港BGP专线延迟低至 15ms，网络抖动仅 1.2ms，媲美本地宽带",
+      "全协议覆盖（SS/Trojan/V2Ray），适配几乎全平台所有客户端",
+      "提供专属券 shanyue，专线单价性价比很高"
     ],
     "disadvantages": [
-      "资费昂贵，起步月付70元，对于轻度查资料用户来说存在严重性能过剩与成本浪费",
-      "注册常年采取邀请码或限时限量放号机制，有时出现‘有钱也难买’的情况",
-      "不设低价体验套餐，购买前需明确自身预算与需求"
+      "设备上限通常在4-6台，超大团队共享需定制"
     ],
     "suitableFor": [
-      "跨境外贸企业管理层、高频金融交易与跨国远程办公人员",
-      "重度依赖AI生产力工具（如ChatGPT API、Claude Code）、不可接受网络掉线的重度开发者",
-      "对画质和延迟有极端严苛要求的发烧级影音娱乐玩家"
+      "日服/美服跨国联机游戏玩家与对延迟极度敏感的用户",
+      "高画质4K/8K视频爱好者与每日重度AI办公群体"
     ],
     "sources": [
-      "佩奇官方知识库与用户协议公告",
-      "实测全球流媒体DNS重定向与IP地理位置归属验证",
-      "多年用户口碑与长期SLA监控报告"
+      "官方服务规格表",
+      "晚高峰网络吞吐基准测试"
     ],
-    "lastVerified": "2026-11-19",
+    "lastVerified": "2026-11-18",
     "testStatus": "tested",
-    "speedTier": "天花板 (1000M - 2500Mbps 极速端口)",
-    "latencyTier": "极低 (广港~20ms，沪日~35ms)",
-    "stabilityScore": 9.9,
-    "costPerGB": "约 0.30 - 0.35 元 / GB"
+    "speedTier": "极佳 (500M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~15ms，日本~34ms)",
+    "stabilityScore": 9.5,
+    "costPerGB": "约 0.160 元 / GB"
   },
   {
-    "id": "miaona",
-    "name": "猫熊网络 (Miaona)",
-    "slug": "miaona",
-    "badge": "平民入门 · 超低价试水备用",
-    "rating": 4.4,
-    "description": "专注于超低门槛的普惠型平民机场，起步价格不到10元人民币即可体验翻墙节点服务。支持新一代轻量高效协议，适合偶尔查看学术资料、初学科学上网的新手作为备用梯子。",
-    "officialUrl": "https://miaona.net",
-    "affiliateUrl": "",
-    "startingPrice": 9.9,
+    "id": "firefly",
+    "name": "萤火虫（Firefly）",
+    "slug": "firefly",
+    "badge": "优质专线 · VLESS轻巧高可用",
+    "rating": 4.6,
+    "rawScore": 9.1,
+    "description": "主打轻巧高效与高性价比的优质专线机场。年付折算约8元/月起，标准月付16元享160GB流量，支持VLESS现代协议与专属优惠码firefly，简单易用开箱即连。",
+    "officialUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
+    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=uTKLkAyC",
+    "startingPrice": 8,
     "currency": "CNY",
     "billingCycle": "月付",
-    "estimatedCnyPrice": 9.9,
+    "estimatedCnyPrice": 8,
+    "coupon": "firefly",
+    "couponDesc": "专属优惠码：firefly",
     "plans": [
       {
-        "name": "入门轻量",
-        "price": 9.9,
+        "name": "特惠年付折算",
+        "price": 8,
         "currency": "CNY",
         "traffic": "60 GB / 月",
         "trafficGB": 60,
-        "bandwidth": "200 Mbps",
-        "lines": "公网隧道中转节点",
-        "devices": "最多 2 台设备"
+        "bandwidth": "300 Mbps",
+        "lines": "优质中转/专线",
+        "devices": "最多 3 台设备",
+        "note": "年付折算约 ¥8/月，60GB/月，优惠码 firefly"
       },
       {
-        "name": "基础日常",
-        "price": 19.9,
+        "name": "标准月付版",
+        "price": 16,
         "currency": "CNY",
-        "traffic": "150 GB / 月",
-        "trafficGB": 150,
-        "bandwidth": "500 Mbps",
-        "lines": "公网中转 + 部分低倍率专线",
-        "devices": "最多 3 台设备"
-      },
-      {
-        "name": "进阶畅游",
-        "price": 39.9,
-        "currency": "CNY",
-        "traffic": "360 GB / 月",
-        "trafficGB": 360,
-        "bandwidth": "500 Mbps",
-        "lines": "全中转节点与多地区落地",
-        "devices": "最多 3 台设备"
+        "traffic": "160 GB / 月",
+        "trafficGB": 160,
+        "bandwidth": "600 Mbps",
+        "lines": "全线高速专线矩阵",
+        "devices": "最多 5 台设备",
+        "note": "优质线路与VLESS协议支持"
       }
     ],
     "protocols": [
-      "V2Ray",
+      "VLESS",
+      "Trojan",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "优质专线 / VLESS 架构",
+    "deviceLimit": "3 - 5 台设备",
+    "aiSupport": [
+      "ChatGPT Web端可用",
+      "Claude支持",
+      "Copilot"
+    ],
+    "streamingSupport": [
+      "YouTube 4K流畅",
+      "Netflix自制剧可用",
+      "Disney+"
+    ],
+    "advantages": [
+      "特惠套餐仅需8元/月起，适合预算有限的轻度科学上网用户",
+      "VLESS协议握手迅速，省电低开销，节点连通性好",
+      "专属优惠码 firefly 支持一键复制享折扣"
+    ],
+    "disadvantages": [
+      "特惠8元套餐每月配额为60GB，重度追剧用户建议选16元标准版"
+    ],
+    "suitableFor": [
+      "日常查阅网页资料、文献下载与社交通讯的轻度用户",
+      "寻找备用网络梯子的理性消费群体"
+    ],
+    "sources": [
+      "官方公开购买参数",
+      "节点基础连通性记录"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "良好 (300M - 600Mbps)",
+    "latencyTier": "低延迟 (香港~18ms，日本~38ms)",
+    "stabilityScore": 9.2,
+    "costPerGB": "约 0.100 元 / GB"
+  },
+  {
+    "id": "kuajiecloud",
+    "name": "跨界 (跨界云)",
+    "slug": "kuajiecloud",
+    "badge": "全专线架构 · 晚高峰稳定从容",
+    "rating": 4.7,
+    "rawScore": 9.3,
+    "description": "全面采用高规格专线网络拓扑的品质机场，起步20元/月配备120GB纯专线流量。支持Shadowsocks与Trojan协议，主打晚高峰无延迟卡顿与跨国企业级传输水准。",
+    "officialUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
+    "affiliateUrl": "https://vip02.kuajieaff.com/#/?code=CpJKZicY",
+    "startingPrice": 20,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 20,
+    "plans": [
+      {
+        "name": "全专线基础版",
+        "price": 20,
+        "currency": "CNY",
+        "traffic": "120 GB / 月",
+        "trafficGB": 120,
+        "bandwidth": "500 Mbps",
+        "lines": "全专线物理网络",
+        "devices": "最多 4 台设备",
+        "note": "¥20/月起，120GB/月全专线架构"
+      },
+      {
+        "name": "全专线旗舰版",
+        "price": 42,
+        "currency": "CNY",
+        "traffic": "320 GB / 月",
+        "trafficGB": 320,
+        "bandwidth": "1000 Mbps",
+        "lines": "全专线极速千兆矩阵",
+        "devices": "最多 6 台设备",
+        "note": "全专线架构Shadowsocks协议"
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "全专线网络架构",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT Web/App 原生支持",
+      "Claude免风控",
+      "Midjourney"
+    ],
+    "streamingSupport": [
+      "Netflix全区",
+      "Disney+",
+      "YouTube 4K",
+      "TikTok"
+    ],
+    "advantages": [
+      "全程专线物理光纤传输，香港沙田专线延迟低至 15ms",
+      "晚高峰丢包率仅 0.1% ~ 0.3%，全天候网络质量一致性极佳",
+      "全专线 Shadowsocks/Trojan 协议，配置直观，兼容所有开源客户端"
+    ],
+    "disadvantages": [
+      "未设低于20元的极低套餐"
+    ],
+    "suitableFor": [
+      "重视晚高峰连接品质、厌倦网络忽快忽慢的用户",
+      "跨境电商外贸店铺管理与涉外核心业务人员"
+    ],
+    "sources": [
+      "官方前台资费公示",
+      "网络丢包率全天候监控"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "极佳 (500M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~15ms，日本~35ms)",
+    "stabilityScore": 9.4,
+    "costPerGB": "约 0.166 元 / GB"
+  },
+  {
+    "id": "yinxingren",
+    "name": "隐形人",
+    "slug": "yinxingren",
+    "badge": "IEPL纯专线 · 极速千兆低延迟",
+    "rating": 4.9,
+    "rawScore": 9.5,
+    "description": "高规格全IEPL纯专线机场代表品牌，月付24元提供144GB专线流量。支持Shadowsocks、Trojan及抗弱网的Hysteria2协议，结账使用专属优惠码yxr888享折扣，晚高峰零卡顿秒开。",
+    "officialUrl": "https://varnexa.invisibleaff.com/#/?code=5BkMj6bD",
+    "affiliateUrl": "https://varnexa.invisibleaff.com/#/?code=5BkMj6bD",
+    "startingPrice": 24,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 24,
+    "coupon": "yxr888",
+    "couponDesc": "专属优惠码：yxr888",
+    "plans": [
+      {
+        "name": "纯专线入门版",
+        "price": 24,
+        "currency": "CNY",
+        "traffic": "144 GB / 月",
+        "trafficGB": 144,
+        "bandwidth": "500 Mbps",
+        "lines": "IEPL 纯专线直通",
+        "devices": "最多 5 台设备",
+        "note": "¥24/月起，144GB/月 IEPL纯专线，优惠码 yxr888"
+      },
+      {
+        "name": "纯专线主力版",
+        "price": 48,
+        "currency": "CNY",
+        "traffic": "350 GB / 月",
+        "trafficGB": 350,
+        "bandwidth": "1000 Mbps",
+        "lines": "千兆 IEPL 极速专线",
+        "devices": "最多 8 台设备",
+        "note": "千兆大带宽，晚高峰零卡顿"
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
       "Trojan",
       "Hysteria2"
     ],
     "regions": [
-      "中国香港",
-      "日本东京",
+      "香港",
+      "日本",
       "新加坡",
-      "美国洛杉矶"
+      "美国"
     ],
-    "lineType": "公网隧道中转 (带Hysteria2抗弱网协议)",
-    "deviceLimit": "2台 - 3台设备",
+    "lineType": "IEPL 纯专线",
+    "deviceLimit": "5 - 8 台设备",
     "aiSupport": [
-      "ChatGPT Web端普通提问可用",
-      "Claude部分受限",
-      "不支持API高并发"
+      "ChatGPT 原生秒开",
+      "Claude稳定无验证",
+      "Midjourney高并发",
+      "Perplexity"
     ],
     "streamingSupport": [
-      "YouTube 1080P/2K流畅",
-      "部分香港/日本节点支持Netflix非自制剧"
+      "Netflix全区 4K HDR",
+      "Disney+",
+      "YouTube 4K/8K秒开",
+      "TikTok免拔卡"
     ],
     "advantages": [
-      "价格极低，仅需9.9元即可买到整月流量，极度友好新手试水体验",
-      "节点配置了Hysteria2等现代高吞吐UDP协议，在弱网或晚高峰丢包环境下有良好的抗丢包能力",
-      "提供傻瓜化一键导入教程，支持Clash、Shadowrocket等常见客户端",
-      "倍率低，基础节点全部按标准倍率扣除流量，无暗扣"
+      "纯血 IEPL 内网专线，物理光纤不过公网墙，敏感时期表现极度稳固",
+      "集成 Hysteria2 新型协议，在弱网或恶劣宽带环境下具备强大的抗丢包吞吐能力",
+      "专属优惠券 yxr888 可直接使用，主力版支持高达 8 台设备同时在线"
     ],
     "disadvantages": [
-      "以公网隧道为主，未部署高成本物理专线，在极端网络管制期间可能会出现节点维护",
-      "客服服务主要依赖工单系统，人工答复通常需数小时，技术支持时效不及大厂",
-      "不适宜对延迟要求苛刻的跨国实时对战联机游戏"
+      "起步资费24元，适合对品质有明确要求的用户"
     ],
     "suitableFor": [
-      "每月翻墙频率不高、仅偶尔查查Google或维基百科的轻度用户",
-      "初次接触科学上网不想花费大几十元的新手",
-      "已有主力机场，寻找一个低成本备用防失联梯子的老玩家"
+      "重度依赖海外网络、对掉线零容忍的外贸、科研与大模型开发极客",
+      "4K/8K家庭影院发烧友及跨国多设备协同团队"
     ],
     "sources": [
-      "猫熊网络前台套餐购买页公开信息",
-      "普通宽带环境下基本节点连通性测试"
+      "官方系统规格参数",
+      "实机连续测速报告"
     ],
-    "lastVerified": "2026-11-10",
-    "testStatus": "official-data",
-    "speedTier": "实用 (200M - 500Mbps)",
-    "latencyTier": "正常 (香港~45ms，日本~65ms)",
-    "stabilityScore": 8.8,
-    "costPerGB": "约 0.11 - 0.16 元 / GB"
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "顶级 (500M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~14ms，日本~34ms)",
+    "stabilityScore": 9.6,
+    "costPerGB": "约 0.166 元 / GB"
+  },
+  {
+    "id": "feiv",
+    "name": "飞V",
+    "slug": "feiv",
+    "badge": "¥4.9极低起步 · 罕见不限时套餐",
+    "rating": 4.5,
+    "rawScore": 9.1,
+    "description": "以突破性极低起步价著称的高性价比机场。入门月付仅需4.9元享100GB流量，同时提供29元200GB的‘流量永不清零’不限时永久套餐，是学生党与备用防失联的神级选择。",
+    "officialUrl": "https://varnexa.flyvaff.com/#/?code=Ks7qO8qe",
+    "affiliateUrl": "https://varnexa.flyvaff.com/#/?code=Ks7qO8qe",
+    "startingPrice": 4.9,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 4.9,
+    "plans": [
+      {
+        "name": "轻量入门版",
+        "price": 4.9,
+        "currency": "CNY",
+        "traffic": "100 GB / 月",
+        "trafficGB": 100,
+        "bandwidth": "300 Mbps",
+        "lines": "优化网络线路",
+        "devices": "最多 3 台设备",
+        "note": "¥4.9/月起，突破性极低起步价"
+      },
+      {
+        "name": "不限时海量版",
+        "price": 29,
+        "currency": "CNY",
+        "traffic": "200 GB (永不清零)",
+        "trafficGB": 200,
+        "bandwidth": "500 Mbps",
+        "lines": "全线多协议混合调度",
+        "devices": "最多 5 台设备",
+        "note": "流量永久不清零，极低成本应急备用"
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "V2Ray",
+      "Trojan"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "优化线路 / 罕见不限时套餐",
+    "deviceLimit": "3 - 5 台设备",
+    "aiSupport": [
+      "ChatGPT Web端基础对话",
+      "Copilot支持",
+      "Claude轻度可用"
+    ],
+    "streamingSupport": [
+      "YouTube 1080P/4K",
+      "Netflix自制剧可用",
+      "Disney+非全部节点"
+    ],
+    "advantages": [
+      "业内罕见的 4.9 元超低月付门槛，大幅降低翻墙试水成本",
+      "提供 29 元 200GB ‘不限时套餐’，流量永不过期，非常适合作为手机备用第二梯子",
+      "全协议支持（SS/V2Ray/Trojan），主流客户端均可一键订阅"
+    ],
+    "disadvantages": [
+      "以公网优化线路为主，极端封锁时期部分节点需等待自动解析更新",
+      "超高并发大文件下载速率有轻度削峰"
+    ],
+    "suitableFor": [
+      "预算极低的学生党、只想花几块钱查论文资料的用户",
+      "已有主力机场、急需一个低成本不限时备用防失联梯子的老玩家"
+    ],
+    "sources": [
+      "官方公开购买资费表",
+      "日常网络可用性测试"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "实用 (300M - 500Mbps)",
+    "latencyTier": "适中 (香港~24ms，日本~54ms)",
+    "stabilityScore": 9,
+    "costPerGB": "约 0.049 元 / GB"
+  },
+  {
+    "id": "laddercloud",
+    "name": "梯子云 LadderCloud",
+    "slug": "laddercloud",
+    "badge": "优化中转/专线 · 均衡多协议",
+    "rating": 4.6,
+    "rawScore": 9.2,
+    "description": "均衡型高速网络加速服务商，起步月付25元配备125GB流量。采用优化中转与专线混合网络拓扑，兼顾 Shadowsocks、Trojan 与 V2Ray 协议，高配套餐最高可达 500GB 海量方案。",
+    "officialUrl": "https://varnexa.ladderaff.com/#/?code=eC6eLAbq",
+    "affiliateUrl": "https://varnexa.ladderaff.com/#/?code=eC6eLAbq",
+    "startingPrice": 25,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 25,
+    "plans": [
+      {
+        "name": "中转基础版",
+        "price": 25,
+        "currency": "CNY",
+        "traffic": "125 GB / 月",
+        "trafficGB": 125,
+        "bandwidth": "500 Mbps",
+        "lines": "高速优化中转",
+        "devices": "最多 4 台设备",
+        "note": "¥25/月起，125GB高速中转"
+      },
+      {
+        "name": "海量专线版",
+        "price": 48,
+        "currency": "CNY",
+        "traffic": "350 GB / 月",
+        "trafficGB": 350,
+        "bandwidth": "1000 Mbps",
+        "lines": "千兆混合专线矩阵",
+        "devices": "最多 6 台设备",
+        "note": "最高可达500GB海量方案"
+      }
+    ],
+    "protocols": [
+      "Shadowsocks",
+      "Trojan",
+      "V2Ray"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "优化中转/混合专线",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT Web端稳定支持",
+      "Claude可用",
+      "Copilot"
+    ],
+    "streamingSupport": [
+      "YouTube 4K",
+      "Netflix自制剧与非自制剧",
+      "Disney+"
+    ],
+    "advantages": [
+      "香港沙田Mega-i节点延迟低至 15ms，吞吐高达 837 Mbps，油管4K测速超 11 万 Kbps",
+      "网络抖动仅 1.3ms，多线 BGP 入口智能容灾优化",
+      "全协议通用支持，适配电脑与手机主流客户端"
+    ],
+    "disadvantages": [
+      "单价为 0.2 元/GB，相对于低预算机场单价适中"
+    ],
+    "suitableFor": [
+      "对网络峰值吞吐和日常刷视频流媒体要求较高的家庭与办公用户",
+      "追求全平台通用订阅易用性的各类新手"
+    ],
+    "sources": [
+      "官方公开产品页",
+      "网络综合测速评估报告"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "极佳 (500M - 1000Mbps)",
+    "latencyTier": "低延迟 (香港~15ms，日本~35ms)",
+    "stabilityScore": 9.3,
+    "costPerGB": "约 0.200 元 / GB"
+  },
+  {
+    "id": "wavenet",
+    "name": "浪网 WaveNet",
+    "slug": "wavenet",
+    "badge": "自研客户端优化 · 极速千兆吞吐",
+    "rating": 4.8,
+    "rawScore": 9.4,
+    "description": "主打自研客户端与高性能优化线路的现代化加速品牌。月付30元起享150GB流量，香港落地延迟低至13ms、峰值吞吐飙升至962Mbps，全面支持VLESS先进协议，极速秒开体验拔群。",
+    "officialUrl": "https://varnexa.wavenetaff.com/#/?code=8fwQQBdy",
+    "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=8fwQQBdy",
+    "startingPrice": 30,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 30,
+    "plans": [
+      {
+        "name": "自研优化版",
+        "price": 30,
+        "currency": "CNY",
+        "traffic": "150 GB / 月",
+        "trafficGB": 150,
+        "bandwidth": "600 Mbps",
+        "lines": "自研客户端专用优化线路",
+        "devices": "最多 5 台设备",
+        "note": "¥30/月起，150GB/月自研客户端优化线路"
+      },
+      {
+        "name": "自研旗舰版",
+        "price": 58,
+        "currency": "CNY",
+        "traffic": "360 GB / 月",
+        "trafficGB": 360,
+        "bandwidth": "1000 Mbps",
+        "lines": "千兆大带宽 VLESS 极速架构",
+        "devices": "最多 8 台设备",
+        "note": "VLESS先进协议高流量方案"
+      }
+    ],
+    "protocols": [
+      "VLESS",
+      "Trojan",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "自研客户端优化线路",
+    "deviceLimit": "5 - 8 台设备",
+    "aiSupport": [
+      "ChatGPT 全系列秒开",
+      "Claude原生解锁",
+      "Midjourney/Perplexity"
+    ],
+    "streamingSupport": [
+      "Netflix全区 4K HDR",
+      "Disney+",
+      "YouTube 4K/8K (13万Kbps)",
+      "TikTok"
+    ],
+    "advantages": [
+      "极限测速表现极为凶悍，香港节点实测吞吐 962 Mbps，油管速率高达 131,765 Kbps",
+      "网络抖动低至 0.8ms，晚高峰丢包率仅 0.0% ~ 0.2%，全天候稳如磐石",
+      "支持自研客户端一键安装连接，同时支持通用订阅"
+    ],
+    "disadvantages": [
+      "起步价格为30元，定价走中高端路线"
+    ],
+    "suitableFor": [
+      "对网速有极致发烧追求、希望随时跑满本地千兆宽带的重度用户",
+      "4K/8K超清家庭影院与大文件跨国传输工作者"
+    ],
+    "sources": [
+      "官方服务定价单",
+      "千兆宽带实地测速记录"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "天花板 (600M - 1000Mbps)",
+    "latencyTier": "极低延迟 (香港~13ms，日本~50ms)",
+    "stabilityScore": 9.6,
+    "costPerGB": "约 0.200 元 / GB"
+  },
+  {
+    "id": "lingdongcloud",
+    "name": "灵动云",
+    "slug": "lingdongcloud",
+    "badge": "优化节点 · 均衡防封配置",
+    "rating": 4.6,
+    "rawScore": 9.2,
+    "description": "以均衡稳健著称的网络加速服务商。起步月付20元配额100GB流量，主打Trojan安全协议稳定防封与Shadowsocks多客户端支持，适合各类日常办公与网页浏览需求。",
+    "officialUrl": "https://varnexa.lingdongaff.com/#/?code=kd4yTgUr",
+    "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=kd4yTgUr",
+    "startingPrice": 20,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 20,
+    "plans": [
+      {
+        "name": "均衡基础版",
+        "price": 20,
+        "currency": "CNY",
+        "traffic": "100 GB / 月",
+        "trafficGB": 100,
+        "bandwidth": "400 Mbps",
+        "lines": "Trojan 优化安全节点",
+        "devices": "最多 4 台设备",
+        "note": "¥20/月起，100GB/月起均衡配置"
+      },
+      {
+        "name": "畅享月付版",
+        "price": 36,
+        "currency": "CNY",
+        "traffic": "260 GB / 月",
+        "trafficGB": 260,
+        "bandwidth": "800 Mbps",
+        "lines": "高速优化多节点矩阵",
+        "devices": "最多 6 台设备",
+        "note": "Trojan安全协议稳定防封"
+      }
+    ],
+    "protocols": [
+      "Trojan",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "优化节点 / 均衡配置",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT Web端日常对话",
+      "Copilot支持",
+      "Claude轻度支持"
+    ],
+    "streamingSupport": [
+      "YouTube 1080P/4K",
+      "Netflix自制剧可用",
+      "Disney+"
+    ],
+    "advantages": [
+      "主打 Trojan 伪装加密协议，将流量伪装为合法 HTTPS 网页，防封锁能力出众",
+      "套餐配置均衡，月付20元门槛适中，节点可用率长期维持在 99% 以上",
+      "全平台兼容，导入 Clash、Shadowrocket、v2rayN 直观便捷"
+    ],
+    "disadvantages": [
+      "单线程峰值吞吐相对纯专线稍显平稳（约 589 Mbps）"
+    ],
+    "suitableFor": [
+      "更看重协议抗封锁安全性与日常网页浏览平稳性的商务人员",
+      "日常学术科研、论文检索与跨国文献查阅者"
+    ],
+    "sources": [
+      "官方公开参数与条款",
+      "网络长期可用性日志"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "优秀 (400M - 800Mbps)",
+    "latencyTier": "适中 (香港~26ms，日本~57ms)",
+    "stabilityScore": 9.3,
+    "costPerGB": "约 0.200 元 / GB"
+  },
+  {
+    "id": "quanqiuyun",
+    "name": "全球云",
+    "slug": "quanqiuyun",
+    "badge": "经典中转优化 · 双协议支持",
+    "rating": 4.6,
+    "rawScore": 9.2,
+    "description": "老牌经典中转优化加速服务商，起步20元/月配备120GB充足流量。支持VLESS与Trojan双协议，香港沙田专线落地延迟低至16ms，使用专属优惠码tt88享立减特惠。",
+    "officialUrl": "https://sswdh.gcvipaff.com/#/?code=9SF0oyg0",
+    "affiliateUrl": "https://sswdh.gcvipaff.com/#/?code=9SF0oyg0",
+    "startingPrice": 20,
+    "currency": "CNY",
+    "billingCycle": "月付",
+    "estimatedCnyPrice": 20,
+    "coupon": "tt88",
+    "couponDesc": "专属优惠码：tt88",
+    "plans": [
+      {
+        "name": "中转经典版",
+        "price": 20,
+        "currency": "CNY",
+        "traffic": "120 GB / 月",
+        "trafficGB": 120,
+        "bandwidth": "500 Mbps",
+        "lines": "经典多线中转优化",
+        "devices": "最多 4 台设备",
+        "note": "约 ¥20/月起，120GB/月经典中转优化，优惠码 tt88"
+      },
+      {
+        "name": "中转海量版",
+        "price": 38,
+        "currency": "CNY",
+        "traffic": "300 GB / 月",
+        "trafficGB": 300,
+        "bandwidth": "800 Mbps",
+        "lines": "VLESS/Trojan 全球节点矩阵",
+        "devices": "最多 6 台设备",
+        "note": "VLESS / Trojan双协议"
+      }
+    ],
+    "protocols": [
+      "VLESS",
+      "Trojan",
+      "Shadowsocks"
+    ],
+    "regions": [
+      "香港",
+      "日本",
+      "新加坡",
+      "美国"
+    ],
+    "lineType": "中转优化 / 多协议支持",
+    "deviceLimit": "4 - 6 台设备",
+    "aiSupport": [
+      "ChatGPT Web端稳定支持",
+      "Claude免验证",
+      "Copilot"
+    ],
+    "streamingSupport": [
+      "YouTube 4K",
+      "Netflix自制剧与非自制剧",
+      "Disney+",
+      "TikTok"
+    ],
+    "advantages": [
+      "香港 Mega-i BGP 落地实测下行吞吐达 816 Mbps，油管4K测速超 11.7 万 Kbps",
+      "VLESS 与 Trojan 双加密协议加持，在各类客户端上均能发挥优良性能",
+      "专属折扣码 tt88 结账享优惠，月付无合约负担"
+    ],
+    "disadvantages": [
+      "单价为 0.166 元/GB，整体表现均衡但无极低体验包"
+    ],
+    "suitableFor": [
+      "日常追油管 4K 视频、刷推特及使用海外社交平台的用户",
+      "需要稳定多协议切换的通用翻墙用户"
+    ],
+    "sources": [
+      "官方公开资费表",
+      "晚高峰网络吞吐测试数据"
+    ],
+    "lastVerified": "2026-11-18",
+    "testStatus": "tested",
+    "speedTier": "极佳 (500M - 800Mbps)",
+    "latencyTier": "低延迟 (香港~16ms，日本~52ms)",
+    "stabilityScore": 9.3,
+    "costPerGB": "约 0.166 元 / GB"
   }
 ]

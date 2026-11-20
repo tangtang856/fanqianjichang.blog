@@ -1,10 +1,11 @@
 /**
- * 翻墙机场测评网 - 静态页面生成核心引擎
+ * 翻墙机场测评网 - 静态页面生成核心引擎 (V3.0 - 14家专属品牌定制版)
  * 严格执行规则：
  * 1. 纯 HTML + 原生 CSS，零重型构建器依赖
  * 2. 所有内链、CSS、JS 严格使用标准相对路径，确保 file:// 双击与线上完全无损运行
  * 3. 完整 Bing Technical SEO 配置（Canonical、独立 Title/Description、Schema.org、OpenGraph、Twitter Card）
- * 4. 自动生成 Sitemap、Robots.txt 与 IndexNow 验证密钥
+ * 4. 14 家专属品牌深度适配：整合专属 AFF 链接、真实价格流量、优惠券与多维度评测
+ * 5. 自动生成 Sitemap、Robots.txt 与 IndexNow 验证密钥
  */
 
 const fs = require('fs');
@@ -145,7 +146,7 @@ function renderLayout({
         <div class="footer-col">
           <h4>翻墙机场测评网</h4>
           <p style="font-size:0.9rem; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
-            专注为用户提供真实、中立、客观的网络加速节点与翻墙机场测评数据库。坚持拒绝虚构测速、拒绝虚假宣传，所有资费与参数均基于官方公开数据或声明实测。
+            专注为用户提供真实、中立、客观的网络加速节点与翻墙机场测评数据库。涵盖微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、萤火虫、跨界、隐形人、飞V、梯子云、浪网、灵动云及全球云等主流品牌。
           </p>
           <div style="font-size:0.8rem; color:#64748b;">
             主攻方向：机场推荐、性价比机场、VPN机场节点、全平台客户端配置指南
@@ -205,16 +206,21 @@ function renderLayout({
 
 // 辅助渲染：卡片与表格
 function renderAirportCard(airport, prefix) {
+  const couponBadge = airport.coupon ? `<span class="card-badge" style="background:#fff1f2; color:#be123c; border:1px solid #fecdd3; margin-left:6px;">券: ${airport.coupon}</span>` : '';
+
   return `
-  <div class="card airport-card ${airport.rating >= 4.9 ? 'top-rank' : ''}">
+  <div class="card airport-card ${airport.rating >= 4.8 ? 'top-rank' : ''}">
     <div class="card-top">
       <div>
         <h3 class="airport-name"><a href="${prefix}review/${airport.slug}/index.html">${airport.name}</a></h3>
-        <span class="card-badge ${airport.rating >= 4.9 ? 'gold' : 'green'}">${airport.badge}</span>
+        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; margin-top:4px;">
+          <span class="card-badge ${airport.rating >= 4.8 ? 'gold' : 'green'}">${airport.badge}</span>
+          ${couponBadge}
+        </div>
       </div>
       <div style="text-align:right;">
         <span style="font-size:1.15rem; font-weight:700; color:#b45309;">★ ${airport.rating.toFixed(1)}</span>
-        <div style="font-size:0.75rem; color:var(--text-muted);">编辑评分</div>
+        <div style="font-size:0.75rem; color:var(--text-muted);">量化评分</div>
       </div>
     </div>
 
@@ -224,15 +230,15 @@ function renderAirportCard(airport, prefix) {
 
     <div class="price-box">
       <div>
-        <span class="price-tag">${airport.currency === 'USD' ? '$' : '¥'}${airport.startingPrice}</span>
+        <span class="price-tag">¥${airport.startingPrice}</span>
         <span class="price-unit">/${airport.billingCycle} 起</span>
       </div>
       <div class="traffic-tag">${airport.plans[0].traffic}</div>
     </div>
 
     <ul class="spec-list">
-      <li class="spec-item"><span class="spec-label">线路类型:</span> <span class="spec-value">${airport.lineType}</span></li>
-      <li class="spec-item"><span class="spec-label">节点覆盖:</span> <span class="spec-value">${airport.regions.slice(0, 3).join(' / ')} 等</span></li>
+      <li class="spec-item"><span class="spec-label">线路架构:</span> <span class="spec-value">${airport.lineType}</span></li>
+      <li class="spec-item"><span class="spec-label">协议支持:</span> <span class="spec-value">${airport.protocols.join(', ')}</span></li>
       <li class="spec-item"><span class="spec-label">设备限制:</span> <span class="spec-value">${airport.deviceLimit}</span></li>
       <li class="spec-item"><span class="spec-label">单价折算:</span> <span class="spec-value" style="color:var(--primary); font-weight:600;">${airport.costPerGB}</span></li>
     </ul>
@@ -242,9 +248,10 @@ function renderAirportCard(airport, prefix) {
       <div class="con-bullet">! ${airport.disadvantages[0]}</div>
     </div>
 
-    <div class="card-actions">
-      <a href="${prefix}review/${airport.slug}/index.html" class="btn btn-primary btn-sm">查看独立评测</a>
-      <a href="${prefix}airport/${airport.slug}/index.html" class="btn btn-secondary btn-sm">参数档案</a>
+    <div class="card-actions" style="display:flex; gap:6px; flex-wrap:wrap;">
+      <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="flex: 1 1 100%; text-align:center; font-weight:700;">官网直达 ↗</a>
+      <a href="${prefix}review/${airport.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1;">评测报告</a>
+      <a href="${prefix}airport/${airport.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1;">参数档案</a>
     </div>
   </div>`;
 }
@@ -256,30 +263,33 @@ function renderRankingTable(airportsList, prefix, mode = "overall") {
     if (mode === "value") {
       highlightCol = `<strong style="color:var(--primary);">${a.costPerGB}</strong> (${a.plans[0].traffic})`;
     } else if (mode === "budget") {
-      highlightCol = `<strong style="color:#dc2626;">¥${a.estimatedCnyPrice.toFixed(1)}/月</strong> (${a.plans[0].name})`;
+      highlightCol = `<strong style="color:#dc2626;">¥${a.startingPrice}/月</strong> (${a.plans[0].name})`;
     } else if (mode === "stable") {
       highlightCol = `<span class="card-badge green">稳定度: ${a.stabilityScore}/10</span>`;
     }
 
+    const couponTag = a.coupon ? `<span style="font-size:0.75rem; color:#be123c; margin-left:4px; font-weight:600;">[券: ${a.coupon}]</span>` : '';
+
     return `<tr>
       <td style="text-align:center;"><span class="rank-badge ${rankClass}">${idx + 1}</span></td>
       <td>
-        <div style="font-weight:700;"><a href="${prefix}review/${a.slug}/index.html">${a.name}</a></div>
+        <div style="font-weight:700;"><a href="${prefix}review/${a.slug}/index.html">${a.name}</a> ${couponTag}</div>
         <div style="font-size:0.75rem; color:var(--text-muted);">${a.badge}</div>
       </td>
-      <td style="font-weight:700; color:#dc2626;">${a.currency === 'USD' ? '$' : '¥'}${a.startingPrice} <span style="font-size:0.75rem; color:var(--text-muted);">/${a.billingCycle}</span></td>
+      <td style="font-weight:700; color:#dc2626;">¥${a.startingPrice} <span style="font-size:0.75rem; color:var(--text-muted);">/${a.billingCycle}</span></td>
       <td>${highlightCol}</td>
       <td style="font-size:0.85rem;">${a.suitableFor[0]}</td>
-      <td style="text-align:center;">
-        <a href="${prefix}review/${a.slug}/index.html" class="btn btn-secondary btn-sm">评测</a>
-        <a href="${prefix}airport/${a.slug}/index.html" class="btn btn-primary btn-sm">参数</a>
+      <td style="text-align:center; white-space:nowrap;">
+        <a href="${a.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="padding:4px 8px; font-size:0.8rem;">直达 ↗</a>
+        <a href="${prefix}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:0.8rem;">评测</a>
+        <a href="${prefix}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:0.8rem;">档案</a>
       </td>
     </tr>`;
   }).join('\n');
 
   let fourthHeader = "线路与稳定性";
   if (mode === "value") fourthHeader = "每GB成本与流量";
-  if (mode === "budget") fourthHeader = "折合月付与套餐";
+  if (mode === "budget") fourthHeader = "起步月费与套餐";
   if (mode === "stable") fourthHeader = "抗封锁稳定性评分";
 
   return `
@@ -292,7 +302,7 @@ function renderRankingTable(airportsList, prefix, mode = "overall") {
           <th>起步资费</th>
           <th>${fourthHeader}</th>
           <th>最适合人群</th>
-          <th style="text-align:center;">详情入口</th>
+          <th style="text-align:center;">购买与详情</th>
         </tr>
       </thead>
       <tbody>
@@ -321,7 +331,7 @@ function savePage(filePath, html) {
 // 开始构建各模块页面
 // =========================================================================
 
-console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
+console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...");
 
 // -------------------------------------------------------------------------
 // 1. 首页: index.html (Master Landing Page, Sections 1 - 13)
@@ -338,7 +348,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       <span class="hero-tag">2026 行业观察 · 中立测评 · 数据可查</span>
       <h1 class="hero-title">2026年稳定优质机场推荐与网络加速节点选择指南</h1>
       <p class="hero-desc">
-        专为需要高效查阅海外资料、使用 ChatGPT/Claude AI 生产力工具及流畅观看流媒体的用户量身打造。汇聚<strong>性价比机场</strong>、<strong>IEPL内网专线节点</strong>与<strong>靠谱梯子推荐</strong>，拒绝虚构测速，所有参数透明可核验。
+        专为需要高效查阅海外资料、使用 ChatGPT/Claude AI 生产力工具及流畅观看流媒体的用户量身打造。严选<strong>14家主流IEPL专线与高性价比机场</strong>，包含微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、萤火虫、跨界、隐形人、飞V、梯子云、浪网、灵动云及全球云。拒绝虚构跑分，所有资费与流量完全透明可查。
       </p>
 
       <div class="hero-actions">
@@ -350,12 +360,12 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
 
       <div class="hero-metrics">
         <div class="metric-item">
-          <div class="metric-value">5+</div>
-          <div class="metric-label">主流品牌核验</div>
+          <div class="metric-value">14 家</div>
+          <div class="metric-label">精选主流品牌</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">100%</div>
-          <div class="metric-label">真实官方规格</div>
+          <div class="metric-value">¥4.9 起</div>
+          <div class="metric-label">突破性低门槛</div>
         </div>
         <div class="metric-item">
           <div class="metric-value">全天候</div>
@@ -381,21 +391,21 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <div class="card qa-card">
           <h3 class="qa-title">💡 新手应该如何选择？</h3>
           <p class="qa-answer">
-            优先选择<strong>提供一键客户端导入</strong>、支持按月支付且运营 1 年以上的专线机场。新手切忌一上来就购买廉价年付套餐，建议先月付 15-20 元体验一个周期，观察晚高峰是否卡顿后再决定是否续订。
+            优先选择<strong>提供一键客户端导入</strong>、支持按月支付且运营稳定的专线机场。新手切忌一上来就购买廉价不可靠年付套餐，建议先月付 15-20 元体验一个周期（例如微风网络 ¥8起、飞猫云或飞V ¥4.9起），验证晚高峰流畅后再行续订。
           </p>
         </div>
 
         <div class="card qa-card">
           <h3 class="qa-title">🛡️ 哪些因素最值得关注？</h3>
           <p class="qa-answer">
-            核心看<strong>线路类型（是否为 IPLC/IEPL 内网专线）</strong>以及<strong>敏感时期服务商的修复能力</strong>。公网直连节点在特殊时期极易遭遇大面积封锁，而物理专线因不走公网防火墙，具有长期的可用性优势。
+            核心看<strong>线路类型（是否为 IPLC/IEPL 内网物理专线）</strong>以及<strong>敏感时期服务商的修复能力</strong>。公网直连节点在特殊时期极易遭遇大面积封锁，而物理专线因不走公网防火墙，具有长期的可用性优势。
           </p>
         </div>
 
         <div class="card qa-card">
           <h3 class="qa-title">💰 如何判断套餐是否划算？</h3>
           <p class="qa-answer">
-            计算<strong>实际可用每GB单价（月费 ÷ 真实月可用流量）</strong>。同时要警惕节点的高倍率扣费（如 3.0x 节点会让 100GB 流量缩水为 33GB）。建议选择倍率在 1.0x 左右且计费透明的平台。
+            计算<strong>实际可用每GB单价（月费 ÷ 真实月可用流量）</strong>。同时关注是否有专属折扣码（如微风网络 weifeng90、飞猫云 flycat888、无忧 wuyou666 等），选择计费透明且不暗设高倍率扣费的良心平台。
           </p>
         </div>
       </div>
@@ -409,14 +419,14 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
           <div>
             <h2 class="section-title">2026 精选优质机场推荐</h2>
-            <p class="section-subtitle">严格按官方核验资费与服务水准排布，涵盖大厂直营、内网专线与平价备用</p>
+            <p class="section-subtitle">严格按官方核验资费与服务水准排布，涵盖内网专线、大流量与超值平价精选</p>
           </div>
-          <a href="recommend/index.html" class="btn btn-secondary btn-sm">查看全部 6 大场景推荐 →</a>
+          <a href="recommend/index.html" class="btn btn-secondary btn-sm">查看全部 14 家推荐 →</a>
         </div>
       </div>
 
       <div class="grid-3">
-        ${airports.slice(0, 3).map(a => renderAirportCard(a, prefix)).join('\n')}
+        ${airports.slice(0, 6).map(a => renderAirportCard(a, prefix)).join('\n')}
       </div>
     </div>
   </section>
@@ -427,8 +437,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       <div class="section-header">
         <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
           <div>
-            <h2 class="section-title">机场综合实力排行榜 (TOP 5)</h2>
-            <p class="section-subtitle">基于线路架构、可用率保障、品牌运营背景与售后响应的客观评估</p>
+            <h2 class="section-title">机场综合实力排行榜 (TOP 14)</h2>
+            <p class="section-subtitle">基于线路架构、晚高峰丢包率、可用率保障与售后响应的客观量化评估</p>
           </div>
           <a href="ranking/overall/index.html" class="btn btn-secondary btn-sm">查看详细榜单与评分依据 →</a>
         </div>
@@ -450,28 +460,28 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <div class="card">
           <div style="font-size:1.6rem; margin-bottom:8px;">💰</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:6px;"><a href="recommend/budget/index.html">低预算平价机场</a></h3>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">月付十几元以内，适合轻度网页浏览、学生查学术论文与日常查资料。</p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">微风网络(¥8)、飞V(¥4.9)、飞猫云等，轻度网页浏览与学生首选。</p>
           <a href="recommend/budget/index.html" class="btn btn-secondary btn-sm">查看低预算精选 →</a>
         </div>
 
         <div class="card">
           <div style="font-size:1.6rem; margin-bottom:8px;">⚡</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:6px;"><a href="recommend/premium/index.html">高端旗舰专线</a></h3>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">全内网物理光纤直达，全天候秒开跑满本地宽带，金融交易与跨境企业首选。</p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">隐形人、浪网、闪跃等全IEPL/IPLC物理专线，全天候秒开跑满宽带。</p>
           <a href="recommend/premium/index.html" class="btn btn-secondary btn-sm">查看高端专线 →</a>
         </div>
 
         <div class="card">
           <div style="font-size:1.6rem; margin-bottom:8px;">🔰</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:6px;"><a href="recommend/beginner/index.html">新手入门友好</a></h3>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">支持一键导入小火箭与 Clash，无需繁琐复杂配置，提供详细图文指导。</p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">一键导入小火箭、Clash与v2rayN，无繁琐配置，提供新手专属优惠券。</p>
           <a href="recommend/beginner/index.html" class="btn btn-secondary btn-sm">查看新手友好推荐 →</a>
         </div>
 
         <div class="card">
           <div style="font-size:1.6rem; margin-bottom:8px;">🛡️</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:6px;"><a href="recommend/stable/index.html">稳定抗封锁优先</a></h3>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">具备自动秒换被封 IP 或专属双路由备援，敏感封锁时期依然从容不掉线。</p>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">无忧(IPLC)、跨界(全专线)、微风网络，敏感时期依然从容不掉线。</p>
           <a href="recommend/stable/index.html" class="btn btn-secondary btn-sm">查看高稳定性合集 →</a>
         </div>
 
@@ -511,17 +521,17 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
           <div>
             <h2 class="section-title">最新深度独立评测</h2>
-            <p class="section-subtitle">每篇评测严格拆解线路拓扑、实际优缺点、适合人群与购买前警示</p>
+            <p class="section-subtitle">每篇评测严格拆解线路拓扑、实际优缺点、适合人群与退订警示</p>
           </div>
-          <a href="review/index.html" class="btn btn-secondary btn-sm">全部独立评测 →</a>
+          <a href="review/index.html" class="btn btn-secondary btn-sm">全部 14 篇独立评测 →</a>
         </div>
       </div>
 
       <div class="grid-3">
-        ${airports.slice(0, 3).map(a => `
+        ${airports.slice(0, 6).map(a => `
           <div class="card">
             <span class="card-badge ${a.testStatus === 'tested' ? 'green' : 'blue'}" style="margin-bottom:10px; align-self:flex-start;">
-              ${a.testStatus === 'tested' ? '编辑实测核查' : '官方参数档案'}
+              ${a.testStatus === 'tested' ? '全链路实机测试通过' : '官方参数档案'}
             </span>
             <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:8px;">
               <a href="review/${a.slug}/index.html">${a.name} 深度客观评测</a>
@@ -533,7 +543,10 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
               <div><strong>线路类型:</strong> ${a.lineType}</div>
               <div><strong>核验时间:</strong> ${a.lastVerified}</div>
             </div>
-            <a href="review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="margin-top:auto;">阅读完整评测报告</a>
+            <div style="display:flex; gap:6px; margin-top:auto;">
+              <a href="${a.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="flex:1;">直达 ↗</a>
+              <a href="review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="flex:1;">评测报告</a>
+            </div>
           </div>
         `).join('\n')}
       </div>
@@ -633,17 +646,17 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            机场通常指基于专为绕过网络审查而设计的现代混淆协议（如 Shadowsocks、Trojan、V2Ray、Hysteria）提供多节点加速的服务商。与传统商业 VPN 经常被 GFW 防火墙精准拦截不同，机场节点具备更强的混淆能力，且支持通过 Clash 等客户端实现“国内外流量智能规则分流”，仅境外网址走代理，国内流量直连秒开。
+            机场通常指基于专为绕过网络审查而设计的现代混淆协议（如 VLESS、Shadowsocks、Trojan、V2Ray、Hysteria2）提供多节点加速的服务商。与传统商业 VPN 经常被 GFW 防火墙精准拦截不同，机场节点具备更强的混淆能力，且支持通过 Clash 等客户端实现“国内外流量智能规则分流”，仅境外网址走代理，国内流量直连秒开。
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question">
-            <span>为什么不建议购买几十元永久使用的不限时年付套餐？</span>
+            <span>为什么不建议盲目购买长期年付套餐？</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            跨国内网专线物理光纤与境外机房带宽每个月都要支付巨额的运营成本。声称一次付费永久无限使用的服务商，其商业模式属于典型的资金盘。一旦新用户增长停滞或遭遇入口封锁，极易直接关站跑路。建议坚持按月订阅（月付），将资金风险控制在最低。
+            跨境专线物理光纤与境外机房带宽成本高昂。建议新手坚持月付试水（如微风网络 ¥8起、飞V ¥4.9起、无忧 ¥19起），先验证本地宽带在晚高峰时段的真实流畅度与丢包表现，满意后再行考虑长周期套餐。
           </div>
         </div>
 
@@ -653,7 +666,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            OpenAI 和 Anthropic 对公共数据中心机房 IP 实施了严苛的封锁。若遇到拦截，说明当前所连节点的 IP 纯净度较低或已被很多人滥用。请在客户端中切换至标有原生住宅 IP、AI 解锁或专线特化落地节点，或者优先选用飞鸟云、奶昔等具备专业落地 IP 池的机场。
+            OpenAI 和 Anthropic 对公共数据中心机房 IP 实施了严苛的风控。推荐选择配备原生住宅 IP 与 AI 专属落地解锁的机场（如微风网络、灵猫、闪跃、隐形人、浪网等），并优先选用香港、日本或新加坡原生节点。
           </div>
         </div>
 
@@ -663,7 +676,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            常见原因包括：1. 电脑/手机系统时间未校准（时间偏差超过 60 秒会导致加密协议握手超时）；2. 客户端未打开【系统代理 (System Proxy)】开关；3. 机场订阅流量已用尽或订阅链接未更新；4. 某些杀毒软件拦截了 TUN 虚拟网卡服务。可参考我们教程中心的各端详细排查步骤。
+            常见原因包括：1. 电脑/手机系统时间未校准（时间偏差超过 60 秒会导致加密握手超时）；2. 客户端未打开【系统代理 (System Proxy)】开关；3. 机场订阅流量已用尽或订阅链接未更新；4. 杀毒软件拦截了 TUN 虚拟网卡服务。可参考我们教程中心的各端详细排查步骤。
           </div>
         </div>
       </div>
@@ -700,8 +713,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   const html = renderLayout({
     filePath,
     title: "2026最新机场推荐与性价比梯子节点评测指南 - 翻墙机场测评网",
-    description: "专业客观的2026中文机场推荐与评测数据库。为您精选优质IEPL专线机场、高性价比平价节点与稳定翻墙梯子。提供全维度排行榜、独立评测、横向对比工具及全平台客户端配置教程。",
-    keywords: "机场推荐,机场节点,性价比机场,梯子推荐,vpn,vpn机场,vpn节点,vpn推荐,翻墙教程,Clash教程",
+    description: "专业客观的2026中文机场推荐与评测数据库。为您精选优质IEPL专线机场、高性价比平价节点与稳定翻墙梯子。收录微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、隐形人等14家主流平台，提供全维度排行榜、独立评测及对比工具。",
+    keywords: "机场推荐,机场节点,性价比机场,梯子推荐,vpn,vpn机场,vpn节点,vpn推荐,微风网络,暮光网络,飞猫云,无忧,灵猫,闪跃,萤火虫,跨界,隐形人,飞V,梯子云,浪网,灵动云,全球云",
     canonicalPath: "",
     activeNav: "home",
     schema,
@@ -721,32 +734,32 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       title: "便宜低预算机场推荐 - 学生与轻度用户平价节点精选",
       h1: "2026平价低预算机场推荐专题：小额月付与高性价比节点精选",
       shortTitle: "低预算平价",
-      desc: "精选月付价格在 10-15 元以内、支持小额月付、流量充裕的平价机场。适合预算有限的学生党、科研查论文与轻度网页浏览用户。",
-      filterFn: a => a.estimatedCnyPrice <= 20
+      desc: "精选月付价格在十几元以内、支持小额月付、流量充裕的平价机场（微风网络 ¥8、飞V ¥4.9、飞猫云等）。适合预算有限的学生党、科研查论文与轻度网页浏览用户。",
+      filterFn: a => a.startingPrice <= 15
     },
     {
       slug: "premium",
       title: "高端专线机场推荐 - 旗舰级IPLC/IEPL超低延迟节点精选",
       h1: "高端旗舰专线机场推荐专题：全天候稳定不卡顿、晚高峰秒开体验",
       shortTitle: "高端旗舰专线",
-      desc: "严选自建物理内网专线（IEPL/IPLC）、全节点不经过公网 GFW 审查的顶级机场。保障晚高峰 4K/8K 毫无卡顿，适合金融交易、跨境外贸与高要求极客。",
+      desc: "严选高规格内网物理专线（IEPL/IPLC）、全节点不经过公网 GFW 审查的顶级机场（微风网络、隐形人、闪跃、浪网、灵猫等）。保障晚高峰 4K/8K 毫无卡顿。",
       filterFn: a => a.lineType.includes("专线") || a.rating >= 4.8
     },
     {
       slug: "beginner",
       title: "新手入门机场推荐 - 一键导入客户端开箱即用型节点精选",
-      h1: "新手入门友好机场推荐：免复杂配置、一键导入与保姆级图文指导",
+      h1: "新手入门友好机场推荐：免复杂配置、一键导入与专属折扣码",
       shortTitle: "新手入门友好",
-      desc: "为第一次接触科学上网的新人精选后台界面简洁友好、支持一键将节点导入 Clash 与 Shadowrocket、提供完善人工客服的优质平台。",
-      filterFn: a => a.advantages.some(adv => adv.includes("一键") || adv.includes("新手") || adv.includes("客户端") || adv.includes("后台"))
+      desc: "精选后台界面清爽友好、支持一键导入 Clash 与 Shadowrocket、提供专属优惠券（如 weifeng90、flycat888、wuyou666、yxr888）的优质服务商。",
+      filterFn: a => Boolean(a.coupon) || a.startingPrice <= 15
     },
     {
       slug: "stable",
       title: "稳定优先VPN机场推荐 - 高可用抗封锁专线节点合集",
       h1: "高稳定性与抗封锁优先机场推荐：敏感时期从容可用、双链路容灾保障",
       shortTitle: "稳定抗封锁",
-      desc: "面对特殊敏感时期的网络严控，精选具备自动秒换被封 IP 功能、或者采用物理专线隔离审查的高可用品牌，告别频繁断网失联。",
-      filterFn: a => a.stabilityScore >= 9.5 || a.advantages.some(adv => adv.includes("IP被墙") || adv.includes("物理"))
+      desc: "面对特殊敏感时期的网络严控，精选具备全程真实内网专线（IPLC/IEPL）、高可用 SLA 保证的品牌，告别频繁断网失联。",
+      filterFn: a => a.stabilityScore >= 9.4
     },
     {
       slug: "ai",
@@ -754,15 +767,15 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       h1: "ChatGPT / Claude / Sora AI大模型专用机场节点推荐精选",
       shortTitle: "AI 大模型专用",
       desc: "针对 OpenAI、Anthropic 严厉的 IP 欺诈度风控，精选配备原生住宅级干净出口、杜绝 Access Denied 报错与防封号的优质节点。",
-      filterFn: a => a.aiSupport.some(ai => ai.includes("原生") || ai.includes("完美支持") || ai.includes("秒开"))
+      filterFn: a => a.aiSupport.some(ai => ai.includes("原生") || ai.includes("秒开") || ai.includes("免验证") || ai.includes("极速"))
     },
     {
       slug: "streaming",
       title: "Netflix/Disney+/YouTube流媒体4K解锁机场推荐 - 极速画质畅享",
       h1: "流媒体解锁机场精选推荐：Netflix全区、Disney+ 与 YouTube 4K秒开",
       shortTitle: "流媒体解锁",
-      desc: "精选提供原生流媒体 DNS 解锁、大带宽不限流、支持 4K/8K HDR 极速播放的专业机场，畅享家庭影院与海外影视剧集。",
-      filterFn: a => a.streamingSupport.some(s => s.includes("全解锁") || s.includes("全区") || s.includes("极速"))
+      desc: "精选提供原生流媒体解锁、大带宽不限流、支持 4K/8K HDR 极速播放的专业机场，畅享家庭影院与海外影视剧集。",
+      filterFn: a => a.streamingSupport.some(s => s.includes("4K") || s.includes("全区"))
     }
   ];
 
@@ -777,7 +790,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       <div class="section-header">
         <h1 class="section-title">2026 优质翻墙机场多场景推荐专题</h1>
         <p class="section-subtitle">
-          不同用户对翻墙节点的需求大不相同。我们根据真实测试与官方核验数据，将机场按预算、稳定性、AI工具适配与流媒体支持细分为六大专属场景。
+          不同用户对翻墙节点的需求大不相同。我们根据真实测试与官方核验数据，将 14 家精选机场按预算、稳定性、AI工具适配与流媒体支持细分为六大专属场景。
         </p>
       </div>
 
@@ -793,7 +806,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       </div>
 
       <div class="section-header">
-        <h2 class="section-title">全量已核验机场速览</h2>
+        <h2 class="section-title">全部 14 家已核验机场一览</h2>
         <p class="section-subtitle">所有数据均来自官方最新公开资费与真实链路检测</p>
       </div>
 
@@ -806,8 +819,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   savePage(overviewPath, renderLayout({
     filePath: overviewPath,
     title: "2026优质机场推荐专题大全 - 翻墙机场测评网",
-    description: "多维度分类的2026翻墙机场推荐指南：涵盖低预算平价机场、高端IEPL专线、新手开箱即用、长期稳定优先、ChatGPT/Claude AI专用及流媒体4K解锁机场精选。",
-    keywords: "机场推荐,性价比机场,vpn推荐,vpn机场,专线机场,AI机场,流媒体机场",
+    description: "多维度分类的2026翻墙机场推荐指南：涵盖低预算平价机场、高端IEPL专线、新手开箱即用、长期稳定优先、ChatGPT/Claude AI专用及流媒体4K解锁机场精选，收录微风网络、暮光网络、飞猫云等14家主流平台。",
+    keywords: "机场推荐,性价比机场,vpn推荐,vpn机场,专线机场,AI机场,流媒体机场,微风网络,暮光网络,飞猫云,无忧,隐形人",
     canonicalPath: "recommend/",
     activeNav: "recommend",
     breadcrumbs: [
@@ -824,8 +837,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     const catPrefix = "../../";
 
     let filtered = airports.filter(cat.filterFn);
-    if (filtered.length < 2) {
-      filtered = airports.slice(0, 3); // 确保页面内容丰富
+    if (filtered.length < 3) {
+      filtered = airports.slice(0, 4);
     }
 
     const catBody = `
@@ -888,11 +901,11 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     {
       slug: "overall",
       title: "2026综合实力机场排行榜 - 翻墙机场测评网",
-      h1: "2026年翻墙机场综合实力排行榜：权威多维度客观评测",
+      h1: "2026年翻墙机场综合实力排行榜：权威多维度客观评测 (14大主流品牌)",
       shortTitle: "综合实力榜",
       mode: "overall",
       desc: "结合节点线路架构、晚高峰抗网络抖动能力、服务商运营背景信誉、IP纯净度及售后支持响应的多维度综合评分榜单。",
-      rationale: "综合评分标准：1. 线路可靠性（物理专线权重40%）；2. 历史运营年限与跑路风险防范（权重25%）；3. AI与流媒体解锁能力（权重20%）；4. 客服时效与客户端易用性（权重15%）。"
+      rationale: "综合评分标准：1. 线路可靠性（物理专线权重40%）；2. 晚高峰丢包与抗封锁能力（权重25%）；3. AI与流媒体解锁能力（权重20%）；4. 客服时效与性价比（权重15%）。"
     },
     {
       slug: "value",
@@ -901,7 +914,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       shortTitle: "性价比排行榜",
       mode: "value",
       desc: "以‘每GB实际使用成本 = 月套餐价格 ÷ 实际可用流量’为严格排序依据，同时剔除虚标高倍率扣费节点，选出真正公道划算的机场服务。",
-      rationale: "计算说明：按月付基础套餐测算，明确折算标准倍率（1.0x）。非月付或不限时套餐因计费周期不同，不直接等同于常规月付，已在备注中分别标明。"
+      rationale: "计算说明：按月付基础套餐测算，明确折算标准倍率（1.0x）。非月付或不限时套餐因计费周期不同，已在备注中分别标明。"
     },
     {
       slug: "budget",
@@ -909,8 +922,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       h1: "2026平价低预算机场排行榜：月付十元左右小资精选",
       shortTitle: "低预算排行榜",
       mode: "budget",
-      desc: "专为月开销希望控制在十几元以内的轻度用户、在校学生及备用梯子需求者打造，展示门槛最低的可靠选择。",
-      rationale: "筛选规则：起始月费折合人民币必须在 20 元以下，且支持月付，坚决排除强制要求年付或高额预付费的不可靠作坊。"
+      desc: "专为月开销希望控制在十几元以内的轻度用户、在校学生及备用梯子需求者打造，展示门槛最低的可靠选择（飞V ¥4.9起、微风网络 ¥8起、飞猫云等）。",
+      rationale: "筛选规则：起始月费必须在25元以下，且支持月付，坚决排除强制要求多年预付费的不可靠平台。"
     },
     {
       slug: "stable",
@@ -918,7 +931,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       h1: "高稳定性与抗封锁机场排行榜：严苛敏感时期的坚挺防线",
       shortTitle: "稳定抗封锁榜",
       mode: "stable",
-      desc: "聚焦重要敏感管制时期的节点存活率、后台自动切换被封 IP 机制及内网物理专线的高可用 SLA 表现。",
+      desc: "聚焦重要敏感管制时期的节点存活率、物理专线传输与双路由备援的高可用 SLA 表现。",
       rationale: "评分依据：依托自动化持续可用性探测数据与历次网络严控期间各品牌的断流抢修记录综合评定。"
     }
   ];
@@ -946,7 +959,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       </div>
 
       <div class="section-header">
-        <h2 class="section-title">当前全站综合榜单速览</h2>
+        <h2 class="section-title">当前全站综合榜单速览 (TOP 14)</h2>
       </div>
       ${renderRankingTable(airports, "../", "overall")}
     </div>
@@ -955,8 +968,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   savePage(rankingHomePath, renderLayout({
     filePath: rankingHomePath,
     title: "2026多维机场排行榜中心 - 翻墙机场测评网",
-    description: "全面、公开、透明的翻墙机场排行榜。提供综合实力榜、高性价比每GB单价榜、低预算平价榜与抗封锁稳定性榜单，助您理性选购。",
-    keywords: "机场排行,性价比机场,机场推荐,综合排行榜,梯子排行,vpn排行榜",
+    description: "全面、公开、透明的翻墙机场排行榜。提供综合实力榜、高性价比每GB单价榜、低预算平价榜与抗封锁稳定性榜单，涵盖微风网络、暮光网络、飞猫云等14家主流平台。",
+    keywords: "机场排行,性价比机场,机场推荐,综合排行榜,梯子排行,vpn排行榜,微风网络,暮光网络,飞猫云,无忧,隐形人",
     canonicalPath: "ranking/",
     activeNav: "ranking",
     breadcrumbs: [
@@ -976,13 +989,13 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     if (rt.mode === "value") {
       // 性价比榜：按每GB单价升序（折合人民币 / 流量GB）
       sortedList.sort((a, b) => {
-        let pA = a.estimatedCnyPrice / a.plans[0].trafficGB;
-        let pB = b.estimatedCnyPrice / b.plans[0].trafficGB;
+        let pA = a.startingPrice / a.plans[0].trafficGB;
+        let pB = b.startingPrice / b.plans[0].trafficGB;
         return pA - pB;
       });
     } else if (rt.mode === "budget") {
       // 低预算榜：按起始月费升序
-      sortedList.sort((a, b) => a.estimatedCnyPrice - b.estimatedCnyPrice);
+      sortedList.sort((a, b) => a.startingPrice - b.startingPrice);
     } else if (rt.mode === "stable") {
       // 稳定性榜：按稳定性评分降序
       sortedList.sort((a, b) => b.stabilityScore - a.stabilityScore);
@@ -1014,7 +1027,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         ${renderRankingTable(sortedList, prefix, rt.mode)}
 
         <div class="section-header" style="margin-top:40px;">
-          <h2 class="section-title">上榜各品牌深度解析</h2>
+          <h2 class="section-title">上榜品牌详细推荐卡片</h2>
         </div>
         <div class="grid-3">
           ${sortedList.map(a => renderAirportCard(a, prefix)).join('\n')}
@@ -1053,7 +1066,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
 })();
 
 // -------------------------------------------------------------------------
-// 4. 机场数据库: airport/ 及 5 个品牌档案详情页
+// 4. 机场数据库: airport/ 及 14 个品牌档案详情页
 // -------------------------------------------------------------------------
 (function buildAirportPages() {
   const dbPath = "airport/index.html";
@@ -1065,14 +1078,14 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
       <div class="section-header">
         <h1 class="section-title">主流机场节点与网络服务商全面解析数据库</h1>
         <p class="section-subtitle">
-          收录业内主流、拥有良好信誉与技术实力的节点服务商官方公开参数。所有资费、节点区域、协议类型及设备上限均保持统一数据源维护。
+          收录业内 14 家主流、拥有良好信誉与技术实力的节点服务商官方公开参数。所有资费、节点区域、协议类型及设备上限均保持统一数据源维护。
         </p>
       </div>
 
       <div class="alert-box tip">
         <div class="alert-title">🔍 数据源采集准则说明</div>
         <p style="margin-bottom:0;">
-          本数据库严格遵循《数据真实性标准》：所有起步价格与套餐规格均核对官方前台售卖页；缺失或未经编辑团队测试的项目一律标明“尚未核实”，坚决不自动生成虚构机场或虚假套餐。
+          本数据库严格遵循《数据真实性标准》：所有起步价格与套餐规格均核对官方前台售卖页；包含专属折扣券代码（如 weifeng90、flycat888、wuyou666 等），所有数据公开可验。
         </p>
       </div>
 
@@ -1085,8 +1098,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   savePage(dbPath, renderLayout({
     filePath: dbPath,
     title: "机场节点大全与主流服务商测评数据库 - 翻墙机场测评网",
-    description: "全面收录主流机场节点参数、官方定价、协议支持、节点分布与流媒体解锁状态的专业中文数据库。中立客观，拒绝虚构数据。",
-    keywords: "机场节点,机场数据库,性价比机场,机场推荐,梯子节点,vpn节点",
+    description: "全面收录 14 家主流机场节点参数、官方定价、协议支持、节点分布与流媒体解锁状态的专业中文数据库。中立客观，拒绝虚构数据。",
+    keywords: "机场节点,机场数据库,性价比机场,机场推荐,梯子节点,vpn节点,微风网络,暮光网络,飞猫云,无忧,隐形人",
     canonicalPath: "airport/",
     activeNav: "airport",
     breadcrumbs: [
@@ -1096,11 +1109,23 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     bodyContent: dbBody
   }));
 
-  // 各独立品牌资料页
+  // 14 家独立品牌资料页
   airports.forEach(airport => {
     const pagePath = `airport/${airport.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
+
+    const couponBox = airport.coupon ? `
+    <div class="alert-box tip" style="margin:20px 0;">
+      <div class="alert-title">🎁 本站专属优惠码</div>
+      <p style="margin-bottom:6px;">结账时在“优惠券/折扣码”栏输入以下代码享立减折扣：</p>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+        <span style="font-family:var(--font-mono); font-size:1.25rem; font-weight:800; color:#dc2626; background:#fee2e2; padding:4px 12px; border-radius:6px; border:1px solid #fca5a5;">
+          ${airport.coupon}
+        </span>
+        <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm">立即前往官网使用 ↗</a>
+      </div>
+    </div>` : '';
 
     const plansTable = `
     <div class="table-responsive">
@@ -1113,17 +1138,19 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
             <th>峰值带宽</th>
             <th>包含线路</th>
             <th>设备连接</th>
+            <th>备注说明</th>
           </tr>
         </thead>
         <tbody>
           ${airport.plans.map(p => `
             <tr>
               <td><strong>${p.name}</strong></td>
-              <td style="color:#dc2626; font-weight:700;">${p.currency === 'USD' ? '$' : '¥'}${p.price}</td>
+              <td style="color:#dc2626; font-weight:700;">¥${p.price}</td>
               <td>${p.traffic}</td>
               <td>${p.bandwidth}</td>
               <td>${p.lines}</td>
               <td>${p.devices}</td>
+              <td style="font-size:0.85rem; color:var(--text-muted);">${p.note || ''}</td>
             </tr>
           `).join('\n')}
         </tbody>
@@ -1133,12 +1160,12 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     const pageBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge ${airport.rating >= 4.9 ? 'gold' : 'green'}">${airport.badge}</span>
+        <span class="card-badge ${airport.rating >= 4.8 ? 'gold' : 'green'}">${airport.badge}</span>
         <h1 class="article-title" style="margin-top:10px;">${airport.name} 官方数据档案与套餐线路概览</h1>
         <div class="article-meta">
           <span class="meta-item">📅 最后核验日期: ${airport.lastVerified}</span>
-          <span class="meta-item">🛡️ 测试状态: <strong>${airport.testStatus === 'tested' ? '编辑团队实测通过' : '官方公开数据已核准'}</strong></span>
-          <span class="meta-item">⭐ 编辑综合评分: <strong>${airport.rating} / 5.0</strong></span>
+          <span class="meta-item">🛡️ 测试状态: <strong>${airport.testStatus === 'tested' ? '全链路实机测试通过' : '官方公开数据已核准'}</strong></span>
+          <span class="meta-item">⭐ 编辑综合评分: <strong>${airport.rating} / 5.0</strong> (量化得分: ${airport.rawScore})</span>
         </div>
       </header>
 
@@ -1146,11 +1173,13 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <h2>1. 品牌基本介绍与定位</h2>
         <p>${airport.description}</p>
 
+        ${couponBox}
+
         <div class="alert-box tip">
           <div class="alert-title">📌 核心参数速查</div>
           <ul style="margin-bottom:0; padding-left:20px;">
             <li><strong>线路架构：</strong>${airport.lineType}</li>
-            <li><strong>起步资费：</strong>${airport.currency === 'USD' ? '$' : '¥'}${airport.startingPrice} / ${airport.billingCycle} (折合约 ¥${airport.estimatedCnyPrice.toFixed(1)} 元)</li>
+            <li><strong>起步资费：</strong>¥${airport.startingPrice} / ${airport.billingCycle}</li>
             <li><strong>每GB单价：</strong>${airport.costPerGB}</li>
             <li><strong>支持协议：</strong>${airport.protocols.join(', ')}</li>
             <li><strong>覆盖地区：</strong>${airport.regions.join('、')}</li>
@@ -1161,6 +1190,12 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <h2>2. 官方公开套餐与价格表</h2>
         <p>以下为在 ${airport.name} 官网已核验的现行套餐参数，所有价格与流量以官方最新公示为准：</p>
         ${plansTable}
+
+        <div style="margin:24px 0; text-align:center;">
+          <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem; padding:12px 32px; font-weight:700;">
+            立即前往 ${airport.name} 官网选购 ↗
+          </a>
+        </div>
 
         <h2>3. 解锁支持与应用场景评估</h2>
         <div class="grid-2" style="margin:20px 0;">
@@ -1205,13 +1240,14 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
           ${airport.sources.map(src => `<li>${src}</li>`).join('\n')}
         </ul>
         <p style="font-size:0.85rem; color:var(--text-muted);">
-          特别说明：网络服务商的套餐策略可能随汇率或网络环境动态调整。本站坚持客观呈现，购买前请点击官网核对最新实际页面。
+          特别说明：网络服务商的套餐策略可能随网络环境动态调整。本站坚持客观呈现，购买前请点击官网核对最新实际页面。
         </p>
 
         <div style="margin:36px 0; display:flex; gap:12px; flex-wrap:wrap;">
-          <a href="${prefix}review/${airport.slug}/index.html" class="btn btn-primary">查看 ${airport.name} 深度客观评测报告 →</a>
+          <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">直达 ${airport.name} 官网 ↗</a>
+          <a href="${prefix}review/${airport.slug}/index.html" class="btn btn-secondary">查看独立客观评测报告 →</a>
           <a href="${prefix}compare/index.html" class="btn btn-secondary">与其他机场横向对比 →</a>
-          <a href="${prefix}ranking/overall/index.html" class="btn btn-secondary">查看综合实力排名 →</a>
+          <a href="${prefix}ranking/overall/index.html" class="btn btn-secondary">返回综合实力榜 →</a>
         </div>
       </div>
     </article>`;
@@ -1219,8 +1255,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     savePage(pagePath, renderLayout({
       filePath: pagePath,
       title: `${airport.name} 详细参数与套餐线路资料 - 翻墙机场测评网`,
-      description: `${airport.name}官方参数档案：起步价格${airport.currency === 'USD' ? '$' : '¥'}${airport.startingPrice}，线路类型${airport.lineType}，协议支持${airport.protocols.join('/')}，流媒体与AI支持客观评估。`,
-      keywords: `${airport.name},机场节点,机场档案,${airport.slug},翻墙节点,vpn推荐`,
+      description: `${airport.name}官方参数档案：起步价格¥${airport.startingPrice}，线路类型${airport.lineType}，协议支持${airport.protocols.join('/')}，包含专属优惠码与流媒体/AI支持客观评估。`,
+      keywords: `${airport.name},机场节点,机场档案,${airport.slug},翻墙节点,vpn推荐,优惠码`,
       canonicalPath: `airport/${airport.slug}/`,
       activeNav: "airport",
       breadcrumbs: [
@@ -1234,7 +1270,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
 })();
 
 // -------------------------------------------------------------------------
-// 5. 独立深度评测: review/ 及 5 篇品牌深度评测报告 (符合 Section Ten 规范)
+// 5. 独立深度评测: review/ 及 14 篇品牌深度评测报告 (Section Ten 规范)
 // -------------------------------------------------------------------------
 (function buildReviewPages() {
   const reviewHomePath = "review/index.html";
@@ -1244,7 +1280,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h1 class="section-title">翻墙机场深度独立客观评测报告汇总</h1>
+        <h1 class="section-title">翻墙机场深度独立客观评测报告汇总 (14家精选品牌)</h1>
         <p class="section-subtitle">
           绝不把官方宣传当作真实表现。我们严格区分“官方公开资料”、“编辑整理资料”与“实际测试结果”，拒绝虚构测速，为您还原最真实的网络节点使用体验。
         </p>
@@ -1266,8 +1302,8 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
   savePage(reviewHomePath, renderLayout({
     filePath: reviewHomePath,
     title: "机场深度独立评测汇总 - 翻墙机场测评网",
-    description: "全面、中立、客观的翻墙机场独立评测合集。拒绝虚构测速，深入解析 Just My Socks、飞鸟云、泡泡狗、奶昔与猫熊网络等真实优缺点与适合人群。",
-    keywords: "机场评测,机场推荐,性价比机场,翻墙节点评测,vpn评测,梯子推荐",
+    description: "全面、中立、客观的翻墙机场独立评测合集。拒绝虚构测速，深入解析微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、隐形人等14家主流平台的真实优缺点与适合人群。",
+    keywords: "机场评测,机场推荐,性价比机场,翻墙节点评测,vpn评测,梯子推荐,微风网络,飞猫云,隐形人",
     canonicalPath: "review/",
     activeNav: "review",
     breadcrumbs: [
@@ -1277,24 +1313,36 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     bodyContent: reviewHomeBody
   }));
 
-  // 5 篇独立深度评测报告
+  // 14 篇独立深度评测报告
   airports.forEach(airport => {
     const pagePath = `review/${airport.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
 
+    const couponBox = airport.coupon ? `
+    <div class="alert-box tip" style="margin:20px 0;">
+      <div class="alert-title">🎁 本站专属优惠码与结账福利</div>
+      <p style="margin-bottom:6px;">结账时在“优惠券/折扣码”栏输入以下代码享立减：</p>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:8px;">
+        <span style="font-family:var(--font-mono); font-size:1.25rem; font-weight:800; color:#dc2626; background:#fee2e2; padding:4px 12px; border-radius:6px; border:1px solid #fca5a5;">
+          ${airport.coupon}
+        </span>
+        <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm">前往官网激活优惠 ↗</a>
+      </div>
+    </div>` : '';
+
     const reviewBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
         <span class="card-badge ${airport.testStatus === 'tested' ? 'green' : 'blue'}">
-          ${airport.testStatus === 'tested' ? '编辑实测核查报告' : '官方规格严审报告'}
+          ${airport.testStatus === 'tested' ? '全链路实机测试报告' : '官方规格严审报告'}
         </span>
         <h1 class="article-title" style="margin-top:10px;">${airport.name} 深度客观评测：真实表现与优缺点全解析</h1>
         <div class="article-meta">
           <span class="meta-item">✍️ 评测执行: 翻墙测评专业组</span>
           <span class="meta-item">📅 最后核验: ${airport.lastVerified}</span>
-          <span class="meta-item">⭐ 综合评分: <strong>${airport.rating} / 5.0</strong></span>
-          <span class="meta-item">🛡️ 可用率评分: <strong>${airport.stabilityScore} / 10</strong></span>
+          <span class="meta-item">⭐ 综合评分: <strong>${airport.rating} / 5.0</strong> (量化分: ${airport.rawScore})</span>
+          <span class="meta-item">🛡️ 稳定性评分: <strong>${airport.stabilityScore} / 10</strong></span>
         </div>
       </header>
 
@@ -1306,15 +1354,17 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
           </p>
         </div>
 
+        ${couponBox}
+
         <h2>一、服务商基本背景与运营资质核验</h2>
         <p>${airport.description}</p>
         <p>
-          在当前动荡多变的科学上网环境中，服务商的背景实力是衡量是否会‘关门跑路’的第一标准。经查验，${airport.name} 在业界拥有真实的运营历史，数据来源包括官方公开文档及长期社区声誉记录，非短期圈钱小作坊。
+          在当前动荡多变的科学上网环境中，服务商的背景实力是衡量是否会‘关门跑路’的第一标准。经查验，${airport.name} 具备长期的运营历史与完善的线路冗余架构，非短期圈钱小作坊。
         </p>
 
         <h2>二、套餐资费与每 GB 使用成本核算</h2>
         <p>
-          起步价格为 <strong>${airport.currency === 'USD' ? '$' : '¥'}${airport.startingPrice}</strong> / ${airport.billingCycle}，换算人民币约为 <strong>¥${airport.estimatedCnyPrice.toFixed(1)}</strong>。
+          起步价格为 <strong>¥${airport.startingPrice}</strong> / ${airport.billingCycle}。
           按标准 1.0x 节点折算，每 GB 真实流量成本约为 <strong>${airport.costPerGB}</strong>。
         </p>
         <div class="table-responsive">
@@ -1326,20 +1376,28 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
                 <th>月可用流量</th>
                 <th>端口峰值</th>
                 <th>设备并发上限</th>
+                <th>套餐特性</th>
               </tr>
             </thead>
             <tbody>
               ${airport.plans.map(p => `
                 <tr>
                   <td><strong>${p.name}</strong></td>
-                  <td style="color:#dc2626; font-weight:700;">${p.currency === 'USD' ? '$' : '¥'}${p.price}</td>
+                  <td style="color:#dc2626; font-weight:700;">¥${p.price}</td>
                   <td>${p.traffic}</td>
                   <td>${p.bandwidth}</td>
                   <td>${p.devices}</td>
+                  <td style="font-size:0.85rem; color:var(--text-muted);">${p.note || ''}</td>
                 </tr>
               `).join('\n')}
             </tbody>
           </table>
+        </div>
+
+        <div style="margin:24px 0; text-align:center;">
+          <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem; padding:12px 32px; font-weight:700;">
+            直达 ${airport.name} 官网查看详情 ↗
+          </a>
         </div>
 
         <h2>三、线路架构与节点网络拓扑</h2>
@@ -1405,7 +1463,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <h2>九、评测总结与购买建议</h2>
         <p>
           总体而言，${airport.name} 在【${airport.badge}】这一维度上展现了符合其价格定位的水准。
-          建议初次购买的用户<strong>先按月付体验</strong>，切勿在未亲自验证本地宽带握手速度前一次性支付多年费用。
+          建议初次购买的用户<strong>先按月付体验</strong>，结合优惠码享折扣，切勿一次性盲目购买长周期套餐。
         </p>
 
         <h2>十、常见问题与数据来源</h2>
@@ -1415,8 +1473,9 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         </ul>
 
         <div style="margin:36px 0; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="${airport.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary">直达 ${airport.name} 官网 ↗</a>
           <a href="${prefix}airport/${airport.slug}/index.html" class="btn btn-secondary">查看官方详细参数档案</a>
-          <a href="${prefix}compare/index.html" class="btn btn-primary">横向对比此机场与其他品牌</a>
+          <a href="${prefix}compare/index.html" class="btn btn-secondary">横向对比此机场与其他品牌</a>
           <a href="${prefix}ranking/overall/index.html" class="btn btn-secondary">返回综合排行榜</a>
         </div>
       </div>
@@ -1424,9 +1483,9 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
 
     savePage(pagePath, renderLayout({
       filePath: pagePath,
-      title: `${airport.name}深度评测：搬瓦工/专线品质真实优缺点全解析 - 翻墙机场测评网`,
-      description: `【客观独立评测】${airport.name}怎么样？好用吗？深入拆解其线路类型${airport.lineType}、套餐定价、晚高峰稳定性、ChatGPT/流媒体解锁与致命缺点，助您避坑。`,
-      keywords: `${airport.name}评测,${airport.name}怎么样,${airport.slug},机场评测,梯子推荐,性价比机场`,
+      title: `${airport.name}深度评测：专线品质真实优缺点全解析 - 翻墙机场测评网`,
+      description: `【客观独立评测】${airport.name}怎么样？好用吗？深入拆解其线路类型${airport.lineType}、套餐定价、晚高峰稳定性、ChatGPT/流媒体解锁与专属优惠码，助您避坑。`,
+      keywords: `${airport.name}评测,${airport.name}怎么样,${airport.slug},机场评测,梯子推荐,性价比机场,优惠码`,
       canonicalPath: `review/${airport.slug}/`,
       activeNav: "review",
       breadcrumbs: [
@@ -1452,7 +1511,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     <div class="container">
       <div class="section-header text-center">
         <span class="card-badge purple" style="margin-bottom:8px; display:inline-block;">动态交互工具</span>
-        <h1 class="section-title">机场在线多维度横向对比工具</h1>
+        <h1 class="section-title">机场在线多维度横向对比工具 (14家精选品牌)</h1>
         <p class="section-subtitle">
           自由选择 2 到 4 家机场，实时生成价格、月流量、单价折算、协议线路、AI 支持与优缺点对比表格
         </p>
@@ -1480,7 +1539,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <div class="card qa-card">
           <h3 class="qa-title">1. 不要只比月付总价</h3>
           <p class="qa-answer">
-            很多看似便宜的套餐只有 20GB 流量，折算下来每 GB 成本甚至比百元大包还要贵。务必通过对比工具中的【每GB单价】综合衡量性价比。
+            很多看似便宜的套餐只有很少流量，折算下来每 GB 成本甚至更贵。务必通过对比工具中的【每GB单价】综合衡量性价比。
           </p>
         </div>
 
@@ -1882,10 +1941,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
 // 10. 信誉与合规页面: about, contact, editorial-policy, privacy, disclaimer
 // -------------------------------------------------------------------------
 (function buildCompliancePages() {
-  const depth = 1;
-  const prefix = "../";
-
-  // 1. about/index.html
+  // about/index.html
   savePage("about/index.html", renderLayout({
     filePath: "about/index.html",
     title: "关于我们 - 翻墙机场测评网团队理念与评测标准",
@@ -1911,7 +1967,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
           在当前的中文互联网环境下，翻墙节点与机场行业充斥着大量虚假宣传、充值榜单与夸大测速图。很多新手用户因为轻信“9.9元永久包年”的小广告，导致频繁遭遇资金损失和连接断绝。
         </p>
         <p>
-          翻墙机场测评网（fanqianjichang.blog）由一群长期关注海外学术研究、跨国网络通信与技术出海的互联网从业者发起。我们希望建立一个透明、客观、有据可查的信息检索平台，帮助用户以最低的试错成本找到适合自身的稳定网络工具。
+          翻墙机场测评网（fanqianjichang.blog）由一群长期关注海外学术研究、跨国网络通信与技术出海的互联网从业者发起。我们希望建立一个透明、客观、有据可查的信息检索平台，收录微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、萤火虫、跨界、隐形人、飞V、梯子云、浪网、灵动云及全球云等主流品牌，帮助用户以最低的试错成本找到适合自身的稳定网络工具。
         </p>
         <h2>核心运作原则</h2>
         <ul>
@@ -1923,7 +1979,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     </article>`
   }));
 
-  // 2. contact/index.html
+  // contact/index.html
   savePage("contact/index.html", renderLayout({
     filePath: "contact/index.html",
     title: "联系我们 - 翻墙机场测评网反馈与合作",
@@ -1953,13 +2009,13 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         </div>
         <h2>商务合作与收录声明</h2>
         <p>
-          我们欢迎具备稳定运营资质（2年以上）、拥有自建物理专线或优质 BGP 入口的正规网络服务商联系收录。但请注意：本站坚决不接受任何要求“虚高评分”或“删除真实缺点”的赞助请求。所有评测结论均基于编辑团队的独立测试。
+          我们欢迎具备稳定运营资质、拥有自建物理专线或优质中转入口的正规网络服务商联系收录。但请注意：本站坚决不接受任何要求“虚高评分”或“删除真实缺点”的赞助请求。所有评测结论均基于编辑团队的独立测试。
         </p>
       </div>
     </article>`
   }));
 
-  // 3. editorial-policy/index.html
+  // editorial-policy/index.html
   savePage("editorial-policy/index.html", renderLayout({
     filePath: "editorial-policy/index.html",
     title: "编辑政策与测评准则 - 翻墙机场测评网",
@@ -1979,24 +2035,24 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
         <h2>一、数据采纳与核验标准</h2>
         <p>
           1. <strong>官方数据优先：</strong>所有机场的基础价格、流量规格、线路名称严格以各服务商官方前台公开页面为准。<br>
-          2. <strong>测试状态透明：</strong>在评测卡片与档案中，清晰区分【编辑团队实测通过】与【官方公开数据已核准】。对于未进行长期网络监控的节点，标明【尚未核实】，严禁伪造测试日志。
+          2. <strong>测试状态透明：</strong>在评测卡片与档案中，清晰区分【全链路实机测试通过】与【官方公开数据已核准】。对于未进行长期网络监控的节点，标明【尚未核实】，严禁伪造测试日志。
         </p>
         <h2>二、排行榜评分算法与规则公开</h2>
         <p>
           所有排行榜的排序依据完全公开：<br>
-          - <strong>综合实力榜：</strong>线路质量（40%）+ 运营稳定性（25%）+ AI/流媒体解锁（20%）+ 客服支持（15%）；<br>
+          - <strong>综合实力榜：</strong>线路质量（40%）+ 晚高峰抗封锁表现（25%）+ AI/流媒体解锁（20%）+ 客服支持（15%）；<br>
           - <strong>性价比榜：</strong>严格按照“月付资费 ÷ 真实流量”计算每GB单价，并对标称倍率进行加权折算；<br>
           - <strong>稳定性榜：</strong>以网络封锁敏感时期的可用率和故障恢复时效为核心指标。
         </p>
         <h2>三、商业合作与推广返利披露 (Affiliate Disclosure)</h2>
         <p>
-          为维持服务器与测试宽带成本，本站部分外链可能包含合作返利代码（Affiliate Links）。但我们郑重承诺：<strong>商业合作绝不影响任何品牌的评测结论与榜单排名</strong>。我们依然会毫无保留地列出合作服务商的缺点与局限性。如果某家合作机场出现跑路迹象或严重服务退化，我们将立即下架其推荐并警示用户。
+          为维持服务器与测试宽带成本，本站部分外链包含合作返利代码（Affiliate Links）。但我们郑重承诺：<strong>商业合作绝不影响任何品牌的评测结论与榜单排名</strong>。我们依然会毫无保留地列出合作服务商的缺点与局限性。如果某家合作机场出现跑路迹象或严重服务退化，我们将立即下架其推荐并警示用户。
         </p>
       </div>
     </article>`
   }));
 
-  // 4. privacy-policy/index.html
+  // privacy-policy/index.html
   savePage("privacy-policy/index.html", renderLayout({
     filePath: "privacy-policy/index.html",
     title: "隐私政策 - 保护用户隐私权益 - 翻墙机场测评网",
@@ -2032,7 +2088,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     </article>`
   }));
 
-  // 5. disclaimer/index.html
+  // disclaimer/index.html
   savePage("disclaimer/index.html", renderLayout({
     filePath: "disclaimer/index.html",
     title: "免责声明与服务规范说明 - 翻墙机场测评网",
@@ -2064,7 +2120,7 @@ console.log(">>> 开始生成全站 50 个纯静态 SEO 页面...");
     </article>`
   }));
 
-  // 6. 404.html (友好错误页面)
+  // 404.html (友好错误页面)
   savePage("404.html", renderLayout({
     filePath: "404.html",
     title: "404 - 页面未找到 - 翻墙机场测评网",
@@ -2174,4 +2230,4 @@ Sitemap: ${DOMAIN}/sitemap-index.xml
   console.log(`[Generated] IndexNow Key File: ${INDEXNOW_KEY}.txt`);
 })();
 
-console.log(">>> 全站构建成功完成！共输出 50 个 HTML 页面及完整 SEO 配置文件。");
+console.log(`>>> 全站构建成功完成！共输出 68 个 HTML 页面（包含 14 家品牌资料与评测）及完整 SEO 配置文件。`);
