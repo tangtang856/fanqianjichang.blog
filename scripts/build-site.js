@@ -11,7 +11,9 @@
 const fs = require('fs');
 const path = require('path');
 const { airports } = require('../data/airports.js');
-const { guidesData, blogData, glossaryData } = require('../data/siteContent.js');
+const { guidesData: platformHubsData, glossaryData } = require('../data/siteContent.js');
+const guidesData = require('../data/guidesFull.json');
+const blogData = require('../data/articlesFull.json');
 
 const DOMAIN = "https://fanqianjichang.blog";
 const INDEXNOW_KEY = "fa74b93198cf4cbb8f420658fa9cf21e";
@@ -562,10 +564,10 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
       <div class="section-header">
         <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
           <div>
-            <h2 class="section-title">全平台客户端配置教程中心</h2>
+            <h2 class="section-title">全平台客户端配置教程中心 (30篇精选)</h2>
             <p class="section-subtitle">涵盖 Windows、Android、iOS 及 Mac 端的主流开源客户端保姆级导入教程</p>
           </div>
-          <a href="guides/index.html" class="btn btn-secondary btn-sm">查看全部教程 →</a>
+          <a href="guides/index.html" class="btn btn-secondary btn-sm">查看全部 30 篇教程 →</a>
         </div>
       </div>
 
@@ -614,15 +616,15 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
       <div class="section-header">
         <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px;">
           <div>
-            <h2 class="section-title">行业观察与选型深度文章</h2>
+            <h2 class="section-title">行业观察与选型深度文章 (100篇专题)</h2>
             <p class="section-subtitle">帮助你透视测速彩虹图的误区，掌握防跑路与 IP 纯净度检测的关键技巧</p>
           </div>
-          <a href="blog/index.html" class="btn btn-secondary btn-sm">查看全部文章 →</a>
+          <a href="blog/index.html" class="btn btn-secondary btn-sm">查看全部 100 篇深度文章 →</a>
         </div>
       </div>
 
       <div class="grid-3">
-        ${blogData.slice(0, 3).map(b => `
+        ${blogData.slice(0, 6).map(b => `
           <div class="card">
             <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">${b.date} · ${b.category}</div>
             <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:8px;"><a href="blog/${b.slug}/index.html">${b.title}</a></h3>
@@ -1580,41 +1582,80 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
 })();
 
 // -------------------------------------------------------------------------
-// 7. 教程中心: guides/ 及 5 篇高质量保姆级客户端指南
+// 7. 教程中心: guides/ 及 30 篇保姆级客户端指南 + 5 大平台架构枢纽
 // -------------------------------------------------------------------------
 (function buildGuidePages() {
   const guideHomePath = "guides/index.html";
   const guidePrefix = "../";
 
+  const categories = [
+    { name: "Windows 教程", icon: "💻", title: "Windows 客户端教程", desc: "Clash Verge Rev、v2rayN、Sing-box、Netch 游戏加速与极简客户端配置" },
+    { name: "Android 教程", icon: "📱", title: "Android 安卓端配置指南", desc: "Clash Meta (CMFA)、v2rayNG、Surfboard、安卓省电保活与电视盒子" },
+    { name: "iOS 教程", icon: "🍎", title: "iOS / iPadOS 苹果端教程", desc: "Shadowrocket 小火箭、Quantumult X、Loon、Surge 及美区 Apple ID 指南" },
+    { name: "macOS 教程", icon: "🖥️", title: "macOS 苹果电脑教程", desc: "Clash Verge Rev、Surge for Mac、终端命令行代理与 DNS 防泄漏" },
+    { name: "软路由/Linux", icon: "🌐", title: "软路由与 Linux 服务器配置", desc: "OpenWrt PassWall、OpenClash 全局透明代理与 Linux 命令行代理" }
+  ];
+
   const guideHomeBody = `
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h1 class="section-title">VPN节点与机场客户端全平台安装配置教程中心</h1>
+        <h1 class="section-title">VPN节点与机场客户端全平台安装配置教程中心 (30篇精选)</h1>
         <p class="section-subtitle">
-          覆盖 Windows、macOS、Android 与 iOS 四大操作系统主流开源客户端。手把手指导订阅导入、节点切换、规则分流与报错排除。
+          覆盖 Windows、Android、iOS、macOS、软路由与 Linux 六大平台主流开源客户端。手把手指导订阅导入、节点切换、规则分流与报错排除。
         </p>
       </div>
 
-      <div class="grid-3">
-        ${guidesData.map(g => `
-          <div class="card">
-            <span class="card-badge blue" style="align-self:flex-start; margin-bottom:8px;">保姆级教程</span>
-            <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:8px;"><a href="${g.slug}/index.html">${g.shortTitle}</a></h2>
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">📅 更新: ${g.updated} · ⏱️ 阅读: ${g.readTime}</div>
-            <p style="font-size:0.88rem; color:var(--text-body); line-height:1.6; margin-bottom:14px;">${g.summary}</p>
-            <a href="${g.slug}/index.html" class="btn btn-primary btn-sm" style="margin-top:auto;">阅读详细配置步骤 →</a>
-          </div>
-        `).join('\n')}
+      <!-- 快速导航锚点 -->
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:30px; justify-content:center;">
+        <a href="#cat-windows" class="btn btn-secondary btn-sm">💻 Windows 客户端 (${guidesData.filter(g => g.category.includes('Windows')).length})</a>
+        <a href="#cat-android" class="btn btn-secondary btn-sm">📱 Android 手机端 (${guidesData.filter(g => g.category.includes('Android')).length})</a>
+        <a href="#cat-ios" class="btn btn-secondary btn-sm">🍎 iOS 苹果端 (${guidesData.filter(g => g.category.includes('iOS')).length})</a>
+        <a href="#cat-macos" class="btn btn-secondary btn-sm">🖥️ macOS 苹果电脑 (${guidesData.filter(g => g.category.includes('macOS')).length})</a>
+        <a href="#cat-router" class="btn btn-secondary btn-sm">🌐 软路由与 Linux (${guidesData.filter(g => g.category.includes('路由') || g.category.includes('Linux')).length})</a>
       </div>
+
+      ${categories.map((cat, idx) => {
+        const catGuides = guidesData.filter(g => {
+          if (cat.name === '软路由/Linux') {
+            return g.category.includes('路由') || g.category.includes('Linux');
+          }
+          return g.category.includes(cat.name.replace(' 教程', ''));
+        });
+        const anchorId = cat.name.includes('Windows') ? 'cat-windows' :
+                         cat.name.includes('Android') ? 'cat-android' :
+                         cat.name.includes('iOS') ? 'cat-ios' :
+                         cat.name.includes('macOS') ? 'cat-macos' : 'cat-router';
+        return `
+        <div id="${anchorId}" style="margin-bottom:40px; scroll-margin-top:80px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; border-bottom:2px solid var(--border-color); padding-bottom:8px;">
+            <span style="font-size:1.6rem;">${cat.icon}</span>
+            <div>
+              <h2 style="font-size:1.35rem; font-weight:700; margin:0;">${cat.title}</h2>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin:2px 0 0 0;">${cat.desc}</p>
+            </div>
+          </div>
+          <div class="grid-3">
+            ${catGuides.map(g => `
+              <div class="card">
+                <span class="card-badge blue" style="align-self:flex-start; margin-bottom:8px;">${g.category}</span>
+                <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:8px;"><a href="${g.slug}/index.html">${g.title}</a></h3>
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">📅 更新: ${g.updated} · ⏱️ 阅读: ${g.readTime}</div>
+                <p style="font-size:0.88rem; color:var(--text-body); line-height:1.6; margin-bottom:14px;">${g.summary}</p>
+                <a href="${g.slug}/index.html" class="btn btn-primary btn-sm" style="margin-top:auto;">阅读配置指南 →</a>
+              </div>
+            `).join('\n')}
+          </div>
+        </div>`;
+      }).join('\n')}
     </div>
   </section>`;
 
   savePage(guideHomePath, renderLayout({
     filePath: guideHomePath,
-    title: "VPN节点配置与客户端连接新手使用教程 - 翻墙机场测评网",
-    description: "全平台科学上网与翻墙机场客户端新手图文教程中心。包含 Windows (Clash Verge/v2rayN)、Android (CMFA/v2rayNG)、iOS (Shadowrocket) 与 macOS (Surge) 的详细配置说明。",
-    keywords: "vpn节点,梯子教程,Clash教程,v2rayN教程,小火箭教程,翻墙客户端配置",
+    title: "VPN节点配置与客户端连接新手使用教程中心 (30篇精选) - 翻墙机场测评网",
+    description: "全平台科学上网与翻墙机场客户端新手图文教程中心。覆盖 Windows (Clash Verge/v2rayN)、Android (CMFA/v2rayNG)、iOS (Shadowrocket) 与 macOS (Surge) 的 30 篇保姆级配置说明。",
+    keywords: "vpn节点,梯子教程,Clash教程,v2rayN教程,小火箭教程,翻墙客户端配置,Shadowrocket教程",
     canonicalPath: "guides/",
     activeNav: "guides",
     breadcrumbs: [
@@ -1624,7 +1665,81 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
     bodyContent: guideHomeBody
   }));
 
-  // 各细分教程页面
+  // 生成 5 个基础架构枢纽页面 (windows, android, ios, macos, clash-basics)
+  platformHubsData.forEach(hub => {
+    const pagePath = `guides/${hub.slug}/index.html`;
+    const depth = 2;
+    const prefix = "../../";
+
+    const sectionsHtml = hub.sections.map(s => `
+      <h2>${s.h2}</h2>
+      <div>${s.p}</div>
+    `).join('\n');
+
+    let faqsHtml = '';
+    if (hub.faqs && hub.faqs.length > 0) {
+      faqsHtml = `
+      <h2>常见配置问题排查 (FAQ)</h2>
+      <div class="faq-list" style="margin:20px 0;">
+        ${hub.faqs.map(f => `
+          <div class="faq-item">
+            <div class="faq-question"><span>${f.q}</span><span class="faq-icon">+</span></div>
+            <div class="faq-answer">${f.a}</div>
+          </div>
+        `).join('\n')}
+      </div>`;
+    }
+
+    const hubBody = `
+    <article class="article-container" style="padding: 30px 20px;">
+      <header class="article-header">
+        <span class="card-badge blue">平台枢纽专栏</span>
+        <h1 class="article-title" style="margin-top:10px;">${hub.title}</h1>
+        <div class="article-meta">
+          <span class="meta-item">📅 更新时间: ${hub.updated}</span>
+          <span class="meta-item">⏱️ 预计阅读: ${hub.readTime}</span>
+          <span class="meta-item">🎯 适用系统: ${hub.shortTitle}</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <div class="alert-box tip">
+          <div class="alert-title">💡 平台综合说明</div>
+          <p style="margin-bottom:0;">${hub.summary}</p>
+        </div>
+
+        ${sectionsHtml}
+        ${faqsHtml}
+
+        <div class="alert-box warning">
+          <div class="alert-title">📌 还没有可用机场订阅？</div>
+          <p style="margin-bottom:6px;">本教程需要配合正规机场的订阅链接方可连接生效。</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+            <a href="${prefix}recommend/index.html" class="btn btn-primary btn-sm">精选机场推荐</a>
+            <a href="${prefix}ranking/value/index.html" class="btn btn-secondary btn-sm">性价比排行榜</a>
+            <a href="${prefix}compare/index.html" class="btn btn-secondary btn-sm">对比工具</a>
+          </div>
+        </div>
+      </div>
+    </article>`;
+
+    savePage(pagePath, renderLayout({
+      filePath: pagePath,
+      title: `${hub.title} - 翻墙机场测评网`,
+      description: `${hub.summary}`,
+      keywords: `${hub.shortTitle},Clash教程,v2ray教程,客户端配置,机场订阅导入,vpn节点`,
+      canonicalPath: `guides/${hub.slug}/`,
+      activeNav: "guides",
+      breadcrumbs: [
+        { name: "首页", url: "index.html" },
+        { name: "配置教程", url: "guides/index.html" },
+        { name: hub.shortTitle, url: `guides/${hub.slug}/index.html` }
+      ],
+      bodyContent: hubBody
+    }));
+  });
+
+  // 生成 30 篇独立详实客户端教程页面
   guidesData.forEach(guide => {
     const pagePath = `guides/${guide.slug}/index.html`;
     const depth = 2;
@@ -1652,12 +1767,12 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
     const guideBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge blue">全平台客户端指南</span>
+        <span class="card-badge blue">${guide.category}</span>
         <h1 class="article-title" style="margin-top:10px;">${guide.title}</h1>
         <div class="article-meta">
           <span class="meta-item">📅 更新时间: ${guide.updated}</span>
           <span class="meta-item">⏱️ 预计阅读: ${guide.readTime}</span>
-          <span class="meta-item">🎯 适用系统: ${guide.shortTitle}</span>
+          <span class="meta-item">🎯 教程标签: ${guide.shortTitle}</span>
         </div>
       </header>
 
@@ -1709,40 +1824,74 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
 })();
 
 // -------------------------------------------------------------------------
-// 8. 博客与深度指南: blog/ 及 5 篇高质量科普文章
+// 8. 博客与深度指南: blog/ 及 100 篇高质量技术科普与行业观察文章
 // -------------------------------------------------------------------------
 (function buildBlogPages() {
   const blogHomePath = "blog/index.html";
   const blogPrefix = "../";
 
+  const categories = [
+    { name: "选型避坑", icon: "🛡️", desc: "辨别资金盘骗局、防跑路策略、计费陷阱与理智选型常识" },
+    { name: "协议底层", icon: "⚡", desc: "VLESS、Trojan、Hysteria2、REALITY 等前沿加密协议剖析" },
+    { name: "线路机房", icon: "🌐", desc: "IEPL/IPLC 物理专线、BGP 入口机房与海底光缆跨境拓扑" },
+    { name: "AI大模型", icon: "🤖", desc: "ChatGPT/Claude 原生 IP 纯净度要求、防封号与风控对策" },
+    { name: "流媒体解锁", icon: "🎬", desc: "Netflix、Disney+ 原生家庭住宅 IP、双 ISP 认证与 4K 播放" },
+    { name: "游戏加速", icon: "🎮", desc: "UDP 转发、FullCone NAT、跨国游戏延迟与丢包抑制" },
+    { name: "外贸电商", icon: "💼", desc: "亚马逊/TikTok/Shopify 店铺防关联与企业跨境专线规范" },
+    { name: "分流规则", icon: "🔀", desc: "Clash/Sing-box 规则集、策略组设计与本地直连去广告" },
+    { name: "测速揭秘", icon: "📊", desc: "测速彩虹图误区、单线程 vs 多线程与真实上网体验盲区" },
+    { name: "故障排查", icon: "🔧", desc: "证书报错、系统时间同步、DNS 污染与端口冲突快速定位" }
+  ];
+
   const blogHomeBody = `
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h1 class="section-title">翻墙机场行业观察、技术科普与深度指南</h1>
+        <h1 class="section-title">翻墙机场行业观察、技术科普与深度指南 (100篇专题合集)</h1>
         <p class="section-subtitle">
           聚焦翻墙技术原理、防踩坑防跑路常识、测速真实性剖析与海外 AI 节点风控应对之道。
         </p>
       </div>
 
-      <div class="grid-3">
-        ${blogData.map(b => `
-          <div class="card">
-            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">${b.date} · ${b.category}</div>
-            <h2 style="font-size:1.15rem; font-weight:700; margin-bottom:8px;"><a href="${b.slug}/index.html">${b.title}</a></h2>
-            <p style="font-size:0.88rem; color:var(--text-body); line-height:1.6; margin-bottom:14px;">${b.summary}</p>
-            <a href="${b.slug}/index.html" class="btn btn-secondary btn-sm" style="margin-top:auto;">阅读文章 →</a>
-          </div>
-        `).join('\n')}
+      <!-- 快速分类导航锚点 -->
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; justify-content:center;">
+        ${categories.map(cat => {
+          const count = blogData.filter(b => b.category === cat.name).length;
+          return `<a href="#cat-${encodeURIComponent(cat.name)}" class="btn btn-secondary btn-sm" style="font-size:0.82rem;">${cat.icon} ${cat.name} (${count})</a>`;
+        }).join('\n')}
       </div>
+
+      ${categories.map(cat => {
+        const catArticles = blogData.filter(b => b.category === cat.name);
+        return `
+        <div id="cat-${encodeURIComponent(cat.name)}" style="margin-bottom:45px; scroll-margin-top:80px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px; border-bottom:2px solid var(--border-color); padding-bottom:8px;">
+            <span style="font-size:1.6rem;">${cat.icon}</span>
+            <div>
+              <h2 style="font-size:1.35rem; font-weight:700; margin:0;">${cat.name} 专题系列</h2>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin:2px 0 0 0;">${cat.desc}</p>
+            </div>
+          </div>
+          <div class="grid-3">
+            ${catArticles.map(b => `
+              <div class="card">
+                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:8px;">📅 ${b.date} · ⏱️ ${b.readTime}</div>
+                <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:8px;"><a href="${b.slug}/index.html">${b.title}</a></h3>
+                <p style="font-size:0.88rem; color:var(--text-body); line-height:1.6; margin-bottom:14px;">${b.summary.substring(0, 75)}...</p>
+                <a href="${b.slug}/index.html" class="btn btn-secondary btn-sm" style="margin-top:auto;">阅读全文 →</a>
+              </div>
+            `).join('\n')}
+          </div>
+        </div>`;
+      }).join('\n')}
     </div>
   </section>`;
 
   savePage(blogHomePath, renderLayout({
     filePath: blogHomePath,
-    title: "翻墙行业观察与技术指南 - 翻墙机场测评网",
-    description: "汇聚深入浅出的科学上网技术指南。解析专线与公网中转区别、揭秘测速图真相、分享防跑路与ChatGPT/Claude节点选型实战技巧。",
-    keywords: "机场博客,vpn区别,专线解析,机场测速,性价比机场,梯子避坑指南",
+    title: "翻墙行业观察与技术指南 (100篇深度专题) - 翻墙机场测评网",
+    description: "汇聚 100 篇深入浅出的科学上网技术指南。解析专线与公网中转区别、揭秘测速图真相、分享防跑路与ChatGPT/Claude节点选型实战技巧。",
+    keywords: "机场博客,vpn区别,专线解析,机场测速,性价比机场,梯子避坑指南,科学上网教程",
     canonicalPath: "blog/",
     activeNav: "blog",
     breadcrumbs: [
@@ -1752,7 +1901,7 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
     bodyContent: blogHomeBody
   }));
 
-  // 各独立文章页面
+  // 各独立文章页面 (100 篇)
   blogData.forEach(article => {
     const pagePath = `blog/${article.slug}/index.html`;
     const depth = 2;
@@ -1760,7 +1909,7 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
 
     const sectionsHtml = article.sections.map(s => `
       <h2>${s.h2}</h2>
-      <div>${s.p}</div>
+      <div class="article-section-content" style="line-height:1.75; margin-bottom:18px;">${s.p}</div>
     `).join('\n');
 
     const articleBody = `
@@ -2180,6 +2329,7 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
     ...airports.map(a => `review/${a.slug}/`),
     "compare/",
     "guides/",
+    ...platformHubsData.map(h => `guides/${h.slug}/`),
     ...guidesData.map(g => `guides/${g.slug}/`),
     "blog/",
     ...blogData.map(b => `blog/${b.slug}/`),
@@ -2233,4 +2383,4 @@ Sitemap: ${DOMAIN}/sitemap-index.xml
   console.log(`[Generated] IndexNow Key File: ${INDEXNOW_KEY}.txt`);
 })();
 
-console.log(`>>> 全站构建成功完成！共输出 68 个 HTML 页面（包含 14 家品牌资料与评测）及完整 SEO 配置文件。`);
+console.log(`>>> 全站构建成功完成！共输出 193 个 HTML 页面（包含 14 家品牌资料与评测、30 篇保姆级教程、100 篇深度科普文章）及完整 SEO 配置文件。`);

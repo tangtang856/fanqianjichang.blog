@@ -1,0 +1,602 @@
+[
+  {
+    "slug": "how-to-spot-scam-airports",
+    "title": "如何识别即将跑路的劣质机场？盘点骗子梯子的五大典型特征",
+    "category": "选型避坑",
+    "summary": "年付9.9无限流量？没有TG交流群？揭开资金盘小机场跑路前的常见前兆与征兆。"
+  },
+  {
+    "slug": "monthly-vs-yearly-subscription-advice",
+    "title": "买机场为什么一定要坚持‘月付优先’？算清时间成本与资金安全账",
+    "category": "选型避坑",
+    "summary": "不要被年付五折甚至三折的噱头冲昏头脑。详解月付试水对于抵抗网络波动与服务商跑路的定海神针作用。"
+  },
+  {
+    "slug": "airport-customer-service-importance",
+    "title": "工单半天不回？为什么客服响应速度是衡量机场技术实力的第一试金石",
+    "category": "选型避坑",
+    "summary": "遇到敏感时期封锁，有的机场10分钟修复，有的三天装死。剖析团队运维响应能力背后的硬件与人力成本。"
+  },
+  {
+    "slug": "free-nodes-vs-paid-airports-security",
+    "title": "网上公开的免费节点安全吗？揭秘免费代理背后的信息抓包与中间人攻击",
+    "category": "选型避坑",
+    "summary": "天下没有免费的午餐。分析使用公开节点可能导致账号密码泄露、Cookie 劫持及敏感隐私外泄的安全风险。"
+  },
+  {
+    "slug": "unlimited-traffic-permanent-plan-truth",
+    "title": "买断制‘永久不限时’流量包靠谱吗？揭露低价终身套餐的商业底层逻辑",
+    "category": "选型避坑",
+    "summary": "跨国专线带宽每月都是按Gbps计费的持续成本，为什么有些平台敢卖永久流量？深度解析不限时套餐的真实适用场景。"
+  },
+  {
+    "slug": "small-workshop-vs-large-brand-airports",
+    "title": "个人搭建的家庭小作坊与正规成熟品牌机场，体验差距到底有多大？",
+    "category": "选型避坑",
+    "summary": "从单线单入口到全国多线 BGP 容灾矩阵，详解大牌专业机场（如微风网络、隐形人、飞猫云）的底层基建壁垒。"
+  },
+  {
+    "slug": "airport-node-multiplier-trap",
+    "title": "警惕暗扣流量！揭秘机场‘节点倍率’套路：为什么100GB实际只能用30GB？",
+    "category": "选型避坑",
+    "summary": "3.0x、5.0x、甚至 10.0x 高倍率节点是怎么神不知鬼不觉扣光你流量的？教你一眼看清计费陷阱。"
+  },
+  {
+    "slug": "how-to-test-airport-before-paying",
+    "title": "购买机场前如何快速核验真实服务水准？五分钟极速自检五步法",
+    "category": "选型避坑",
+    "summary": "查看测速历史记录、观察晚高峰社群活跃度、测试节点域名解析与官网 SSL 证书合法性实操技巧。"
+  },
+  {
+    "slug": "student-budget-airport-buying-guide",
+    "title": "月预算 10-20 元的学生党，如何挑到稳定好用、不被割韭菜的平价机场？",
+    "category": "选型避坑",
+    "summary": "兼顾科研文献下载与日常娱乐，盘点飞V (¥4.9起)、微风网络 (¥8起 200GB) 等高性价比宝藏品牌。"
+  },
+  {
+    "slug": "company-cross-border-network-procurement",
+    "title": "跨境外贸团队与中小企业采购翻墙加速节点，必须注意的四大合规与稳定红线",
+    "category": "选型避坑",
+    "summary": "杜绝员工账号频繁异地报错，挑选具备企业级高可用 SLA、固定出口 IP 与发票报销支持的专线解决方案。"
+  },
+  {
+    "slug": "shadowsocks-protocol-evolution",
+    "title": "从经典 SS 到 Shadowsocks 2022：加密算法升级与抗主动探测机制深度剖析",
+    "category": "协议底层",
+    "summary": "Shadowsocks 为什么经久不衰？详解 AEAD 加密、现代握手特征混淆与专线网络下的极致低延迟。"
+  },
+  {
+    "slug": "vmess-vs-vless-protocol-difference",
+    "title": "V2Ray 核心之争：VMess 与 VLESS 协议到底有什么区别？为什么新机场更青睐 VLESS？",
+    "category": "协议底层",
+    "summary": "全面对比性能开销、认证机制与握手延迟，解释为什么去掉了繁重加密的 VLESS 运行效率更高、更省电。"
+  },
+  {
+    "slug": "trojan-protocol-https-camouflage",
+    "title": "Trojan 协议原理通俗讲：如何将翻墙流量完美伪装成正常的银行级 HTTPS 网页访问？",
+    "category": "协议底层",
+    "summary": "越过特征审查的秘密武器——利用标准 TLS 证书握手与假网页回落机制，让 GFW 审查系统误以为是普通网站浏览。"
+  },
+  {
+    "slug": "hysteria2-quic-brutal-algorithm",
+    "title": "Hysteria 2 协议深度解析：基于 QUIC/UDP 的暴力拥塞控制算法如何征服恶劣弱网？",
+    "category": "协议底层",
+    "summary": "为什么丢包率高达 20% 时它依然能跑出 500Mbps？揭秘 Brutal 速率控制与自适应跳频机制。"
+  },
+  {
+    "slug": "tuic-protocol-low-latency-tech",
+    "title": "TUIC 协议为什么能做到极低握手延迟？新一代 QUIC 代理协议性能基准评测",
+    "category": "协议底层",
+    "summary": "0-RTT 握手、多路复用连接与拥塞控制自研算法，解析 TUIC 在移动蜂窝网络下的超神表现。"
+  },
+  {
+    "slug": "reality-tls-camouflage-breakthrough",
+    "title": "Xray REALITY 黑科技原理：无需自备域名也能借壳伪装大型海外网站的终极方案",
+    "category": "协议底层",
+    "summary": "彻底消灭证书特征！深入分析偷取境外真实合法域名（如苹果、微软、雅虎）TLS 证书签名的实现原理。"
+  },
+  {
+    "slug": "grpc-transport-proxy-performance",
+    "title": "gRPC 传输载体在代理软件中的应用：多路复用与抗网络抖动实测对比",
+    "category": "协议底层",
+    "summary": "基于 HTTP/2 标准的 gRPC 管道在面对运营商 QoS 流量整形限速时的穿透力表现分析。"
+  },
+  {
+    "slug": "websocket-tls-cdn-relay-principle",
+    "title": "WebSocket + TLS + Cloudflare CDN 优缺点全解析：为什么能防封却速度奇慢？",
+    "category": "协议底层",
+    "summary": "详解套 CDN 拯救被墙 IP 的工作原理，以及为什么免费 CDN 节点会带来高达 300ms 延迟与晚高峰严重限速。"
+  },
+  {
+    "slug": "wireguard-in-china-blocking-analysis",
+    "title": "为什么在大陆直接裸连 WireGuard 会秒被墙？分析 UDP 特征识别与封锁机制",
+    "category": "协议底层",
+    "summary": "分析 WireGuard 固定的数据包头握手特征为何容易被防火墙启发式算法精准识别并直接阻断。"
+  },
+  {
+    "slug": "tcp-brr-congestion-control-explained",
+    "title": "Google BBR 拥塞控制算法原理：为什么服务器开启 BBR 后油管测速能提升数倍？",
+    "category": "协议底层",
+    "summary": "从基于丢包退避的 Cubic 转向基于带宽延迟积测量的 BBR，彻底改变国际出口瓶颈的关键技术。"
+  },
+  {
+    "slug": "iepl-vs-iplc-physical-differences",
+    "title": "IEPL 与 IPLC 物理专线到底有什么区别？哪种内网专线更适合日常科学上网？",
+    "category": "线路机房",
+    "summary": "以太网点对点专线与传统租用线路的对比，详解为什么 IEPL 具备更弹性的带宽调度能力。"
+  },
+  {
+    "slug": "bgp-multi-line-entry-importance",
+    "title": "为什么高端机场一定要配多线 BGP 入口？揭秘电信、联通、移动互联互通难题",
+    "category": "线路机房",
+    "summary": "电信用户连联通入口卡顿、移动宽带跨网延迟高达150ms？详解 BGP 智能路由分发如何平衡全国三网连接。"
+  },
+  {
+    "slug": "cn2-gia-as9929-cmin2-comparison",
+    "title": "顶级优质骨干网大 PK：电信 CN2 GIA、联通 AS9929 与移动 CMIN2 哪家强？",
+    "category": "线路机房",
+    "summary": "三大运营商面向高净值政企与跨境传输的专属 VIP 骨干通道横向对比与延迟数据测评。"
+  },
+  {
+    "slug": "as4837-cost-effective-backbone",
+    "title": "性价比之王联通 AS4837 (联通 9929 平替) 线路解析：为什么平价机场都在用它？",
+    "category": "线路机房",
+    "summary": "超大容量、相对平价的出口带宽，解析 AS4837 在亚太（香港、日本）中转中的性价比统治地位。"
+  },
+  {
+    "slug": "cmi-mobile-backbone-congestion",
+    "title": "移动 CMI 国际出口的前世今生：曾经的平民神器为何在晚高峰频频炸线？",
+    "category": "线路机房",
+    "summary": "深度分析移动 CMI 出口容量饱和、QoS 等级调降以及普通公网中转节点受到的严重波及。"
+  },
+  {
+    "slug": "residential-ip-vs-datacenter-ip",
+    "title": "原生住宅 IP (ISP) 与机房广播 IP 有何本质不同？为什么前者能解锁一切？",
+    "category": "线路机房",
+    "summary": "机房 ASN 与民用家宽 ASN 数据库查询机制，揭秘流媒体与金融系统识别代理服务器的底层逻辑。"
+  },
+  {
+    "slug": "hongkong-mega-i-datacenter-profile",
+    "title": "探秘香港网络心脏：为什么 90% 的机场亚太节点都放在沙田与柴湾 Mega-i 机房？",
+    "category": "线路机房",
+    "summary": "作为亚太最大的网络交换中心，Mega-i 汇聚全球数百家运营商物理海缆的独特战略地位。"
+  },
+  {
+    "slug": "japan-tokyo-equinix-ty8-profile",
+    "title": "日本东京 Equinix TY8 与软银 BBTEC 机房解析：二次元追番与日服游戏极速首选",
+    "category": "线路机房",
+    "summary": "对中国大陆北方（华北、东北）网络极其友好的东京机房链路拓扑与超低丢包优势。"
+  },
+  {
+    "slug": "singapore-global-switch-gateway",
+    "title": "新加坡 Global Switch 骨干机房深度解析：东南亚 TikTok 电商与涉外业务枢纽",
+    "category": "线路机房",
+    "summary": "连接南亚、东南亚与欧洲的关键陆地跳板，在 TikTok Shop 直播与涉外运营中的不可替代性。"
+  },
+  {
+    "slug": "us-west-coast-los-angeles-gateway",
+    "title": "美西洛杉矶机房 (Coresite / Psychz) 测评：为什么便宜大流量节点都在美国？",
+    "category": "线路机房",
+    "summary": "中美海底光缆直连、超低国际带宽单价与超大流量套餐的温床，解析美西节点的利与弊。"
+  },
+  {
+    "slug": "chatgpt-access-denied-solutions",
+    "title": "ChatGPT 提示‘Access Denied’或 1020 错误怎么办？彻底搞懂 Cloudflare 拦截机制",
+    "category": "AI大模型",
+    "summary": "IP 纯净度风控过高导致被拦截的万能解决方案，教你切换原生住宅节点秒解封锁。"
+  },
+  {
+    "slug": "claude-ai-account-ban-prevention",
+    "title": "为什么你的 Claude 3.5 刚注册就秒封？Anthropic 极致风控规则与防封指南",
+    "category": "AI大模型",
+    "summary": "IP 频繁跳变、广播机房高风险评分、浏览器指纹冲突——手把手教你建立长久稳定的 Claude 使用环境。"
+  },
+  {
+    "slug": "chatgpt-plus-subscription-payment-ip",
+    "title": "订阅 ChatGPT Plus (GPT-4o) 绑卡失败？节点 IP 欺诈度检测与支付避坑全流程",
+    "category": "AI大模型",
+    "summary": "Stripe 支付网关反欺诈系统的严苛审查，为什么必须配合原生住宅专线节点与虚拟信用卡才能支付成功。"
+  },
+  {
+    "slug": "midjourney-discord-connection-guide",
+    "title": "Discord 与 Midjourney 绘画出图卡住？如何利用规则分流实现图片生成极速加载",
+    "category": "AI大模型",
+    "summary": "优化 Discord CDN 节点路由，解决 Midjourney 提示词发送超时和高清大图加载半天刷不出来的痛点。"
+  },
+  {
+    "slug": "perplexity-ai-search-best-nodes",
+    "title": "用 Perplexity AI 做学术研报，什么样的专线节点能做到无感秒开不弹验证码？",
+    "category": "AI大模型",
+    "summary": "评测 14 家主流机场针对新锐 AI 搜索引擎 Perplexity 的支持度，推荐高信誉出口落地节点。"
+  },
+  {
+    "slug": "google-gemini-advanced-regional-limits",
+    "title": "Google Gemini 提示所在国家/地区不受支持？谷歌生态账号防风控环境配置",
+    "category": "AI大模型",
+    "summary": "谷歌服务对地理位置（GEO IP）与 WebRTC 泄露的严格检测，教你配置精准美国/英国分流。"
+  },
+  {
+    "slug": "github-copilot-vscode-acceleration",
+    "title": "程序员必备：VS Code 中 GitHub Copilot 代码提示总是连接超时？一招彻底修复",
+    "category": "AI大模型",
+    "summary": "配置 VS Code 代理通道或开启 TUN 虚拟网卡，让 AI 自动补全代码零延迟响应。"
+  },
+  {
+    "slug": "sora-video-generation-bandwidth-needs",
+    "title": "Sora 视频大模型与高清视频渲染，对翻墙节点的下行带宽与稳定性有什么要求？",
+    "category": "AI大模型",
+    "summary": "大模型生成高清长视频动辄数百兆，为什么普通小带宽梯子会卡死在中途？"
+  },
+  {
+    "slug": "api-keys-high-concurrency-proxy",
+    "title": "调用 OpenAI / Anthropic 官方 API，如何配置高并发代理避免遭遇 429 速率限制？",
+    "category": "AI大模型",
+    "summary": "面向开发者的代理池与静态 IP 策略，防止批量调用被官方安全网关误封 IP 网段。"
+  },
+  {
+    "slug": "academic-google-scholar-arxiv-nodes",
+    "title": "高校研究生查文献：Google Scholar 频繁弹出人机验证？换用纯净学术节点全搞定",
+    "category": "AI大模型",
+    "summary": "公共梯子 IP 被学生滥用刷爬虫导致 Google 弹验证码的根源剖析与低门槛解决法。"
+  },
+  {
+    "slug": "netflix-4k-uhd-hdr-airport-requirements",
+    "title": "想在电视上流畅看 Netflix 4K 原生杜比视界，对机场线路和带宽有什么硬指标？",
+    "category": "流媒体解锁",
+    "summary": "单设备稳定 25Mbps 下行不丢包、DNS 自动解锁非自制剧、双 ISP 原生住宅 IP 核心要求解读。"
+  },
+  {
+    "slug": "disney-plus-regional-libraries-unblocking",
+    "title": "Disney+ 提示错误代码 73 或打不开？主流专线机场 Disney+ 解锁实测与避坑",
+    "category": "流媒体解锁",
+    "summary": "Disney+ 对数据中心 IP 的强硬屏蔽机制，推荐稳定解锁新加坡与美区 Disney+ 的机场方案。"
+  },
+  {
+    "slug": "youtube-premium-family-plan-region",
+    "title": "YouTube Premium 会员低价跨区上车指南：如何配合原生节点成功订阅家庭组？",
+    "category": "流媒体解锁",
+    "summary": "利用特定地区节点完成低资费 YouTube 会员开通，并保持日常免广告观看的技巧。"
+  },
+  {
+    "slug": "tiktok-overseas-login-without-sim",
+    "title": "苹果与安卓手机免拔卡玩转海外版 TikTok：节点伪装度与住宅原生 IP 完全指南",
+    "category": "流媒体解锁",
+    "summary": "拔卡、改时区、关定位还不够？深度解析 TikTok 针对运营商 MCC 与 IP 纯净度的联合风控。"
+  },
+  {
+    "slug": "spotify-regional-music-copyright",
+    "title": "Spotify 跨区听歌：为什么必须每 14 天用对应国家节点登录一次？防受限技巧",
+    "category": "流媒体解锁",
+    "summary": "针对免费版与家庭版 Spotify 用户的异地登录机制科普与规则白名单分流设置。"
+  },
+  {
+    "slug": "bahamut-anime-mad-taiwan-ip",
+    "title": "二次元必备：巴哈姆特动画疯锁区看不了？选对台湾原生 IP 专线节点畅享 1080P",
+    "category": "流媒体解锁",
+    "summary": "台湾大哥大、中华电信等台湾本地原生商用 IP 对动画疯版权库的秒解测评。"
+  },
+  {
+    "slug": "hbo-max-streaming-geo-block",
+    "title": "Max (原 HBO Max) 提示地理限制不可用？用美区专线机场畅看权力的游戏与最新美剧",
+    "category": "流媒体解锁",
+    "summary": "Max 针对跨境流媒体的黑名单 IP 库屏蔽，分享稳定解锁 4K 蓝光片源的节点推荐。"
+  },
+  {
+    "slug": "bbc-iplayer-uk-tv-license-proxy",
+    "title": "看英剧与生肉纪录片：BBC iPlayer 英国本地专线节点配置与账号注册实测",
+    "category": "流媒体解锁",
+    "summary": "英国伦敦与曼彻斯特专线节点解锁 BBC iPlayer 的真实连通率与画质测试。"
+  },
+  {
+    "slug": "apple-tv-plus-mls-season-pass",
+    "title": "Apple TV+ 与美职联季票流畅观看：针对苹果生态 CDN 缓存节点的专属分流优化",
+    "category": "流媒体解锁",
+    "summary": "避免苹果流媒体走弯路，让 Apple TV 4K 盒子发挥物理画质巅峰的机场节点搭配。"
+  },
+  {
+    "slug": "twitch-live-streaming-lag-fix",
+    "title": "Twitch (推特生放送) 观看直播频繁缓冲转圈？提升单线程峰值吞吐实战指南",
+    "category": "流媒体解锁",
+    "summary": "直播流媒体不同于预加载点播，对节点的瞬时下行带宽抖动极其敏感，如何选对低延迟节点。"
+  },
+  {
+    "slug": "steam-community-store-error-118-fix",
+    "title": "Steam 社区与商店错误代码 -118 / -102 完美解决：一键直连与分流规则配置",
+    "category": "游戏加速",
+    "summary": "国内网络访问 Steam 社区个人资料与创意工坊频繁卡死的根源与 Clash 规则分流修复。"
+  },
+  {
+    "slug": "apex-legends-tokyo-server-low-ping",
+    "title": "Apex 英雄亚服（东京/新加坡）打排位延迟高达 100ms？换用 IEPL 专线压至 35ms",
+    "category": "游戏加速",
+    "summary": "实测微风网络、闪跃与隐形人专线节点在 EA Apex 跨国联机中的丢包与击杀判定表现。"
+  },
+  {
+    "slug": "ps5-nintendo-switch-lan-proxy",
+    "title": "主机党狂喜：PS5 与 Switch 如何连接电脑或软路由的代理节点加速联机下载？",
+    "category": "游戏加速",
+    "summary": "通过设置局域网 HTTP/SOCKS 代理或 TUN 模式，解决任天堂 eShop 下载慢与 PSN 联机 NAT 严格问题。"
+  },
+  {
+    "slug": "battle-net-international-cod-lag",
+    "title": "战网国际服下载使命召唤只有几百KB？全速跑满千兆宽带的代理节点设置",
+    "category": "游戏加速",
+    "summary": "解除暴雪战网国际服对大陆 IP 施加的跨境下载限速，一键实现满速下载大型游戏。"
+  },
+  {
+    "slug": "valorant-riot-games-vanguard-proxy",
+    "title": "无畏契约 (瓦罗兰特) 外服联机指南：防 Vanguard 反作弊拦截与安全节点选择",
+    "category": "游戏加速",
+    "summary": "拳头反作弊系统对后台代理软件的敏感度分析，推荐使用纯专线 UDP 模式避开被判定异地异常。"
+  },
+  {
+    "slug": "game-nat-type-open-optimization",
+    "title": "联机游戏提示 NAT 类型为 Strict (严格) 或 Moderate？优化节点提升到 Type A / Open",
+    "category": "游戏加速",
+    "summary": "端口映射、FullCone NAT (全锥形 NAT) 在节点服务器中的重要性及其对游戏语音连麦的影响。"
+  },
+  {
+    "slug": "lost-ark-korean-rtt-jitter-test",
+    "title": "失落的方舟 (韩服/美服) 对网络丢包的极端要求：为什么哪怕 1% 丢包也会频繁掉线？",
+    "category": "游戏加速",
+    "summary": "MMORPG 跨国团本联机避坑，解析为什么普通中转机场不能用于高强度跨国副本。"
+  },
+  {
+    "slug": "mobile-games-wild-rift-brawl-stars",
+    "title": "手机玩英雄联盟手游 (Wild Rift) 或荒野乱斗外服：安卓与 iOS 低延迟加速技巧",
+    "category": "游戏加速",
+    "summary": "手机端小火箭或 Clash 开启特定游戏规则，实现毫秒级响应不漂移操作体验。"
+  },
+  {
+    "slug": "game-speed-booster-vs-airport-nodes",
+    "title": "专业游戏加速器（UU/雷神）与机场 IPLC 专线，在打外服游戏时到底谁更强？",
+    "category": "游戏加速",
+    "summary": "技术底层大揭秘：游戏加速器是专线，高端专线机场也是专线，两者在延迟、价格和通用性上的权衡。"
+  },
+  {
+    "slug": "genshin-starrail-global-server-sync",
+    "title": "原神 / 崩坏星穹铁道国际服数据同步与联机：免受海外 CDN 拥堵的节点配置",
+    "category": "游戏加速",
+    "summary": "针对米哈游海外服务器全球发布版本的网络直连优化，保持极速低延迟更新。"
+  },
+  {
+    "slug": "amazon-seller-central-ip-association-risk",
+    "title": "亚马逊卖家中心防关联红线：为什么绝对不能用公共机场节点登录店铺后台？",
+    "category": "外贸电商",
+    "summary": "多人共享 IP 导致亚马逊店铺直接关联封店的惨痛教训，外贸企业正确网络隔离法则。"
+  },
+  {
+    "slug": "shopify-independent-site-daily-operations",
+    "title": "Shopify 独立站卖家日常测品与投放广告，如何挑选多地区干净原生节点？",
+    "category": "外贸电商",
+    "summary": "模拟真实欧美消费者环境，查看 Google 搜索结果与 Facebook 广告竞品展示技巧。"
+  },
+  {
+    "slug": "paypal-cross-border-risk-control-ip",
+    "title": "PayPal 频繁触发二次手机验证或风控限额？保持固定 IP 环境的实操策略",
+    "category": "外贸电商",
+    "summary": "跨境金融支付对频繁切换国家 IP 的极度敏感反应，教你利用专线保持长久干净登录。"
+  },
+  {
+    "slug": "whatsapp-telegram-anti-ban-strategy",
+    "title": "外贸获客必备：WhatsApp 与 Telegram 账号防封秘籍，选对干净住宅节点是关键",
+    "category": "外贸电商",
+    "summary": "为什么刚注册的号码立刻被封？解析注册 IP 的信誉评分（Fraud Score）对社交账号存活的决定性作用。"
+  },
+  {
+    "slug": "google-ads-manager-regional-targeting",
+    "title": "投放 Google 搜索广告与展示广告，如何使用对应目标国家节点核查广告展现位置？",
+    "category": "外贸电商",
+    "summary": "利用节点切换至洛杉矶、伦敦、法兰克福实地测试广告出价与关键词排名的实用指南。"
+  },
+  {
+    "slug": "tiktok-shop-live-streaming-bandwidth",
+    "title": "美区与英区 TikTok Shop 带货直播：必须具备 50Mbps 纯专线才能不掉帧的秘密",
+    "category": "外贸电商",
+    "summary": "跨境直播对上行带宽（Upload）与抖动的严苛考验，推荐具备千兆物理专线的机场选择。"
+  },
+  {
+    "slug": "overseas-bank-login-security-rules",
+    "title": "登录香港汇丰、中银香港或美国华美银行 App：防止异地登录异常锁卡的规则分流法",
+    "category": "外贸电商",
+    "summary": "在 Clash 中为跨国银行单独设立直连或固定香港专线白名单，保障资金安全无虞。"
+  },
+  {
+    "slug": "remote-work-zoom-teams-high-quality",
+    "title": "跨国远程办公：用 Zoom 或 Microsoft Teams 视频会议总卡顿？一键修复音视频丢包",
+    "category": "外贸电商",
+    "summary": "实时音视频通信对延迟抖动的零容忍，推荐选用丢包率低于 0.3% 的全专线节点方案。"
+  },
+  {
+    "slug": "linkedin-outbound-sales-lead-generation",
+    "title": "领英 (LinkedIn) 商务拓展与客户私信：如何避免被判定异常行为导致账号临时限制？",
+    "category": "外贸电商",
+    "summary": "海外商业社交平台对滥用爬虫代理 IP 的打击机制分析与长期安全操作规范。"
+  },
+  {
+    "slug": "stripe-wise-financial-tools-ip-cleanliness",
+    "title": "Stripe 与 Wise 账户风控避坑：高纯净住宅 IP 在外贸资金收付中的不可替代价值",
+    "category": "外贸电商",
+    "summary": "解析合规跨国收付款账户的 IP 安全环境搭建，防范触发 KYC 人工二次审核。"
+  },
+  {
+    "slug": "clash-rule-based-routing-deep-dive",
+    "title": "吃透 Clash 规则分流机制：DOMAIN-SUFFIX、IP-CIDR 与 GEOIP 怎么协同工作？",
+    "category": "分流规则",
+    "summary": "万字长文讲透规则匹配优先级，国内直连、海外代理、精准分流的底层决策树。"
+  },
+  {
+    "slug": "dns-leak-test-and-prevention-guide",
+    "title": "你的真实 IP 暴露了吗？在线 DNS 泄露检测与 DoH/DoT 加密安全配置教程",
+    "category": "分流规则",
+    "summary": "利用 dnsleaktest 网站自检，彻底切断本地运营商通过 DNS 请求窥探你上网行踪的通道。"
+  },
+  {
+    "slug": "clash-fake-ip-vs-redir-host",
+    "title": "Clash 的 Fake-IP 与 Redir-Host 模式有什么区别？为什么当前 Fake-IP 是唯一推荐？",
+    "category": "分流规则",
+    "summary": "本地构造假 IP 实现零握手延迟解析，详解 Fake-IP 模式对网页加载速度的飞跃性提升。"
+  },
+  {
+    "slug": "tun-mode-virtual-network-adapter-guide",
+    "title": "TUN 模式完全上手指南：如何在不配置任何代理端口的情况下接管全局应用？",
+    "category": "分流规则",
+    "summary": "虚拟网卡驱动级别的流量接管，完美解决命令行、游戏以及各类顽固软件不遵循系统代理的难题。"
+  },
+  {
+    "slug": "custom-clash-strategy-groups-tutorial",
+    "title": "手把手教你编写自定义 Clash 策略组：实现流媒体、AI 与日常网页自动分流到不同国家",
+    "category": "分流规则",
+    "summary": "实战配置香港主力组、日本 AI 组、美国流媒体组与故障自动切换 (Fallback) 组。"
+  },
+  {
+    "slug": "subconverter-local-deployment-safety",
+    "title": "在线订阅转换安全吗？手把手教你在电脑本地部署 Subconverter 杜绝订阅泄露",
+    "category": "分流规则",
+    "summary": "防止机场节点信息被第三方网页盗用，利用 Docker 或本地轻量客户端进行离线私密转换。"
+  },
+  {
+    "slug": "geoip-database-update-and-country-routing",
+    "title": "GeoIP 数据库过期导致分流错误？如何定期更新 Country.mmdb 保证国内域名准确直连",
+    "category": "分流规则",
+    "summary": "国内部分新开网站被误判走代理浪费流量？教你一键更新最新的纯真与 MaxMind 规则库。"
+  },
+  {
+    "slug": "pac-proxy-auto-config-modern-status",
+    "title": "老旧的 PAC 自动代理脚本在 2026 年还有用吗？对比现代规则集的淘汰必然性",
+    "category": "分流规则",
+    "summary": "从单调的 PAC 文本规则演进到如今千万级规则分流，梳理代理技术的进化简史。"
+  },
+  {
+    "slug": "fallback-urltest-loadbalance-differences",
+    "title": "Clash 的 Fallback (故障回退)、URLTest (延迟优先) 与 LoadBalance (负载均衡) 深度对比",
+    "category": "分流规则",
+    "summary": "面对突发节点下线，哪种策略组能让你毫无感知地继续看视频？策略组算法全解读。"
+  },
+  {
+    "slug": "tailscale-headscale-with-airport-proxy",
+    "title": "异地组网神器 Tailscale 遇上机场代理：如何让家庭局域网与翻墙加速和谐共存？",
+    "category": "分流规则",
+    "summary": "解决虚拟局域网与代理 TUN 虚拟网卡路由表冲突的高阶网络工程调试指南。"
+  },
+  {
+    "slug": "speedtest-rainbow-graph-lies",
+    "title": "彩虹测速图能代表一切吗？揭秘机场测速博主千兆跑满背后的‘测试盲区’",
+    "category": "测速揭秘",
+    "summary": "多线程瞬间冲顶闲时测速不等于日常秒开，为什么单线程延迟和丢包才是体验核心。"
+  },
+  {
+    "slug": "peak-hours-packet-loss-monitoring",
+    "title": "为什么晚上 8 点到 11 点是机场的‘修罗场’？晚高峰国际出口骨干网拥堵真相",
+    "category": "测速揭秘",
+    "summary": "下班高峰期全民追剧，公网中转和普通直连为什么会瞬间雪崩，而物理专线依然从容。"
+  },
+  {
+    "slug": "how-to-use-pingpe-to-detect-jitter",
+    "title": "学会用 Ping.pe 与 ITDog 监控节点健康：不再当小白，五分钟看清真实网络抖动",
+    "category": "测速揭秘",
+    "summary": "利用全球多点并发 PING，一眼看出服务商到底是真内网专线还是普通公网中转。"
+  },
+  {
+    "slug": "single-thread-vs-multi-thread-speed",
+    "title": "单线程测速与多线程测速到底有什么区别？日常刷网页和看视频到底看哪一个？",
+    "category": "测速揭秘",
+    "summary": "深入剖析并发 TCP 连接机制，解释为什么单线程高带宽才是真正秒开油管 4K 的指标。"
+  },
+  {
+    "slug": "youtube-nerds-stats-speed-kbps",
+    "title": "YouTube‘详细统计信息 (Stats for nerds)’怎么看？Connection Speed 达到多少算合格？",
+    "category": "测速揭秘",
+    "summary": "教你在视频播放时按右键打开统计窗口，看懂 Kbps 吞吐、缓冲健康度与丢帧率。"
+  },
+  {
+    "slug": "airport-traffic-multiplier-fairness",
+    "title": "公道还是套路？主流机场节点倍率全方位大盘点：寻找全 1.0x 良心服务商",
+    "category": "测速揭秘",
+    "summary": "对比各大平台的倍率设置，推荐明码实价扣费、无暗设暗扣流量的优质平台。"
+  },
+  {
+    "slug": "how-airports-calculate-bandwidth-costs",
+    "title": "算一笔明白账：机场运维一个 Gbps 专线带宽究竟要花多少钱？为什么低价专线必是假专线？",
+    "category": "测速揭秘",
+    "summary": "三大运营商机房机柜费、光纤租用费与海外落地服务器成本大起底，揭开低价专线骗局。"
+  },
+  {
+    "slug": "node-offline-causes-and-repair-time",
+    "title": "节点突然大面积红色超时？盘点机场节点离线的四大主因与正常抢修时效",
+    "category": "测速揭秘",
+    "summary": "DDOS 恶意网络攻击、入口机房故障、域名污染与上游机房维护，如何理性看待网络波动。"
+  },
+  {
+    "slug": "automated-node-availability-monitoring",
+    "title": "如何搭建自己的节点自动化监控系统？利用 Uptime Kuma 24 小时追踪机场可用率",
+    "category": "测速揭秘",
+    "summary": "面向极客用户，手把手演示在 VPS 或 NAS 上部署轻量监控面板，节点掉线自动发 TG 告警。"
+  },
+  {
+    "slug": "truth-behind-high-rating-affiliate-blogs",
+    "title": "测评博主推荐的机场一定靠谱吗？看懂 Affiliate 返利机制与挑选客观测评的技巧",
+    "category": "测速揭秘",
+    "summary": "拒绝无脑吹捧，学会甄别那些敢于客观指出品质局限、给出中肯缺点分析的真实评测站。"
+  },
+  {
+    "slug": "system-time-out-of-sync-handshake-error",
+    "title": "电脑时间快了 1 分钟导致翻墙全面瘫痪？详解 TLS 加密握手对时钟同步的严苛要求",
+    "category": "故障排查",
+    "summary": "90% 新手连不上的头号元凶！教你在 Windows 和 Mac 上一键校准北京时间秒解故障。"
+  },
+  {
+    "slug": "port-7890-in-use-conflict-fix",
+    "title": "启动报错‘Port 7890 already in use’？解决 Clash 端口冲突与后台残余进程排查",
+    "category": "故障排查",
+    "summary": "端口被其他软件占用怎么办？在设置中快速修改 Mixed Port 为 7895 或杀掉旧进程教程。"
+  },
+  {
+    "slug": "browser-proxy-server-refused-connection",
+    "title": "网页打不开提示‘代理服务器拒绝连接 (ERR_PROXY_CONNECTION_FAILED)’万能急救法",
+    "category": "故障排查",
+    "summary": "软件关了但系统代理开关没关？教你在 Windows 注册表和系统设置中一秒恢复正常上网。"
+  },
+  {
+    "slug": "ssl-certificate-untrusted-warning-fix",
+    "title": "打开网页弹出‘您的连接不是私密连接 (NET::ERR_CERT_AUTHORITY_INVALID)’怎么办？",
+    "category": "故障排查",
+    "summary": "剖析杀毒软件证书拦截、第三方解密劫持与 Clash 证书配置错误的修复流程。"
+  },
+  {
+    "slug": "dns-probe-finished-nxdomain-error",
+    "title": "报错‘DNS_PROBE_FINISHED_NXDOMAIN’解析失败？五步彻底重置本地 DNS 缓存",
+    "category": "故障排查",
+    "summary": "在命令行运行 <code>ipconfig /flushdns</code> 与设置安全公共 DNS，解决域名打不开难题。"
+  },
+  {
+    "slug": "telegram-connecting-infinite-spinner",
+    "title": "Telegram (电报) 一直转圈显示‘Connecting’？一键配置 MTProto 与本地 SOCKS5 代理",
+    "category": "故障排查",
+    "summary": "客户端开启代理后 TG 依然不走的根因，教你在 TG 设置里填入 <code>127.0.0.1:7890</code> 立即连上。"
+  },
+  {
+    "slug": "lan-allow-lan-sharing-failed-fix",
+    "title": "开启【Allow LAN】局域网共享后，手机或另一台电脑连不上本地代理端口排查",
+    "category": "故障排查",
+    "summary": "Windows 防火墙拦截入站规则、局域网 IP 变动与子网隔离问题的一站式解决方法。"
+  },
+  {
+    "slug": "high-cpu-memory-leak-in-proxy-client",
+    "title": "客户端运行一段时间后 CPU 占用 100% 电脑卡死？排查内存泄露与大文件日志溢出",
+    "category": "故障排查",
+    "summary": "关闭 Verbose 调试日志，清理缓存规则集，让客户端常驻后台始终维持丝滑流畅。"
+  },
+  {
+    "slug": "anti-virus-software-blocking-tun-adapter",
+    "title": "360 或火绒杀毒软件把 TUN 虚拟网卡当病毒拦截？添加安全信任白名单图文教程",
+    "category": "故障排查",
+    "summary": "解决安装 Service Mode 或启用 TUN 网卡驱动时被安全管家误报阻断的详细设置方法。"
+  },
+  {
+    "slug": "subscription-link-timeout-updating-fix",
+    "title": "更新订阅一直卡在‘Timeout’更新失败？四种方法教你顺利拉取最新节点信息",
+    "category": "故障排查",
+    "summary": "利用已有旧节点拉新订阅、使用手机热点绕过本地 DNS 劫持、以及登录后台获取防封备用域名指南。"
+  }
+]

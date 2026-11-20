@@ -86,7 +86,7 @@
     
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge purple">技术科普</span>
+        <span class="card-badge purple">协议底层</span>
         <h1 class="article-title" style="margin-top:10px;">传统VPN与机场代理节点到底有何区别？原理、速度与安全性全解析</h1>
         <div class="article-meta">
           <span class="meta-item">✍️ 撰写: 翻墙机场测评网编辑部</span>
@@ -103,15 +103,15 @@
 
         
       <h2>1. 传统 VPN 的初衷：加密局域网通道</h2>
-      <div>VPN（Virtual Private Network，虚拟专用网络）最初是为跨国公司员工安全访问企业内网而设计的。它的核心特征是对所有进出设备的数据包进行强加密打包。但这一协议特征过于显著（如 OpenVPN、IPsec、WireGuard 等），其流量握手特征非常容易被国内防火墙识别并实施精准阻断，因此海外著名商业 VPN 近年来在国内的可用率急剧下滑。</div>
+      <div class="article-section-content" style="line-height:1.75; margin-bottom:18px;">VPN（Virtual Private Network，虚拟专用网络）最初是为跨国公司员工安全访问企业内网而设计的。它的核心特征是对所有进出设备的数据包进行强加密打包。但这一协议特征过于显著（如 OpenVPN、IPsec、WireGuard 等），其流量握手特征非常容易被国内防火墙识别并实施精准阻断，因此海外著名商业 VPN 近年来在国内的可用率急剧下滑。</div>
     
 
       <h2>2. 机场代理节点的进化：深度混淆与伪装</h2>
-      <div>现代翻墙机场采用的 Shadowsocks、Trojan、V2Ray (VMess/VLESS) 以及 Hysteria 等协议，从诞生之初就是为了应对严苛的流量审查。例如 Trojan 将流量伪装成合法的 HTTPS 网页加密流量，防火墙从外部看与普通访问海外网站无异；而 Hysteria 则基于 UDP 协议进行拥塞控制优化，在网络质量恶劣的情况下依然能保持极高吞吐。</div>
+      <div class="article-section-content" style="line-height:1.75; margin-bottom:18px;">现代翻墙机场采用的 Shadowsocks、Trojan、V2Ray (VMess/VLESS) 以及 Hysteria 等协议，从诞生之初就是为了应对严苛的流量审查。例如 Trojan 将流量伪装成合法的 HTTPS 网页加密流量，防火墙从外部看与普通访问海外网站无异；而 Hysteria 则基于 UDP 协议进行拥塞控制优化，在网络质量恶劣的情况下依然能保持极高吞吐。</div>
     
 
       <h2>3. 速度与分流体验对比</h2>
-      <div>传统 VPN 往往是全局接管，开启后所有访问（包括淘宝、微信）都会绕道海外服务器，导致国内访问变卡。而现代机场搭配 Clash 等客户端，支持精准的规则分流（PAC 规则），只有海外受限网址才走代理，国内流量直连秒开，两全其美。</div>
+      <div class="article-section-content" style="line-height:1.75; margin-bottom:18px;">传统 VPN 往往是全局接管，开启后所有访问（包括淘宝、微信）都会绕道海外服务器，导致国内访问变卡。而现代机场搭配 Clash 等客户端，支持精准的规则分流（PAC 规则），只有海外受限网址才走代理，国内流量直连秒开，两全其美。</div>
     
 
         <div class="alert-box tip" style="margin-top:40px;">
