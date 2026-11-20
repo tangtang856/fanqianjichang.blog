@@ -348,13 +348,14 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   const prefix = "";
 
   const bodyContent = `
-  <!-- Section 2: Hero Section -->
-  <section class="hero-section">
-    <div class="container">
+  <!-- Section 2: Hero Section (科技感双束光纤波浪动态背景) -->
+  <section class="hero-section" id="hero-section">
+    <canvas id="hero-waves-canvas" class="hero-waves-canvas"></canvas>
+    <div class="container hero-container">
       <span class="hero-tag">2026 行业观察 · 中立测评 · 数据可查</span>
       <h1 class="hero-title">2026年稳定优质机场推荐与网络加速节点选择指南</h1>
       <p class="hero-desc">
-        专为需要高效查阅海外资料、使用 ChatGPT/Claude AI 生产力工具及流畅观看流媒体的用户量身打造。严选<strong>14家主流IEPL专线与高性价比机场</strong>，包含微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、萤火虫、跨界、隐形人、飞V、梯子云、浪网、灵动云及全球云。拒绝虚构跑分，所有资费与流量完全透明可查。
+        专为需要高效查阅海外资料、使用 <strong>ChatGPT/Claude AI</strong> 生产力工具及流畅观看流媒体的用户量身打造。严选 <strong>14家主流IEPL专线与高性价比机场</strong>，包含微风网络、暮光网络、飞猫云、无忧、灵猫、闪跃、萤火虫、跨界、隐形人、飞V、梯子云、浪网、灵动云及全球云。拒绝虚构跑分，所有资费与流量完全透明可查。
       </p>
 
       <div class="hero-actions">
