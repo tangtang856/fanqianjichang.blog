@@ -206,14 +206,14 @@ function renderLayout({
 
 // 辅助渲染：卡片与表格
 function renderAirportCard(airport, prefix) {
-  const couponBadge = airport.coupon ? `<span class="card-badge" style="background:#fff1f2; color:#be123c; border:1px solid #fecdd3; margin-left:6px;">券: ${airport.coupon}</span>` : '';
+  const couponBadge = airport.coupon ? `<span class="coupon-tag">券: ${airport.coupon}</span>` : '';
 
   return `
   <div class="card airport-card ${airport.rating >= 4.8 ? 'top-rank' : ''}">
     <div class="card-top">
       <div>
         <h3 class="airport-name"><a href="${prefix}review/${airport.slug}/index.html">${airport.name}</a></h3>
-        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:4px; margin-top:4px;">
+        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-top:6px;">
           <span class="card-badge ${airport.rating >= 4.8 ? 'gold' : 'green'}">${airport.badge}</span>
           ${couponBadge}
         </div>
@@ -261,28 +261,31 @@ function renderRankingTable(airportsList, prefix, mode = "overall") {
     let rankClass = idx === 0 ? 'rank-1' : (idx === 1 ? 'rank-2' : (idx === 2 ? 'rank-3' : 'rank-other'));
     let highlightCol = a.lineType;
     if (mode === "value") {
-      highlightCol = `<strong style="color:var(--primary);">${a.costPerGB}</strong> (${a.plans[0].traffic})`;
+      highlightCol = `<strong style="color:var(--primary); font-family:var(--font-mono);">${a.costPerGB}</strong> <div style="font-size:0.75rem; color:var(--text-muted);">${a.plans[0].traffic}</div>`;
     } else if (mode === "budget") {
-      highlightCol = `<strong style="color:#dc2626;">¥${a.startingPrice}/月</strong> (${a.plans[0].name})`;
+      highlightCol = `<strong style="color:#dc2626; font-family:var(--font-mono);">¥${a.startingPrice}/月</strong> <div style="font-size:0.75rem; color:var(--text-muted);">${a.plans[0].name}</div>`;
     } else if (mode === "stable") {
-      highlightCol = `<span class="card-badge green">稳定度: ${a.stabilityScore}/10</span>`;
+      highlightCol = `<span class="card-badge green" style="white-space:nowrap;">稳定度: ${a.stabilityScore}/10</span>`;
     }
 
-    const couponTag = a.coupon ? `<span style="font-size:0.75rem; color:#be123c; margin-left:4px; font-weight:600;">[券: ${a.coupon}]</span>` : '';
+    const couponPill = a.coupon ? `<span class="coupon-tag" title="结账优惠券：${a.coupon}">券: ${a.coupon}</span>` : '';
 
     return `<tr>
       <td style="text-align:center;"><span class="rank-badge ${rankClass}">${idx + 1}</span></td>
-      <td>
-        <div style="font-weight:700;"><a href="${prefix}review/${a.slug}/index.html">${a.name}</a> ${couponTag}</div>
-        <div style="font-size:0.75rem; color:var(--text-muted);">${a.badge}</div>
+      <td style="min-width:240px;">
+        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin-bottom:4px;">
+          <a href="${prefix}review/${a.slug}/index.html" style="font-weight:700; color:var(--text-main); font-size:0.98rem;">${a.name}</a>
+          ${couponPill}
+        </div>
+        <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">${a.badge}</div>
       </td>
-      <td style="font-weight:700; color:#dc2626;">¥${a.startingPrice} <span style="font-size:0.75rem; color:var(--text-muted);">/${a.billingCycle}</span></td>
+      <td style="font-weight:700; color:#dc2626; font-family:var(--font-mono); font-size:1.05rem; white-space:nowrap;">¥${a.startingPrice} <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal; font-family:var(--font-sans);">/${a.billingCycle}</span></td>
       <td>${highlightCol}</td>
-      <td style="font-size:0.85rem;">${a.suitableFor[0]}</td>
+      <td style="font-size:0.85rem; line-height:1.4;">${a.suitableFor[0]}</td>
       <td style="text-align:center; white-space:nowrap;">
-        <a href="${a.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="padding:4px 8px; font-size:0.8rem;">直达 ↗</a>
-        <a href="${prefix}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:0.8rem;">评测</a>
-        <a href="${prefix}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:0.8rem;">档案</a>
+        <a href="${a.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="padding:5px 10px; font-size:0.8rem; font-weight:700;">直达 ↗</a>
+        <a href="${prefix}review/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:5px 8px; font-size:0.8rem;">评测</a>
+        <a href="${prefix}airport/${a.slug}/index.html" class="btn btn-secondary btn-sm" style="padding:5px 8px; font-size:0.8rem;">档案</a>
       </td>
     </tr>`;
   }).join('\n');
@@ -298,11 +301,11 @@ function renderRankingTable(airportsList, prefix, mode = "overall") {
       <thead>
         <tr>
           <th style="width:50px; text-align:center;">排名</th>
-          <th>机场品牌</th>
-          <th>起步资费</th>
-          <th>${fourthHeader}</th>
-          <th>最适合人群</th>
-          <th style="text-align:center;">购买与详情</th>
+          <th style="min-width:240px;">机场品牌</th>
+          <th style="min-width:110px; white-space:nowrap;">起步资费</th>
+          <th style="min-width:170px;">${fourthHeader}</th>
+          <th style="min-width:190px;">最适合人群</th>
+          <th style="min-width:150px; text-align:center; white-space:nowrap;">购买与详情</th>
         </tr>
       </thead>
       <tbody>
