@@ -1,0 +1,26 @@
+{
+  "name": "fanqianjichang-blog",
+  "version": "1.0.0",
+  "description": "中文机场博客 · Bing SEO 专业建站系统",
+  "main": "scripts/build-site.js",
+  "scripts": {
+    "build": "node scripts/build-site.js",
+    "test": "node scripts/run-all-checks.js",
+    "audit": "node scripts/audit-seo.js",
+    "check-links": "node scripts/check-links.js",
+    "validate": "node scripts/validate-content.js",
+    "indexnow": "node scripts/indexnow.js"
+  },
+  "keywords": [
+    "机场推荐",
+    "机场节点",
+    "性价比机场",
+    "梯子推荐",
+    "vpn",
+    "vpn机场",
+    "vpn节点",
+    "vpn推荐"
+  ],
+  "author": "翻墙机场测评网团队",
+  "license": "MIT"
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS 苹果手机 Shadowrocket (小火箭) 订阅导入与分流配置指南 - 翻墙机场测评网</title>
+  <meta name="description" content="针对 iPhone 与 iPad 设备，从外区 Apple ID 购买 Shadowrocket（小火箭）到一键导入机场节点、开启分流规则、测试延迟的图文指南。">
+  <meta name="keywords" content="iOS 客户端教程,Clash教程,v2ray教程,客户端配置,机场订阅导入,vpn节点">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://fanqianjichang.blog/guides/ios/">
+  
+  <!-- Open Graph / Bing & Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="翻墙机场测评网">
+  <meta property="og:title" content="iOS 苹果手机 Shadowrocket (小火箭) 订阅导入与分流配置指南 - 翻墙机场测评网">
+  <meta property="og:description" content="针对 iPhone 与 iPad 设备，从外区 Apple ID 购买 Shadowrocket（小火箭）到一键导入机场节点、开启分流规则、测试延迟的图文指南。">
+  <meta property="og:url" content="https://fanqianjichang.blog/guides/ios/">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iOS 苹果手机 Shadowrocket (小火箭) 订阅导入与分流配置指南 - 翻墙机场测评网">
+  <meta name="twitter:description" content="针对 iPhone 与 iPad 设备，从外区 Apple ID 购买 Shadowrocket（小火箭）到一键导入机场节点、开启分流规则、测试延迟的图文指南。">
+  
+  <!-- 核心样式表 (标准相对路径，秒开无外链阻塞) -->
+  <link rel="stylesheet" href="../../css/style.css">
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "iOS 苹果手机 Shadowrocket (小火箭) 订阅导入与分流配置指南",
+  "description": "针对 iPhone 与 iPad 设备，从外区 Apple ID 购买 Shadowrocket（小火箭）到一键导入机场节点、开启分流规则、测试延迟的图文指南。",
+  "inLanguage": "zh-CN"
+}
+</script>
+</head>
+<body>
+
+  <!-- 顶部导航栏 -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="../../index.html" class="site-logo">
+          <span class="logo-badge">PRO</span>
+          <span>翻墙机场测评网</span>
+        </a>
+
+        <button class="menu-toggle" aria-label="切换菜单" aria-expanded="false">☰</button>
+
+        <nav class="main-nav" aria-label="主导航">
+          <a href="../../index.html" class="nav-link ">首页</a>
+          <a href="../../recommend/index.html" class="nav-link ">机场推荐</a>
+          <a href="../../ranking/index.html" class="nav-link ">多维排行</a>
+          <a href="../../airport/index.html" class="nav-link ">机场数据库</a>
+          <a href="../../review/index.html" class="nav-link ">深度评测</a>
+          <a href="../../compare/index.html" class="nav-link ">横向对比</a>
+          <a href="../../guides/index.html" class="nav-link active">配置教程</a>
+          <a href="../../blog/index.html" class="nav-link ">博客指南</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="../../compare/index.html" class="btn btn-secondary btn-sm">对比工具</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 页面主体内容 -->
+  <main>
+    <div class="container" style="padding-top:16px;"><nav class="breadcrumbs" aria-label="面包屑导航"><a href="../../index.html">首页</a><span class="breadcrumbs-sep">/</span><a href="../../guides/index.html">配置教程</a><span class="breadcrumbs-sep">/</span><span aria-current="page">iOS 客户端教程</span></nav></div>
+    
+    <article class="article-container" style="padding: 30px 20px;">
+      <header class="article-header">
+        <span class="card-badge blue">全平台客户端指南</span>
+        <h1 class="article-title" style="margin-top:10px;">iOS 苹果手机 Shadowrocket (小火箭) 订阅导入与分流配置指南</h1>
+        <div class="article-meta">
+          <span class="meta-item">📅 更新时间: 2026-11-16</span>
+          <span class="meta-item">⏱️ 预计阅读: 9 分钟</span>
+          <span class="meta-item">🎯 适用系统: iOS 客户端教程</span>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <div class="alert-box tip">
+          <div class="alert-title">💡 教程前置说明</div>
+          <p style="margin-bottom:0;">针对 iPhone 与 iPad 设备，从外区 Apple ID 购买 Shadowrocket（小火箭）到一键导入机场节点、开启分流规则、测试延迟的图文指南。</p>
+        </div>
+
+        
+      <h2>1. 准备工作：获取海外区 Apple ID 与 Shadowrocket</h2>
+      <div>由于众所周知的合规原因，中国大陆区 App Store 下架了所有网络代理类工具。<br><strong>必备条件：</strong>准备一个美区、港区或台区 Apple ID，登录 App Store（切勿在【设置】中登录 iCloud，只在【App Store】中登录），搜索并购买下载正版 <strong>Shadowrocket</strong>（图标为黑色背景搭配白色四翼小火箭，售价通常为 $2.99 美元）。</div>
+    
+
+      <h2>2. 导入机场订阅与启动</h2>
+      <div><strong>方法一：一键导入（最便捷）</strong><br>在 Safari 浏览器中登录你购买的机场后台，在用户中心点击【一键导入 Shadowrocket】。Safari 会弹出提示【在 Shadowrocket 中打开此页？】，点击【打开】，节点列表将自动写入完成。<br><br><strong>方法二：手动添加订阅链接</strong><br>如果一键导入未触发，在机场后台复制【通用订阅链接】或【Shadowrocket 订阅】。打开小火箭，点击右上角【+】号，将【类型】更改为 <code>Subscribe</code>，在【URL】栏粘贴链接，备注填写机场名称，点击右上角【完成】。<br><br><strong>步骤三：开启连接与配置模式</strong><br>软件将自动解析所有节点。在全局路由选项中，务必选择 <strong>【配置 (Config)】</strong>（该模式会自动将国内流量直连，国外流量走节点）。<br>选择一个节点打勾，拨动顶部连接开关，首次使用时会弹出系统提示【添加 VPN 配置】，点击【允许】并输入 iPhone 解锁密码即可。</div>
+    
+
+      <h2>3. 小火箭进阶设置技巧</h2>
+      <div><ul><li><strong>连通性测试：</strong>在节点列表点击【连通性测试】，小火箭会并发向 Google 发送请求，绿色毫秒数值代表节点可用且低延迟。</li><li><strong>自动更新订阅：</strong>点击底部【设置】→【订阅】→ 打开【打开时更新】与【自动后台更新】，确保节点信息随时保持最新。</li><li><strong>屏蔽广告规则：</strong>在底部【配置】中，可以使用预置的默认规则，也可以添加第三方精细分流规则实现去广告和解锁流媒体。</li></ul></div>
+    
+        
+      <h2>常见配置问题排查 (FAQ)</h2>
+      <div class="faq-list" style="margin:20px 0;">
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>除了小火箭，iOS 还有哪些推荐的代理客户端？</span><span class="faq-icon">+</span></div>
+            <div class="faq-answer">除了普及率最高、性价比最强的小火箭外，中高端用户还可以选择 <strong>Quantumult X</strong>（分流策略强大）、<strong>Loon</strong>（插件生态丰富）以及旗舰级的 <strong>Surge</strong>（专业网络调试与分流神器，价格较高）。</div>
+          </div>
+        
+
+          <div class="faq-item">
+            <div class="faq-question"><span>小火箭连接后耗电很快是怎么回事？</span><span class="faq-icon">+</span></div>
+            <div class="faq-answer">iOS 系统的电量统计机制会将所有走 VPN 接口的应用流量（包括看视频、下载）全部归在 Shadowrocket 名下，显示耗电百分比很高，但实际上是其他 App 传输数据的正常消耗，并非小火箭本身异常耗电。</div>
+          </div>
+        
+      </div>
+
+        <div class="alert-box warning">
+          <div class="alert-title">📌 还没有可用机场订阅？</div>
+          <p style="margin-bottom:6px;">本教程需要配合正规机场的订阅链接方可连接生效。</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;">
+            <a href="../../recommend/index.html" class="btn btn-primary btn-sm">精选机场推荐</a>
+            <a href="../../ranking/value/index.html" class="btn btn-secondary btn-sm">性价比排行榜</a>
+            <a href="../../compare/index.html" class="btn btn-secondary btn-sm">对比工具</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- 网站页脚 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>翻墙机场测评网</h4>
+          <p style="font-size:0.9rem; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+            专注为用户提供真实、中立、客观的网络加速节点与翻墙机场测评数据库。坚持拒绝虚构测速、拒绝虚假宣传，所有资费与参数均基于官方公开数据或声明实测。
+          </p>
+          <div style="font-size:0.8rem; color:#64748b;">
+            主攻方向：机场推荐、性价比机场、VPN机场节点、全平台客户端配置指南
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>核心专题</h4>
+          <ul class="footer-links">
+            <li><a href="../../recommend/budget/index.html">低预算平价机场</a></li>
+            <li><a href="../../recommend/premium/index.html">高端IEPL专线机场</a></li>
+            <li><a href="../../recommend/beginner/index.html">新手入门一键即用</a></li>
+            <li><a href="../../recommend/ai/index.html">ChatGPT/AI专用节点</a></li>
+            <li><a href="../../recommend/streaming/index.html">流媒体4K解锁合集</a></li>
+            <li><a href="../../ranking/value/index.html">性价比每GB排行</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>技术与教程</h4>
+          <ul class="footer-links">
+            <li><a href="../../guides/windows/index.html">Windows 客户端配置</a></li>
+            <li><a href="../../guides/android/index.html">Android 手机客户端教程</a></li>
+            <li><a href="../../guides/ios/index.html">iOS 小火箭导入教程</a></li>
+            <li><a href="../../guides/macos/index.html">macOS 电脑配置教程</a></li>
+            <li><a href="../../glossary/index.html">网络名词百科</a></li>
+            <li><a href="../../compare/index.html">机场多维横向PK</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>政策与合规</h4>
+          <ul class="footer-links">
+            <li><a href="../../about/index.html">关于本站</a></li>
+            <li><a href="../../editorial-policy/index.html">编辑政策与评测准则</a></li>
+            <li><a href="../../disclaimer/index.html">免责声明</a></li>
+            <li><a href="../../privacy-policy/index.html">隐私权保护政策</a></li>
+            <li><a href="../../contact/index.html">联系与反馈</a></li>
+            <li><a href="../../sitemap.xml">XML 网站地图</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 翻墙机场测评网 (fanqianjichang.blog) · 保留所有权利。</div>
+        <div>数据更新时间：2026-11-20 · 坚持独立客观与真实数据来源</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 原生轻量交互脚本 -->
+  <script src="../../js/main.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Bing Webmaster Tools & IndexNow
+Sitemap: https://fanqianjichang.blog/sitemap.xml
+Sitemap: https://fanqianjichang.blog/sitemap-index.xml

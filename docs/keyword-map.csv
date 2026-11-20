@@ -1,0 +1,47 @@
+Keyword,Intent,Target URL,Page Type,Priority,Title,H1
+机场推荐,商业/调研,index.html,Pillar / Homepage,P0,2026最新机场推荐与性价比梯子节点评测指南 - 翻墙机场测评网,2026年稳定优质机场推荐与网络加速节点选择指南
+梯子推荐,商业/调研,index.html,Pillar / Homepage,P0,2026最新机场推荐与性价比梯子节点评测指南 - 翻墙机场测评网,2026年稳定优质机场推荐与网络加速节点选择指南
+性价比机场,商业/交易,ranking/value/index.html,Category / Ranking,P0,性价比机场排行榜 - 便宜好用高性价比梯子节点评测推荐,2026高性价比机场排行榜：平价优质节点与月付套餐推荐
+机场节点,信息/调研,airport/index.html,Directory / Database,P0,机场节点大全与主流服务商测评数据库,主流机场节点与网络服务商全面解析数据库
+vpn,信息/比较,blog/vpn-vs-airport-proxy-difference/index.html,Article / Informational,P1,VPN与机场节点有什么区别？原理、速度与安全性全解析,VPN与机场节点代理的区别：新手如何选择适合的工具？
+vpn推荐,商业/调研,recommend/index.html,Category / Overview,P0,优质VPN机场推荐专题 - 满足日常浏览与海外办公,2026优质VPN机场与网络节点多维度推荐专题
+vpn机场,商业/调研,recommend/stable/index.html,Category / Cluster,P1,稳定VPN机场推荐 - 高可用抗封锁专线节点合集,稳定优先VPN机场推荐：抗封锁、低延迟与高可用线路精选
+vpn节点,技术/信息,guides/index.html,Tutorial / Guide,P1,VPN节点配置与客户端连接新手使用教程,常用VPN节点与机场客户端全平台安装配置教程
+低预算机场,交易/预算,recommend/budget/index.html,Category / Cluster,P1,便宜低预算机场推荐 - 学生与轻度用户平价节点精选,平价低预算机场推荐：小额月付与高性价比节点精选
+高端专线机场,交易/品质,recommend/premium/index.html,Category / Cluster,P1,高端专线机场推荐 - 旗舰级IPLC/IEPL超低延迟节点,高端专线机场推荐：旗舰级IPLC/IEPL内网专线节点精选
+新手机场推荐,教育/引导,recommend/beginner/index.html,Category / Cluster,P1,新手入门机场推荐 - 一键导入客户端即用型节点,新手入门机场推荐：开箱即用、一键导入与详细新手教程
+AI节点推荐,功能/场景,recommend/ai/index.html,Category / Cluster,P1,支持ChatGPT与Claude的AI专用机场节点推荐,ChatGPT/Claude/Sora AI专用机场节点精选与原生IP指南
+流媒体机场推荐,娱乐/场景,recommend/streaming/index.html,Category / Cluster,P1,Netflix/Disney+/YouTube流媒体4K解锁机场推荐,流媒体解锁机场推荐：4K/8K极速画质与家庭影院畅享
+综合排行榜,商业/对比,ranking/overall/index.html,Category / Ranking,P0,2026综合实力机场排行榜 - 速度、稳定性与服务全方位对比,2026综合实力机场排行榜：多维度客观评分与排行
+低预算排行榜,商业/预算,ranking/budget/index.html,Category / Ranking,P1,平价低预算机场排行榜 - 便宜月付与学生首选节点推荐,低预算平价机场排行榜：百元以内高性价比套餐真实测算
+稳定性排行榜,调研/品质,ranking/stable/index.html,Category / Ranking,P1,高稳定性机场排行榜 - 敏感时期抗封锁与可用率评估,高稳定性机场排行榜：抗封锁能力与长期可用率综合榜单
+机场横向对比,交互/工具,compare/index.html,Tool / Interactive,P0,机场横向对比工具 - 价格、流量、线路与协议实时PK,机场在线多维度横向对比工具
+Windows客户端教程,教程/操作,guides/windows/index.html,Tutorial,P1,Windows电脑端Clash Verge与v2rayN配置使用教程,Windows平台客户端使用指南：Clash Verge与v2rayN从零上手
+Android客户端教程,教程/操作,guides/android/index.html,Tutorial,P1,安卓手机Clash Meta与v2rayNG新手配置教程,Android安卓手机客户端配置教程：Clash与v2rayNG详细指南
+iOS客户端教程,教程/操作,guides/ios/index.html,Tutorial,P1,iPhone与iPad端Shadowrocket(小火箭)订阅导入教程,iOS平台客户端指南：Shadowrocket(小火箭)订阅与分流配置
+macOS客户端教程,教程/操作,guides/macos/index.html,Tutorial,P1,Mac电脑端Clash Verge与Surge客户端配置指南,macOS苹果电脑客户端指南：Clash Verge与Surge配置教程
+Clash基础与分流,技术/科普,guides/clash-basics/index.html,Tutorial,P2,Clash订阅规则与PAC分流模式通俗解析,Clash进阶指南：节点分流、规则模式与常见报错修复
+如何选靠谱机场,指南/防坑,blog/how-to-choose-reliable-airport/index.html,Article,P1,如何选择靠谱机场？新手防跑路、防坑与避雷完整指南,如何选择靠谱机场：新手防踩坑与服务质量评估五大标准
+专线与中转区别,技术/原理,blog/iepl-iplc-relay-difference/index.html,Article,P2,IEPL、IPLC专线与BGP中转线路有什么区别？,IEPL、IPLC与BGP公网中转区别：线路类型全维度对比
+测速图误区,评测/科普,blog/airport-speed-test-misunderstandings/index.html,Article,P2,机场测速图能代表一切吗？揭秘跑满千兆背后的三大真相,揭秘机场测速图的常见误区：为什么测速好看实际却卡顿？
+AI节点要求解析,场景/技术,blog/ai-chatgpt-claude-airport-ip-requirements/index.html,Article,P2,ChatGPT与Claude对节点IP有什么要求？防封号与报错指南,访问AI服务（ChatGPT/Claude）对节点IP的要求与避坑指南
+IPLC/IEPL专线百科,词条/百科,glossary/iplc-iepl/index.html,Glossary,P2,什么是IPLC和IEPL专线？网络百科词条,名词解释：IPLC与IEPL内网专线技术深度解析
+常用代理协议对比,词条/百科,glossary/shadowsocks-v2ray-trojan/index.html,Glossary,P2,Shadowsocks、VMess、Trojan与Hysteria协议对比,名词解释：Shadowsocks、V2Ray、Trojan与Hysteria协议特性
+BGP中转百科,词条/百科,glossary/bgp-relay/index.html,Glossary,P2,什么是BGP入口与公网中转节点？网络百科,名词解释：BGP网络与中转隧道的工作原理
+Clash订阅模式百科,词条/百科,glossary/clash-subscription/index.html,Glossary,P2,什么是Clash订阅链接？规则分流与Direct模式解析,名词解释：订阅链接、规则分流与全局代理模式
+原生IP与纯净度百科,词条/百科,glossary/ip-cleanliness-score/index.html,Glossary,P2,什么是原生IP与住宅IP？节点欺诈度评分说明,名词解释：原生IP、广播IP与IP欺诈度风险值
+Just My Socks资料,品牌/数据,airport/just-my-socks/index.html,Brand Profile,P1,Just My Socks机场详细参数与节点套餐资料,Just My Socks 官方数据档案与套餐线路概览
+飞鸟云资料,品牌/数据,airport/flyingbird/index.html,Brand Profile,P1,飞鸟云FlyingBird机场详细参数与节点套餐资料,飞鸟云 FlyingBird 官方数据档案与套餐线路概览
+泡泡狗资料,品牌/数据,airport/paopaodog/index.html,Brand Profile,P1,泡泡狗Paopaodog机场详细参数与节点套餐资料,泡泡狗 Paopaodog 官方数据档案与套餐线路概览
+奶昔资料,品牌/数据,airport/nexitally/index.html,Brand Profile,P1,奶昔Nexitally机场详细参数与节点套餐资料,奶昔 Nexitally 官方数据档案与套餐线路概览
+猫熊资料,品牌/数据,airport/miaona/index.html,Brand Profile,P1,猫熊Miaona机场详细参数与节点套餐资料,猫熊 Miaona 官方数据档案与套餐线路概览
+Just My Socks评测,评测/独立,review/just-my-socks/index.html,Review,P1,Just My Socks深度评测：搬瓦工官方线路真实体验优缺点,Just My Socks 深度客观评测：搬瓦工官方品质究竟如何？
+飞鸟云评测,评测/独立,review/flyingbird/index.html,Review,P1,飞鸟云FlyingBird深度评测：专线大带宽与流媒体实测,飞鸟云 FlyingBird 深度客观评测：IEPL专线表现全解析
+泡泡狗评测,评测/独立,review/paopaodog/index.html,Review,P1,泡泡狗Paopaodog深度评测：性价比专线梯子值得买吗？,泡泡狗 Paopaodog 深度客观评测：平价专线是否靠谱？
+奶昔评测,评测/独立,review/nexitally/index.html,Review,P1,奶昔Nexitally深度评测：高端天花板专线名副其实吗？,奶昔 Nexitally 深度客观评测：高端专线标杆的真实体验
+猫熊评测,评测/独立,review/miaona/index.html,Review,P1,猫熊Miaona深度评测：平价入门轻量套餐体验与评价,猫熊 Miaona 深度客观评测：平民入门级节点的优缺点
+关于我们,合规/信誉,about/index.html,Meta,P2,关于我们 - 翻墙机场测评网团队理念与评测标准,关于翻墙机场测评网：专注中立客观的网络节点评测
+联系我们,合规/信誉,contact/index.html,Meta,P2,联系我们 - 反馈与商务合作,联系翻墙机场测评网
+编辑政策,合规/信誉,editorial-policy/index.html,Meta,P2,编辑政策与客观测评准则 - 翻墙机场测评网,我们的编辑政策与测评准则声明
+隐私政策,合规/信誉,privacy-policy/index.html,Meta,P2,隐私政策 - 保护用户隐私权益,翻墙机场测评网隐私保护政策
+免责声明,合规/信誉,disclaimer/index.html,Meta,P2,免责声明与服务规范说明 - 翻墙机场测评网,免责声明与法律合规提示
