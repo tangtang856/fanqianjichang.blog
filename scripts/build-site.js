@@ -1115,10 +1115,13 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   }));
 
   // 14 家独立品牌资料页
-  airports.forEach(airport => {
+  airports.forEach((airport, index) => {
     const pagePath = `airport/${airport.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
+
+    const prevAirport = index > 0 ? airports[index - 1] : null;
+    const nextAirport = index < airports.length - 1 ? airports[index + 1] : null;
 
     const couponBox = airport.coupon ? `
     <div class="alert-box tip" style="margin:20px 0;">
@@ -1254,8 +1257,40 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
           <a href="${prefix}compare/index.html" class="btn btn-secondary">与其他机场横向对比 →</a>
           <a href="${prefix}ranking/overall/index.html" class="btn btn-secondary">返回综合实力榜 →</a>
         </div>
+
+        <!-- 上一家 / 下一家机场资料档案翻页 -->
+        <nav class="post-nav" aria-label="机场档案上下篇翻页">
+          <div class="post-nav-item post-nav-prev">
+            ${prevAirport ? `
+              <a href="${prefix}airport/${prevAirport.slug}/index.html" class="post-nav-card" title="上一家: ${prevAirport.name}">
+                <span class="post-nav-label">← 上一家品牌档案</span>
+                <span class="post-nav-title">${prevAirport.name} (${prevAirport.badge})</span>
+              </a>
+            ` : `
+              <div class="post-nav-empty">
+                <span>🎉 已经是第一家品牌档案</span>
+              </div>
+            `}
+          </div>
+          <div class="post-nav-item post-nav-next">
+            ${nextAirport ? `
+              <a href="${prefix}airport/${nextAirport.slug}/index.html" class="post-nav-card post-nav-next" title="下一家: ${nextAirport.name}">
+                <span class="post-nav-label">下一家品牌档案 →</span>
+                <span class="post-nav-title">${nextAirport.name} (${nextAirport.badge})</span>
+              </a>
+            ` : `
+              <div class="post-nav-empty">
+                <span>🏁 已阅完全部14家档案，返回 <a href="${prefix}airport/index.html" style="margin-left:4px; font-weight:700;">机场数据库</a></span>
+              </div>
+            `}
+          </div>
+        </nav>
       </div>
-    </article>`;
+    </article>
+    <div class="reading-quick-bar" aria-label="快捷阅读工具">
+      ${nextAirport ? `<a href="${prefix}airport/${nextAirport.slug}/index.html" class="quick-bar-btn" title="点击跳转下一家档案: ${nextAirport.name}">👉</a>` : ''}
+      <a href="#" class="quick-bar-btn" title="返回顶部">⬆️</a>
+    </div>`;
 
     savePage(pagePath, renderLayout({
       filePath: pagePath,
@@ -1319,10 +1354,14 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   }));
 
   // 14 篇独立深度评测报告
-  airports.forEach(airport => {
+  airports.forEach((airport, index) => {
     const pagePath = `review/${airport.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
+
+    // 上一家与下一家评测翻页
+    const prevAirport = index > 0 ? airports[index - 1] : null;
+    const nextAirport = index < airports.length - 1 ? airports[index + 1] : null;
 
     const couponBox = airport.coupon ? `
     <div class="alert-box tip" style="margin:20px 0;">
@@ -1483,8 +1522,40 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
           <a href="${prefix}compare/index.html" class="btn btn-secondary">横向对比此机场与其他品牌</a>
           <a href="${prefix}ranking/overall/index.html" class="btn btn-secondary">返回综合排行榜</a>
         </div>
+
+        <!-- 上一家 / 下一家品牌评测导航 -->
+        <nav class="post-nav" aria-label="机场评测上下篇翻页">
+          <div class="post-nav-item post-nav-prev">
+            ${prevAirport ? `
+              <a href="${prefix}review/${prevAirport.slug}/index.html" class="post-nav-card" title="上一家: ${prevAirport.name}">
+                <span class="post-nav-label">← 上一家机场评测</span>
+                <span class="post-nav-title">${prevAirport.name} (${prevAirport.badge})</span>
+              </a>
+            ` : `
+              <div class="post-nav-empty">
+                <span>🎉 已经是第一家机场评测</span>
+              </div>
+            `}
+          </div>
+          <div class="post-nav-item post-nav-next">
+            ${nextAirport ? `
+              <a href="${prefix}review/${nextAirport.slug}/index.html" class="post-nav-card post-nav-next" title="下一家: ${nextAirport.name}">
+                <span class="post-nav-label">下一家机场评测 →</span>
+                <span class="post-nav-title">${nextAirport.name} (${nextAirport.badge})</span>
+              </a>
+            ` : `
+              <div class="post-nav-empty">
+                <span>🏁 已阅完全部14家评测，返回 <a href="${prefix}ranking/overall/index.html" style="margin-left:4px; font-weight:700;">综合排行榜</a></span>
+              </div>
+            `}
+          </div>
+        </nav>
       </div>
-    </article>`;
+    </article>
+    <div class="reading-quick-bar" aria-label="快捷阅读工具">
+      ${nextAirport ? `<a href="${prefix}review/${nextAirport.slug}/index.html" class="quick-bar-btn" title="点击跳转下一家: ${nextAirport.name}">👉</a>` : ''}
+      <a href="#" class="quick-bar-btn" title="返回顶部">⬆️</a>
+    </div>`;
 
     savePage(pagePath, renderLayout({
       filePath: pagePath,
@@ -1740,10 +1811,22 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   });
 
   // 生成 30 篇独立详实客户端教程页面
-  guidesData.forEach(guide => {
+  guidesData.forEach((guide, index) => {
     const pagePath = `guides/${guide.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
+
+    // 1. 上一篇与下一篇教程导航
+    const prevGuide = index > 0 ? guidesData[index - 1] : null;
+    const nextGuide = index < guidesData.length - 1 ? guidesData[index + 1] : null;
+
+    // 2. 挑选 3 篇同分类相关教程
+    const samePlatform = guidesData.filter(g => g.category === guide.category && g.slug !== guide.slug);
+    let relatedGuides = samePlatform.slice(0, 3);
+    if (relatedGuides.length < 3) {
+      const others = guidesData.filter(g => g.slug !== guide.slug && !relatedGuides.some(r => r.slug === g.slug));
+      relatedGuides = relatedGuides.concat(others.slice(0, 3 - relatedGuides.length));
+    }
 
     const sectionsHtml = guide.sections.map(s => `
       <h2>${s.h2}</h2>
@@ -1764,10 +1847,64 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
       </div>`;
     }
 
+    // 同分类相关教程推荐
+    const relatedGuidesHtml = `
+    <div class="related-posts-section">
+      <div class="related-posts-header">
+        <h3 class="related-posts-title">💻 更多同平台客户端指南</h3>
+        <a href="${prefix}guides/index.html" style="font-size:0.85rem; font-weight:600; color:var(--primary);">查看全部30篇教程中心 →</a>
+      </div>
+      <div class="related-grid">
+        ${relatedGuides.map(rg => `
+          <a href="${prefix}guides/${rg.slug}/index.html" class="related-card">
+            <span class="card-badge blue" style="align-self:flex-start; margin-bottom:8px; font-size:0.75rem;">${rg.category}</span>
+            <div class="related-card-title">${rg.title}</div>
+            <div class="related-card-meta">📅 ${rg.updated} · ⏱️ ${rg.readTime}</div>
+          </a>
+        `).join('\n')}
+      </div>
+    </div>`;
+
+    // 上一篇 / 下一篇翻页导航组件
+    const postNavHtml = `
+    <nav class="post-nav" aria-label="教程上下篇翻页">
+      <div class="post-nav-item post-nav-prev">
+        ${prevGuide ? `
+          <a href="${prefix}guides/${prevGuide.slug}/index.html" class="post-nav-card" title="上一篇: ${prevGuide.title}">
+            <span class="post-nav-label">← 上一篇教程</span>
+            <span class="post-nav-title">${prevGuide.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🎉 您正在阅读第一篇教程</span>
+          </div>
+        `}
+      </div>
+      <div class="post-nav-item post-nav-next">
+        ${nextGuide ? `
+          <a href="${prefix}guides/${nextGuide.slug}/index.html" class="post-nav-card post-nav-next" title="下一篇: ${nextGuide.title}">
+            <span class="post-nav-label">下一篇教程 →</span>
+            <span class="post-nav-title">${nextGuide.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🏁 已到达最后一篇，建议浏览 <a href="${prefix}guides/index.html" style="margin-left:4px; font-weight:700;">全部30篇教程</a></span>
+          </div>
+        `}
+      </div>
+    </nav>`;
+
+    // 浮动快速导航工具栏 (下一篇 + 回到顶部)
+    const floatingToolsHtml = `
+    <div class="reading-quick-bar" aria-label="快捷阅读工具">
+      ${nextGuide ? `<a href="${prefix}guides/${nextGuide.slug}/index.html" class="quick-bar-btn" title="点击跳转下一篇: ${nextGuide.title}">👉</a>` : ''}
+      <a href="#" class="quick-bar-btn" title="返回顶部">⬆️</a>
+    </div>`;
+
     const guideBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge blue">${guide.category}</span>
+        <a href="${prefix}guides/index.html" class="card-badge blue" title="返回教程中心">${guide.category}</a>
         <h1 class="article-title" style="margin-top:10px;">${guide.title}</h1>
         <div class="article-meta">
           <span class="meta-item">📅 更新时间: ${guide.updated}</span>
@@ -1794,8 +1931,13 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
             <a href="${prefix}compare/index.html" class="btn btn-secondary btn-sm">对比工具</a>
           </div>
         </div>
+
+        ${relatedGuidesHtml}
+
+        ${postNavHtml}
       </div>
-    </article>`;
+    </article>
+    ${floatingToolsHtml}`;
 
     const schema = {
       "@context": "https://schema.org",
@@ -1902,20 +2044,125 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   }));
 
   // 各独立文章页面 (100 篇)
-  blogData.forEach(article => {
+  blogData.forEach((article, index) => {
     const pagePath = `blog/${article.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
+
+    // 1. 上一篇与下一篇导航
+    const prevArticle = index > 0 ? blogData[index - 1] : null;
+    const nextArticle = index < blogData.length - 1 ? blogData[index + 1] : null;
+
+    // 2. 同分类相关推荐文章 (挑选 3 篇)
+    const sameCategory = blogData.filter(b => b.category === article.category && b.slug !== article.slug);
+    let relatedPosts = sameCategory.slice(0, 3);
+    if (relatedPosts.length < 3) {
+      const others = blogData.filter(b => b.slug !== article.slug && !relatedPosts.some(r => r.slug === b.slug));
+      relatedPosts = relatedPosts.concat(others.slice(0, 3 - relatedPosts.length));
+    }
+
+    // 3. 智能匹配 2-3 家相关优质机场
+    let matchedAirports = [];
+    if (article.category === 'AI大模型') {
+      matchedAirports = airports.filter(a => ['flashleap', 'yinxingren', 'lingmao'].includes(a.id));
+    } else if (article.category === '流媒体解锁') {
+      matchedAirports = airports.filter(a => ['feimaoyun', 'lingmao', 'breezenet'].includes(a.id));
+    } else if (article.category === '游戏加速') {
+      matchedAirports = airports.filter(a => ['flashleap', 'yinxingren', 'breezenet'].includes(a.id));
+    } else if (article.category === '选型避坑' || article.category === '协议底层') {
+      matchedAirports = airports.filter(a => ['breezenet', 'feimaoyun', 'wuyou'].includes(a.id));
+    } else {
+      matchedAirports = airports.filter(a => ['breezenet', 'yinxingren', 'feimaoyun'].includes(a.id));
+    }
+    if (matchedAirports.length < 2) matchedAirports = airports.slice(0, 3);
 
     const sectionsHtml = article.sections.map(s => `
       <h2>${s.h2}</h2>
       <div class="article-section-content" style="line-height:1.75; margin-bottom:18px;">${s.p}</div>
     `).join('\n');
 
+    // 精选机场嵌入卡片
+    const airportCalloutHtml = `
+    <div class="article-airport-callout">
+      <div class="article-airport-header">
+        <h3 class="article-airport-title">⚡ 适合【${article.category}】场景的高速稳定机场精选推荐</h3>
+        <span style="font-size:0.8rem; color:var(--text-muted);">2026 最新官方核验 · 晚高峰抗封锁实测</span>
+      </div>
+      <div class="article-airport-grid">
+        ${matchedAirports.map(a => `
+          <div class="article-airport-item">
+            <div class="article-airport-name">
+              <a href="${prefix}review/${a.slug}/index.html" style="color:var(--text-main); font-weight:700;">${a.name}</a>
+              ${a.coupon ? `<span class="coupon-tag">券: ${a.coupon}</span>` : ''}
+            </div>
+            <div class="article-airport-desc">${a.badge} · 起步低至 <strong>¥${a.startingPrice}</strong>/${a.billingCycle}</div>
+            <div class="article-airport-actions">
+              <a href="${a.affiliateUrl}" target="_blank" rel="nofollow noopener noreferrer" class="btn btn-primary btn-sm" style="flex:1; text-align:center;">直达官网 ↗</a>
+              <a href="${prefix}review/${a.slug}/index.html" class="btn btn-secondary btn-sm">评测报告</a>
+            </div>
+          </div>
+        `).join('\n')}
+      </div>
+    </div>`;
+
+    // 同专题延伸阅读
+    const relatedPostsHtml = `
+    <div class="related-posts-section">
+      <div class="related-posts-header">
+        <h3 class="related-posts-title">📚 同专题精选推荐阅读</h3>
+        <a href="${prefix}blog/index.html#cat-${encodeURIComponent(article.category)}" style="font-size:0.85rem; font-weight:600; color:var(--primary);">查看【${article.category}】专题全部文章 →</a>
+      </div>
+      <div class="related-grid">
+        ${relatedPosts.map(rp => `
+          <a href="${prefix}blog/${rp.slug}/index.html" class="related-card">
+            <span class="card-badge purple" style="align-self:flex-start; margin-bottom:8px; font-size:0.75rem;">${rp.category}</span>
+            <div class="related-card-title">${rp.title}</div>
+            <div class="related-card-meta">📅 ${rp.date} · ⏱️ ${rp.readTime}</div>
+          </a>
+        `).join('\n')}
+      </div>
+    </div>`;
+
+    // 上一篇 / 下一篇翻页导航组件
+    const postNavHtml = `
+    <nav class="post-nav" aria-label="文章上下篇翻页">
+      <div class="post-nav-item post-nav-prev">
+        ${prevArticle ? `
+          <a href="${prefix}blog/${prevArticle.slug}/index.html" class="post-nav-card" title="上一篇: ${prevArticle.title}">
+            <span class="post-nav-label">← 上一篇文章</span>
+            <span class="post-nav-title">${prevArticle.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🎉 您正在阅读第一篇文章</span>
+          </div>
+        `}
+      </div>
+      <div class="post-nav-item post-nav-next">
+        ${nextArticle ? `
+          <a href="${prefix}blog/${nextArticle.slug}/index.html" class="post-nav-card post-nav-next" title="下一篇: ${nextArticle.title}">
+            <span class="post-nav-label">下一篇文章 →</span>
+            <span class="post-nav-title">${nextArticle.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🏁 已到达最后一篇，建议浏览 <a href="${prefix}blog/index.html" style="margin-left:4px; font-weight:700;">全部100篇专题</a></span>
+          </div>
+        `}
+      </div>
+    </nav>`;
+
+    // 浮动快速导航工具栏 (下一篇 + 回到顶部)
+    const floatingToolsHtml = `
+    <div class="reading-quick-bar" aria-label="快捷阅读工具">
+      ${nextArticle ? `<a href="${prefix}blog/${nextArticle.slug}/index.html" class="quick-bar-btn" title="点击跳转下一篇: ${nextArticle.title}">👉</a>` : ''}
+      <a href="#" class="quick-bar-btn" title="返回顶部">⬆️</a>
+    </div>`;
+
     const articleBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge purple">${article.category}</span>
+        <a href="${prefix}blog/index.html#cat-${encodeURIComponent(article.category)}" class="card-badge purple" title="查看该专题全部分类">${article.category} 专题系列</a>
         <h1 class="article-title" style="margin-top:10px;">${article.title}</h1>
         <div class="article-meta">
           <span class="meta-item">✍️ 撰写: 翻墙机场测评网编辑部</span>
@@ -1932,17 +2179,25 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
 
         ${sectionsHtml}
 
-        <div class="alert-box tip" style="margin-top:40px;">
-          <div class="alert-title">🔗 延伸阅读与相关资源</div>
-          <p style="margin-bottom:8px;">掌握核心知识后，建议结合以下资源进行实操：</p>
+        ${airportCalloutHtml}
+
+        <div class="alert-box tip" style="margin-top:30px;">
+          <div class="alert-title">🔗 延伸工具与官方数据库</div>
+          <p style="margin-bottom:8px;">掌握核心知识后，建议结合以下资源进行实操与横向比对：</p>
           <div style="display:flex; gap:10px; flex-wrap:wrap;">
             <a href="${prefix}recommend/index.html" class="btn btn-primary btn-sm">2026 优质机场推荐</a>
+            <a href="${prefix}ranking/value/index.html" class="btn btn-secondary btn-sm">高性价比排行榜</a>
             <a href="${prefix}compare/index.html" class="btn btn-secondary btn-sm">多维横向对比工具</a>
             <a href="${prefix}glossary/index.html" class="btn btn-secondary btn-sm">网络名词百科</a>
           </div>
         </div>
+
+        ${relatedPostsHtml}
+
+        ${postNavHtml}
       </div>
-    </article>`;
+    </article>
+    ${floatingToolsHtml}`;
 
     const schema = {
       "@context": "https://schema.org",
@@ -2029,15 +2284,46 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
   }));
 
   // 各独立词条页面
-  glossaryData.forEach(term => {
+  glossaryData.forEach((term, index) => {
     const pagePath = `glossary/${term.slug}/index.html`;
     const depth = 2;
     const prefix = "../../";
 
+    const prevTerm = index > 0 ? glossaryData[index - 1] : null;
+    const nextTerm = index < glossaryData.length - 1 ? glossaryData[index + 1] : null;
+
+    const postNavHtml = `
+    <nav class="post-nav" aria-label="词条上下篇翻页">
+      <div class="post-nav-item post-nav-prev">
+        ${prevTerm ? `
+          <a href="${prefix}glossary/${prevTerm.slug}/index.html" class="post-nav-card" title="上一个词条: ${prevTerm.shortTitle}">
+            <span class="post-nav-label">← 上一个名词词条</span>
+            <span class="post-nav-title">${prevTerm.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🎉 已经是第一个词条</span>
+          </div>
+        `}
+      </div>
+      <div class="post-nav-item post-nav-next">
+        ${nextTerm ? `
+          <a href="${prefix}glossary/${nextTerm.slug}/index.html" class="post-nav-card post-nav-next" title="下一个词条: ${nextTerm.shortTitle}">
+            <span class="post-nav-label">下一个名词词条 →</span>
+            <span class="post-nav-title">${nextTerm.title}</span>
+          </a>
+        ` : `
+          <div class="post-nav-empty">
+            <span>🏁 已阅完全部词条，返回 <a href="${prefix}glossary/index.html" style="margin-left:4px; font-weight:700;">名词百科总库</a></span>
+          </div>
+        `}
+      </div>
+    </nav>`;
+
     const termBody = `
     <article class="article-container" style="padding: 30px 20px;">
       <header class="article-header">
-        <span class="card-badge purple">${term.category} 百科</span>
+        <a href="${prefix}glossary/index.html" class="card-badge purple">${term.category} 百科</a>
         <h1 class="article-title" style="margin-top:10px;">${term.title}</h1>
         <div class="article-meta">
           <span class="meta-item">📅 最后修订: ${term.updated}</span>
@@ -2069,8 +2355,14 @@ console.log(">>> 开始生成全站纯静态 SEO 页面 (14家精选品牌)...")
             <a href="${prefix}compare/index.html" class="btn btn-secondary btn-sm">横向对比工具</a>
           </div>
         </div>
+
+        ${postNavHtml}
       </div>
-    </article>`;
+    </article>
+    <div class="reading-quick-bar" aria-label="快捷阅读工具">
+      ${nextTerm ? `<a href="${prefix}glossary/${nextTerm.slug}/index.html" class="quick-bar-btn" title="点击跳转下一个词条: ${nextTerm.shortTitle}">👉</a>` : ''}
+      <a href="#" class="quick-bar-btn" title="返回顶部">⬆️</a>
+    </div>`;
 
     savePage(pagePath, renderLayout({
       filePath: pagePath,
